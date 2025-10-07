@@ -1,0 +1,18 @@
+# Node/Next
+node_modules/
+.next/
+out/
+.turbo/
+dist/
+*.log
+
+# Env
+.env
+
+# Prisma
+web/prisma/dev.db*
+
+# Docker
+*.pid
+
+
