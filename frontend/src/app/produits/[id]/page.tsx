@@ -1,5 +1,9 @@
-import { notFound } from 'next/navigation';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { usePanier } from '@/contexts/PanierContext';
 import EnTete from '@/composants/mise-en-page/EnTete';
 import PiedDePage from '@/composants/mise-en-page/PiedDePage';
 
@@ -25,25 +29,6 @@ interface Produit {
   producer: string | null;
   stockQuantity: number;
   description: string | null;
-}
-
-async function obtenirProduit(id: string): Promise<Produit | null> {
-  try {
-    const res = await fetch(`${API_URL}/api/produits/${id}`, {
-      cache: 'no-store',
-      headers: { 'Content-Type': 'application/json' }
-    });
-
-    if (!res.ok) {
-      return null;
-    }
-
-    const data = await res.json();
-    return data.donnees || null;
-  } catch (error) {
-    console.error('Erreur fetch produit:', error);
-    return null;
-  }
 }
 
 function obtenirCouleurClasse(couleur: string | null): string {
@@ -78,11 +63,93 @@ function obtenirNomCouleur(couleur: string | null): string {
   }
 }
 
-export default async function DetailProduitPage({ params }: { params: { id: string } }) {
-  const produit = await obtenirProduit(params.id);
+export default function DetailProduitPage() {
+  const params = useParams();
+  const router = useRouter();
+  const { ajouterAuPanier } = usePanier();
 
-  if (!produit) {
-    notFound();
+  const [produit, setProduit] = useState<Produit | null>(null);
+  const [chargement, setChargement] = useState(true);
+  const [erreur, setErreur] = useState(false);
+  const [ajoutEnCours, setAjoutEnCours] = useState(false);
+
+  useEffect(() => {
+    async function chargerProduit() {
+      try {
+        const res = await fetch(`${API_URL}/api/produits/${params.id}`, {
+          cache: 'no-store',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (!res.ok) {
+          setErreur(true);
+          return;
+        }
+
+        const data = await res.json();
+        setProduit(data.donnees || null);
+      } catch (error) {
+        console.error('Erreur fetch produit:', error);
+        setErreur(true);
+      } finally {
+        setChargement(false);
+      }
+    }
+
+    chargerProduit();
+  }, [params.id]);
+
+  const handleAjouterAuPanier = () => {
+    if (!produit) return;
+
+    setAjoutEnCours(true);
+    ajouterAuPanier({
+      id: produit.id,
+      reference: produit.reference,
+      name: produit.name,
+      priceEur: typeof produit.priceEur === 'number' ? produit.priceEur : parseFloat(produit.priceEur || '0'),
+      color: produit.color,
+      producer: produit.producer,
+      stockQuantity: produit.stockQuantity,
+    });
+
+    // Animation succès
+    setTimeout(() => {
+      setAjoutEnCours(false);
+    }, 1000);
+  };
+
+  if (chargement) {
+    return (
+      <>
+        <EnTete />
+        <main className="min-h-screen bg-gray-50 py-8">
+          <div className="container mx-auto px-4 text-center py-20">
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#8B1538]"></div>
+            <p className="mt-4 text-gray-600">Chargement...</p>
+          </div>
+        </main>
+        <PiedDePage />
+      </>
+    );
+  }
+
+  if (erreur || !produit) {
+    return (
+      <>
+        <EnTete />
+        <main className="min-h-screen bg-gray-50 py-8">
+          <div className="container mx-auto px-4 text-center py-20">
+            <div className="text-6xl mb-4">❌</div>
+            <h1 className="text-2xl font-bold mb-4">Produit non trouvé</h1>
+            <Link href="/catalogue" className="text-[#8B1538] hover:underline">
+              Retour au catalogue
+            </Link>
+          </div>
+        </main>
+        <PiedDePage />
+      </>
+    );
   }
 
   const prix = typeof produit.priceEur === 'number'
@@ -168,14 +235,17 @@ export default async function DetailProduitPage({ params }: { params: { id: stri
                 {/* Boutons Action */}
                 <div className="space-y-3">
                   <button
-                    disabled={!enStock}
-                    className={`w-full py-4 rounded-lg font-bold text-lg transition-colors ${
+                    onClick={handleAjouterAuPanier}
+                    disabled={!enStock || ajoutEnCours}
+                    className={`w-full py-4 rounded-lg font-bold text-lg transition-all ${
                       enStock
-                        ? 'bg-[#8B1538] text-white hover:bg-[#6B0F2A]'
+                        ? ajoutEnCours
+                          ? 'bg-green-600 text-white'
+                          : 'bg-[#8B1538] text-white hover:bg-[#6B0F2A]'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
-                    {enStock ? '🛒 Ajouter au panier' : 'Indisponible'}
+                    {ajoutEnCours ? '✓ Ajouté au panier !' : enStock ? '🛒 Ajouter au panier' : 'Indisponible'}
                   </button>
                   <button className="w-full py-3 rounded-lg font-medium border-2 border-[#8B1538] text-[#8B1538] hover:bg-gray-50 transition-colors">
                     ♥ Ajouter aux favoris

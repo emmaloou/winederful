@@ -3,10 +3,12 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+import { usePanier } from '@/contexts/PanierContext';
 import ModalConnexion from '@/composants/auth/ModalConnexion';
 
 export default function EnTete() {
   const { user, deconnexion } = useAuth();
+  const { nombreArticles } = usePanier();
   const [modalOuverte, setModalOuverte] = useState(false);
   const [menuOuvert, setMenuOuvert] = useState(false);
 
@@ -26,10 +28,14 @@ export default function EnTete() {
             </nav>
 
             <div className="flex items-center space-x-4">
-              <button className="relative">
-                <span className="text-2xl">🛒</span>
-                <span className="absolute -top-2 -right-2 bg-[#8B1538] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-              </button>
+              <Link href="/panier" className="relative group">
+                <span className="text-2xl group-hover:scale-110 transition-transform inline-block">🛒</span>
+                {nombreArticles > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#8B1538] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-pulse">
+                    {nombreArticles}
+                  </span>
+                )}
+              </Link>
 
               {user ? (
                 <div className="relative">
