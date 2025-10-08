@@ -143,9 +143,9 @@ export default async function DetailProduitPage({ params }: { params: { id: stri
                   {produit.rating && (
                     <div className="flex items-center mt-2">
                       <span className="text-yellow-500 text-lg">
-                        {'⭐'.repeat(Math.round(produit.rating))}
+                        {'⭐'.repeat(Math.round(produit.rating / 20))}
                       </span>
-                      <span className="ml-2 text-gray-600">{produit.rating}/5</span>
+                      <span className="ml-2 text-gray-600">{produit.rating}/100</span>
                     </div>
                   )}
                 </div>
