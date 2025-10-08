@@ -1,6 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
+import { usePanier } from '@/contexts/PanierContext';
 
 interface Produit {
   id: string;
@@ -20,6 +22,8 @@ interface Props {
 }
 
 export default function CarteProduit({ produit }: Props) {
+  const { ajouterAuPanier } = usePanier();
+  const [ajoutEnCours, setAjoutEnCours] = useState(false);
   const couleurBadge = produit.color === 'red' ? 'bg-red-100 text-red-800' : 
                        produit.color === 'white' ? 'bg-yellow-50 text-yellow-800' : 
                        'bg-pink-100 text-pink-800';
@@ -27,9 +31,29 @@ export default function CarteProduit({ produit }: Props) {
   const stockBadge = produit.stockQuantity > 20 ? 'disponible' : 
                      produit.stockQuantity > 0 ? 'limite' : 'rupture';
   
-  const stockTexte = produit.stockQuantity > 20 ? 'En stock' : 
-                     produit.stockQuantity > 0 ? `${produit.stockQuantity} restants` : 
+  const stockTexte = produit.stockQuantity > 20 ? 'En stock' :
+                     produit.stockQuantity > 0 ? `${produit.stockQuantity} restants` :
                      'Rupture';
+
+  const handleAjouterAuPanier = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setAjoutEnCours(true);
+    ajouterAuPanier({
+      id: produit.id,
+      reference: produit.reference,
+      name: produit.name,
+      priceEur: typeof produit.priceEur === 'number' ? produit.priceEur : parseFloat(produit.priceEur || '0'),
+      color: produit.color,
+      producer: produit.producer,
+      stockQuantity: produit.stockQuantity,
+    });
+
+    setTimeout(() => {
+      setAjoutEnCours(false);
+    }, 1500);
+  };
 
   return (
     <Link href={`/produits/${produit.id}`}>
@@ -74,12 +98,18 @@ export default function CarteProduit({ produit }: Props) {
               </span>
               <span className="text-xs text-gray-500 ml-1">/ bouteille</span>
             </div>
-            <button 
-              onClick={(e) => { e.preventDefault(); alert('Ajouté au panier !'); }}
-              disabled={produit.stockQuantity === 0}
-              className="bg-[#8B1538] text-white px-4 py-2 rounded-lg text-sm hover:bg-[#6B0F2A] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+            <button
+              onClick={handleAjouterAuPanier}
+              disabled={produit.stockQuantity === 0 || ajoutEnCours}
+              className={`px-4 py-2 rounded-lg text-sm transition-all ${
+                produit.stockQuantity === 0
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  : ajoutEnCours
+                  ? 'bg-green-600 text-white'
+                  : 'bg-[#8B1538] text-white hover:bg-[#6B0F2A]'
+              }`}
             >
-              {produit.stockQuantity > 0 ? 'Ajouter' : 'Indisponible'}
+              {ajoutEnCours ? '✓' : produit.stockQuantity > 0 ? 'Ajouter' : 'Indisponible'}
             </button>
           </div>
         </div>
