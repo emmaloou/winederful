@@ -190,31 +190,105 @@ curl http://localhost:4000/api/auth/profil \
 
 ## 📚 Fonctionnalités
 
-### ✅ Implémentées
-- [x] Catalogue de vins avec filtres (couleur)
-- [x] Authentification JWT (inscription/connexion)
-- [x] Cache Redis sur les produits
-- [x] Interface utilisateur moderne (Tailwind)
-- [x] API REST complète
-- [x] Gestion d'erreurs centralisée
-- [x] Validation Zod
+### ✅ TERMINÉ - Frontend/UI (Rayane)
 
-### 🚧 À implémenter (microservices)
-- [ ] Paiement Stripe
-- [ ] Event streaming Kafka
-- [ ] Upload images MinIO
-- [ ] Monitoring Prometheus + Grafana
-- [ ] KYC Onfido
-- [ ] OCR Tesseract
+**Interface utilisateur complète :**
+- [x] Page d'accueil avec hero section et aperçu produits
+- [x] Page `/catalogue` avec affichage grille produits
+- [x] Filtres par couleur fonctionnels (Rouge, Blanc, Rosé, Effervescent)
+- [x] Compteurs dynamiques par catégorie
+- [x] Modal authentification (connexion/inscription)
+- [x] Toggle visibilité mot de passe (icône œil)
+- [x] Header dynamique avec avatar utilisateur connecté
+- [x] Menu dropdown profil/déconnexion
+- [x] Design responsive Tailwind CSS
+- [x] Navigation fluide entre pages
+
+**Authentification JWT :**
+- [x] Context React global (AuthProvider)
+- [x] Inscription utilisateur
+- [x] Connexion avec JWT
+- [x] Persistance token (localStorage)
+- [x] Route protégée profil
+- [x] Déconnexion
+- [x] Validation formulaires (min 8 caractères password)
+
+**API Backend :**
+- [x] Routes `/api/auth` (inscription, connexion, profil)
+- [x] Routes `/api/produits` (liste, filtres)
+- [x] Middleware authentification JWT
+- [x] Gestion erreurs centralisée
+- [x] Validation Zod
+- [x] Cache Redis (TTL 5 min sur produits)
+- [x] CORS configuré pour frontend
+
+**Infrastructure Docker :**
+- [x] Docker Compose 6 conteneurs opérationnels
+- [x] PostgreSQL 16 + Prisma ORM
+- [x] Redis 7 (cache)
+- [x] MinIO (S3-compatible storage)
+- [x] Traefik (reverse proxy)
+- [x] Healthchecks sur tous les services
+- [x] Variables d'environnement `.env.example`
 
 ---
 
-## 👥 Équipe
+### 🚧 À FAIRE - Pour les collègues
 
-**Frontend:** UI/UX Next.js  
-**Backend:** API Express + Prisma  
-**Database:** PostgreSQL + import CSV  
-**DevOps:** Docker + microservices
+#### **Collègue Database (URGENT - Priorité 1)**
+- [ ] **Importer le CSV de 500+ vins** dans PostgreSQL
+  - Créer script `scripts/importerVins.ts` avec Prisma
+  - Parser colonnes : name, priceEur, color, year, region, etc.
+  - Nettoyer les données (prix en string → number, couleurs normalisées)
+  - Bulk insert via `prisma.product.createMany()`
+  - Vérifier que les filtres frontend fonctionnent avec vraies données
+
+#### **Collègue DevOps (Important - Priorité 2)**
+- [ ] **Kafka** - Event streaming pour commandes et notifications
+  - Ajouter `kafka` et `zookeeper` dans `docker-compose.yml`
+  - Topics : `order.created`, `order.paid`, `user.registered`
+  - Producteurs dans l'API backend
+  - Consommateurs pour notifications/analytics
+
+- [ ] **Stripe** - Paiements sécurisés
+  - Route `/api/paiement/create-payment-intent`
+  - Webhooks Stripe pour événements paiement
+  - Intégration frontend avec Stripe Elements
+  - Gestion 3D Secure
+
+- [ ] **Prometheus + Grafana** - Monitoring
+  - Métriques API (latence, erreurs, throughput)
+  - Dashboards Grafana pour supervision
+  - Alertes sur erreurs critiques
+  - Monitoring Redis, PostgreSQL, Kafka
+
+#### **Collègue Upload Images (Nice-to-have - Priorité 3)**
+- [ ] **MinIO S3** - Upload images produits
+  - Route `/api/upload` avec multer
+  - SDK AWS S3 vers MinIO
+  - Bucket `product-images` avec politiques publiques
+  - Affichage images dans `CarteProduit.tsx`
+
+- [ ] **Tesseract OCR** (Optionnel)
+  - Scan automatique étiquettes bouteilles
+  - Extraction nom/année/région depuis photo
+  - Microservice dédié `ocr-service`
+
+- [ ] **Onfido KYC** (Optionnel)
+  - Vérification âge pour vente alcool
+  - Upload pièce d'identité
+  - Validation automatique avant achat
+
+---
+
+## 👥 Répartition Équipe
+
+| Personne | Responsabilité | Statut | Fichiers clés |
+|----------|----------------|--------|---------------|
+| **Rayane (Frontend)** | Interface + Auth + Docker setup | ✅ **TERMINÉ** | `frontend/`, `docker-compose.yml`, `README.md` |
+| **Collègue DB** | Import CSV 500+ vins | ⏳ **À FAIRE** | `backend/scripts/importerVins.ts`, `prisma/schema.prisma` |
+| **Collègue DevOps** | Kafka + Stripe + Monitoring | ⏳ **À FAIRE** | `docker-compose.yml`, `backend/src/chemins/paiement.ts` |
+| **Collègue Upload** | Images MinIO + OCR | ⏳ **À FAIRE** | `backend/src/chemins/upload.ts` |
 
 ---
 
