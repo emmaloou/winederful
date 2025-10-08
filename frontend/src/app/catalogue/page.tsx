@@ -73,110 +73,122 @@ export default function CataloguePage() {
   return (
     <>
       <EnTete />
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#8B1538] to-[#6B0F2A] text-white py-16">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">🍷 Catalogue de vins</h1>
-            <p className="text-xl opacity-90">
-              {produits.length} références des meilleurs domaines français
-            </p>
+        <section className="relative bg-gradient-to-br from-[#8B1538] via-[#6B0F2A] to-[#4A0A1C] text-white py-20 overflow-hidden">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDEzNGgxMnYxMmgtMTJ6bS03NiAwaDEydjEySDI0em03NiAyNGgxMnYxMkgxMDB6bS03NiAwaDEydjEySDE0eiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-3xl">
+              <h1 className="text-5xl md:text-6xl font-bold mb-4 tracking-tight">Notre Sélection</h1>
+              <p className="text-xl text-white/90">
+                Découvrez {produits.length} vins d'exception soigneusement sélectionnés
+              </p>
+            </div>
           </div>
         </section>
 
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-6 py-10">
           {/* Filtres */}
-          <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-            <h2 className="text-lg font-bold mb-4 text-gray-800">Filtrer par couleur</h2>
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-gray-200 p-6 mb-10">
+            <h2 className="text-base font-semibold mb-4 text-gray-700 uppercase tracking-wide">Filtrer par type</h2>
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setFiltreActif('tous')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
                   filtreActif === 'tous'
-                    ? 'bg-[#8B1538] text-white shadow-lg'
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    ? 'bg-[#8B1538] text-white shadow-lg scale-105'
+                    : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-[#8B1538] hover:text-[#8B1538]'
                 }`}
               >
-                Tous ({stats.total})
+                Tous <span className="ml-1.5 opacity-70">({stats.total})</span>
               </button>
 
               <button
                 onClick={() => setFiltreActif('red')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
                   filtreActif === 'red'
-                    ? 'bg-red-600 text-white shadow-lg'
-                    : 'bg-red-100 text-red-800 hover:bg-red-200'
+                    ? 'bg-red-600 text-white shadow-lg scale-105'
+                    : 'bg-white border-2 border-red-200 text-red-700 hover:border-red-400'
                 }`}
               >
-                🍷 Rouge ({stats.red})
+                Rouge <span className="ml-1.5 opacity-70">({stats.red})</span>
               </button>
 
               <button
                 onClick={() => setFiltreActif('white')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
                   filtreActif === 'white'
-                    ? 'bg-yellow-500 text-white shadow-lg'
-                    : 'bg-yellow-50 text-yellow-800 hover:bg-yellow-100'
+                    ? 'bg-amber-500 text-white shadow-lg scale-105'
+                    : 'bg-white border-2 border-amber-200 text-amber-700 hover:border-amber-400'
                 }`}
               >
-                🥂 Blanc ({stats.white})
+                Blanc <span className="ml-1.5 opacity-70">({stats.white})</span>
               </button>
 
               <button
                 onClick={() => setFiltreActif('rose')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
                   filtreActif === 'rose'
-                    ? 'bg-pink-500 text-white shadow-lg'
-                    : 'bg-pink-100 text-pink-800 hover:bg-pink-200'
+                    ? 'bg-pink-500 text-white shadow-lg scale-105'
+                    : 'bg-white border-2 border-pink-200 text-pink-700 hover:border-pink-400'
                 }`}
               >
-                🌸 Rosé ({stats.rose})
+                Rosé <span className="ml-1.5 opacity-70">({stats.rose})</span>
               </button>
 
               <button
                 onClick={() => setFiltreActif('sparkling')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-medium transition-all ${
                   filtreActif === 'sparkling'
-                    ? 'bg-purple-600 text-white shadow-lg'
-                    : 'bg-purple-100 text-purple-800 hover:bg-purple-200'
+                    ? 'bg-purple-600 text-white shadow-lg scale-105'
+                    : 'bg-white border-2 border-purple-200 text-purple-700 hover:border-purple-400'
                 }`}
               >
-                🍾 Effervescent ({stats.sparkling})
+                Effervescent <span className="ml-1.5 opacity-70">({stats.sparkling})</span>
               </button>
             </div>
           </div>
 
           {/* Résultats */}
           {chargement ? (
-            <div className="text-center py-20">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#8B1538]"></div>
-              <p className="mt-4 text-gray-600">Chargement du catalogue...</p>
+            <div className="text-center py-32">
+              <div className="inline-block animate-spin rounded-full h-14 w-14 border-4 border-[#8B1538] border-t-transparent"></div>
+              <p className="mt-5 text-gray-600 font-medium">Chargement...</p>
             </div>
           ) : erreur ? (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-              <p className="text-red-800 font-medium">❌ {erreur}</p>
+            <div className="bg-red-50/80 backdrop-blur-sm border-2 border-red-200 rounded-2xl p-8 text-center">
+              <svg className="w-16 h-16 mx-auto mb-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-red-800 font-semibold text-lg mb-4">{erreur}</p>
               <button
                 onClick={chargerProduits}
-                className="mt-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                className="px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 shadow-md transition-all"
               >
                 Réessayer
               </button>
             </div>
           ) : produitsFiltres.length === 0 ? (
-            <div className="text-center py-20 bg-white rounded-xl">
-              <p className="text-2xl mb-2">🔍</p>
-              <p className="text-gray-600">Aucun vin trouvé avec ces critères</p>
+            <div className="text-center py-32 bg-white/50 backdrop-blur-sm rounded-2xl border border-gray-200">
+              <svg className="w-20 h-20 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <p className="text-gray-700 text-lg font-semibold mb-2">Aucun vin trouvé</p>
+              <p className="text-gray-500 mb-6">Aucun produit ne correspond à vos critères</p>
               <button
                 onClick={() => setFiltreActif('tous')}
-                className="mt-4 px-6 py-2 bg-[#8B1538] text-white rounded-lg hover:bg-[#6B0F2A]"
+                className="px-6 py-3 bg-[#8B1538] text-white rounded-xl font-semibold hover:bg-[#6B0F2A] shadow-md transition-all"
               >
-                Réinitialiser les filtres
+                Réinitialiser
               </button>
             </div>
           ) : (
             <>
-              <div className="mb-4 text-gray-600">
-                <span className="font-semibold">{produitsFiltres.length}</span> vins affichés
+              <div className="mb-6 flex items-center justify-between">
+                <p className="text-gray-600">
+                  <span className="font-bold text-[#8B1538] text-lg">{produitsFiltres.length}</span>
+                  <span className="text-sm ml-2">produit{produitsFiltres.length > 1 ? 's' : ''}</span>
+                </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {produitsFiltres.map((produit) => (

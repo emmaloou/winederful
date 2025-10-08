@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wineshop-ingress
+  namespace: wineshop
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    # Redirection HTTP vers HTTPS (optionnel)
+    # kubernetes.io/ingress.allow-http: "false"
+spec:
+  rules:
+  - host: wineshop.VOTRE-DOMAINE.com  # À remplacer
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 4000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+  # Pour HTTPS (nécessite un certificat SSL)
+  # tls:
+  # - hosts:
+  #   - wineshop.VOTRE-DOMAINE.com
+  #   secretName: wineshop-tls

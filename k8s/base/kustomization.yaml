@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Namespace pour toutes les ressources
+namespace: wineshop
+
+# Ressources à déployer (dans l'ordre)
+resources:
+  # 1. Namespace
+  - base/namespace.yaml
+
+  # 2. Configuration
+  - base/configmap.yaml
+  - secrets/secrets.yaml
+
+  # 3. Stockage
+  - storage/postgres-pvc.yaml
+  - storage/minio-pvc.yaml
+
+  # 4. Services
+  - services/postgres-deployment.yaml
+  - services/redis-deployment.yaml
+  - services/minio-deployment.yaml
+  - services/api-deployment.yaml
+  - services/frontend-deployment.yaml
+
+  # 5. Ingress
+  - ingress/ingress.yaml
+
+# Labels communs pour toutes les ressources
+commonLabels:
+  app: wineshop
+  project: winederful
+  managed-by: kustomize
+
+# Annotations communes
+commonAnnotations:
+  description: "WineShop e-commerce application"
+  contact: "team@wineshop.com"
+
+# Images à utiliser (facilite les mises à jour)
+images:
+  - name: gcr.io/PROJECT_ID/wineshop-api
+    newTag: latest
+  - name: gcr.io/PROJECT_ID/wineshop-frontend
+    newTag: latest
+
+# Variables à remplacer (pour différents environnements)
+# configMapGenerator:
+# - name: wineshop-config
+#   behavior: merge
+#   literals:
+#   - NODE_ENV=production
+
+# Pour utiliser ce fichier :
+# kubectl apply -k .

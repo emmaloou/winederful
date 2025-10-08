@@ -1,4 +1,5 @@
 import { AuthProvider } from '@/contexts/AuthContext';
+import { PanierProvider } from '@/contexts/PanierContext';
 import '@/styles/globals.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -8,7 +9,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <title>WineShop - Vins d'Exception</title>
       </head>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <PanierProvider>{children}</PanierProvider>
+        </AuthProvider>
       </body>
     </html>
   );
