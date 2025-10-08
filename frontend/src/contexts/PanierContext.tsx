@@ -31,12 +31,14 @@ export function PanierProvider({ children }: { children: ReactNode }) {
 
   // Charger le panier depuis localStorage au montage
   useEffect(() => {
-    const panierSauvegarde = localStorage.getItem('panier');
-    if (panierSauvegarde) {
-      try {
-        setArticles(JSON.parse(panierSauvegarde));
-      } catch (error) {
-        console.error('Erreur chargement panier:', error);
+    if (typeof window !== 'undefined') {
+      const panierSauvegarde = localStorage.getItem('panier');
+      if (panierSauvegarde) {
+        try {
+          setArticles(JSON.parse(panierSauvegarde));
+        } catch (error) {
+          console.error('Erreur chargement panier:', error);
+        }
       }
     }
     setChargementInitial(false);
@@ -44,7 +46,7 @@ export function PanierProvider({ children }: { children: ReactNode }) {
 
   // Sauvegarder le panier dans localStorage à chaque modification
   useEffect(() => {
-    if (!chargementInitial) {
+    if (!chargementInitial && typeof window !== 'undefined') {
       localStorage.setItem('panier', JSON.stringify(articles));
     }
   }, [articles, chargementInitial]);
