@@ -1,18 +1,50 @@
-# Node/Next
-node_modules/
-.next/
-out/
-.turbo/
-dist/
-*.log
-
-# Env
+# Environment variables
 .env
+.env.local
+.env.*.local
+.env.bak
+.env.tmp
 
-# Prisma
-web/prisma/dev.db*
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+**/dist/
+**/.next/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude/
 
 # Docker
 *.pid
 
+# Prisma
+**/prisma/migrations/
 
+# Next.js
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Test
+coverage/
+*.test.js.snap
