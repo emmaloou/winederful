@@ -57,59 +57,61 @@ export default function CarteProduit({ produit }: Props) {
 
   return (
     <Link href={`/produits/${produit.id}`}>
-      <div className="carte-produit group">
-        <div className="relative h-48 mb-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center overflow-hidden">
-          <span className="text-6xl group-hover:scale-110 transition-transform">🍷</span>
+      <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200">
+        <div className="relative h-64 bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span className="text-7xl group-hover:scale-110 transition-transform duration-300 filter drop-shadow-lg">🍷</span>
           {produit.rating && produit.rating >= 90 && (
-            <div className="absolute top-2 right-2 bg-[#D4AF37] text-white text-xs font-bold px-2 py-1 rounded-full">
-              ⭐ {produit.rating}/100
+            <div className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md">
+              ⭐ {produit.rating}
             </div>
           )}
         </div>
 
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className={`text-xs px-2 py-1 rounded-full ${couleurBadge}`}>
+        <div className="p-5 space-y-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className={`text-xs font-medium px-2.5 py-1 rounded-md ${couleurBadge}`}>
               {produit.color === 'red' ? 'Rouge' : produit.color === 'white' ? 'Blanc' : 'Rosé'}
             </span>
-            <span className={`badge-stock ${stockBadge}`}>
+            <span className={`badge-stock ${stockBadge} text-xs font-medium px-2.5 py-1 rounded-md`}>
               {stockTexte}
             </span>
           </div>
 
-          <h3 className="font-bold text-lg line-clamp-2 group-hover:text-[#8B1538] transition-colors">
+          <h3 className="font-semibold text-lg line-clamp-2 text-gray-900 group-hover:text-[#8B1538] transition-colors">
             {produit.name || produit.reference}
           </h3>
 
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 font-medium">
             {produit.producer || 'Producteur inconnu'}
           </p>
 
           {produit.region && produit.vintage && (
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 flex items-center gap-1.5">
+              <span>📍</span>
               {produit.region} • {produit.vintage}
             </p>
           )}
 
-          <div className="flex items-end justify-between pt-2 border-t">
+          <div className="flex items-center justify-between pt-4 border-t border-gray-100">
             <div>
-              <span className="text-2xl font-bold text-[#8B1538]">
+              <div className="text-2xl font-bold text-[#8B1538]">
                 {produit.priceEur ? `${Number(produit.priceEur).toFixed(2)}€` : 'Prix NC'}
-              </span>
-              <span className="text-xs text-gray-500 ml-1">/ bouteille</span>
+              </div>
+              <span className="text-xs text-gray-400">TTC</span>
             </div>
             <button
               onClick={handleAjouterAuPanier}
               disabled={produit.stockQuantity === 0 || ajoutEnCours}
-              className={`px-4 py-2 rounded-lg text-sm transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-sm ${
                 produit.stockQuantity === 0
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   : ajoutEnCours
-                  ? 'bg-green-600 text-white'
-                  : 'bg-[#8B1538] text-white hover:bg-[#6B0F2A]'
+                  ? 'bg-emerald-500 text-white scale-95'
+                  : 'bg-[#8B1538] text-white hover:bg-[#6B0F2A] hover:shadow-md active:scale-95'
               }`}
             >
-              {ajoutEnCours ? '✓' : produit.stockQuantity > 0 ? 'Ajouter' : 'Indisponible'}
+              {ajoutEnCours ? '✓ Ajouté' : produit.stockQuantity > 0 ? '+ Panier' : 'Épuisé'}
             </button>
           </div>
         </div>
