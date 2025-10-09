@@ -1,12 +1,18 @@
 import Link from 'next/link';
 import EnTete from '@/composants/mise-en-page/EnTete';
 import PiedDePage from '@/composants/mise-en-page/PiedDePage';
-import CarteProduit from '@/composants/produit/CarteProduit';
+import ListeProduits from '@/composants/produit/ListeProduits';
 import '@/styles/globals.css';
+import { Produit } from '@/types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://api.localhost';
 
-async function obtenirProduits() {
+interface ResultatProduits {
+  produits: Produit[];
+  erreur: string | null;
+}
+
+async function obtenirProduits(): Promise<ResultatProduits> {
   try {
     const res = await fetch(`${API_URL}/api/produits`, {
       cache: 'no-store',
@@ -14,20 +20,27 @@ async function obtenirProduits() {
     });
 
     if (!res.ok) {
-      console.error('Erreur API:', res.status);
-      return [];
+      return {
+        produits: [],
+        erreur: `Erreur serveur: ${res.status}`
+      };
     }
 
     const data = await res.json();
-    return data.donnees || [];
+    return {
+      produits: (data.donnees || []) as Produit[],
+      erreur: null
+    };
   } catch (error) {
-    console.error('Erreur fetch produits:', error);
-    return [];
+    return {
+      produits: [],
+      erreur: 'Impossible de charger les produits. Vérifiez votre connexion.'
+    };
   }
 }
 
 export default async function Page() {
-  const produits = await obtenirProduits();
+  const { produits, erreur } = await obtenirProduits();
   const produitsAffichage = produits.slice(0, 8); // Afficher max 8 sur homepage
   return (
     <>
@@ -54,15 +67,7 @@ export default async function Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {produitsAffichage.length > 0 ? (
-              produitsAffichage.map((produit: any) => (
-                <CarteProduit key={produit.id} produit={produit} />
-              ))
-            ) : (
-              <div className="col-span-4 text-center py-12 text-gray-500">
-                Aucun produit disponible pour le moment
-              </div>
-            )}
+            <ListeProduits produitsInitiaux={produitsAffichage} erreur={erreur} />
           </div>
         </section>
       </main>

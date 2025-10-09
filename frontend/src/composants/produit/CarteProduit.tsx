@@ -3,19 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePanier } from '@/contexts/PanierContext';
-
-interface Produit {
-  id: string;
-  reference: string;
-  name?: string;
-  color: string | null;
-  region: string | null;
-  vintage: number | null;
-  priceEur: number | string | null;
-  producer: string | null;
-  rating: number | null;
-  stockQuantity: number;
-}
+import { Produit } from '@/types';
 
 interface Props {
   produit: Produit;
@@ -24,16 +12,23 @@ interface Props {
 export default function CarteProduit({ produit }: Props) {
   const { ajouterAuPanier } = usePanier();
   const [ajoutEnCours, setAjoutEnCours] = useState(false);
-  const couleurBadge = produit.color === 'red' ? 'bg-red-100 text-red-800' : 
-                       produit.color === 'white' ? 'bg-yellow-50 text-yellow-800' : 
-                       'bg-pink-100 text-pink-800';
+  const [isHovered, setIsHovered] = useState(false);
 
-  const stockBadge = produit.stockQuantity > 20 ? 'disponible' : 
-                     produit.stockQuantity > 0 ? 'limite' : 'rupture';
-  
-  const stockTexte = produit.stockQuantity > 20 ? 'En stock' :
-                     produit.stockQuantity > 0 ? `${produit.stockQuantity} restants` :
-                     'Rupture';
+  const couleurConfig = {
+    red: { badge: 'bg-red-50 text-red-700 border border-red-200', gradient: 'from-red-50 to-red-100', icon: '🍷' },
+    white: { badge: 'bg-amber-50 text-amber-700 border border-amber-200', gradient: 'from-amber-50 to-yellow-100', icon: '🥂' },
+    rose: { badge: 'bg-pink-50 text-pink-700 border border-pink-200', gradient: 'from-pink-50 to-rose-100', icon: '🌸' },
+    rosé: { badge: 'bg-pink-50 text-pink-700 border border-pink-200', gradient: 'from-pink-50 to-rose-100', icon: '🌸' },
+    sparkling: { badge: 'bg-purple-50 text-purple-700 border border-purple-200', gradient: 'from-purple-50 to-indigo-100', icon: '🍾' },
+  };
+
+  const config = couleurConfig[produit.color as keyof typeof couleurConfig] || couleurConfig.red;
+
+  const stockConfig = produit.stockQuantity > 20
+    ? { badge: 'bg-emerald-50 text-emerald-700 border border-emerald-200', text: 'En stock', icon: '✓' }
+    : produit.stockQuantity > 0
+    ? { badge: 'bg-orange-50 text-orange-700 border border-orange-200', text: `${produit.stockQuantity} restants`, icon: '⚡' }
+    : { badge: 'bg-gray-100 text-gray-500 border border-gray-300', text: 'Rupture', icon: '✕' };
 
   const handleAjouterAuPanier = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -52,69 +47,144 @@ export default function CarteProduit({ produit }: Props) {
 
     setTimeout(() => {
       setAjoutEnCours(false);
-    }, 1500);
+    }, 2000);
   };
 
   return (
     <Link href={`/produits/${produit.id}`}>
-      <div className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-200">
-        <div className="relative h-64 bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <span className="text-7xl group-hover:scale-110 transition-transform duration-300 filter drop-shadow-lg">🍷</span>
-          {produit.rating && produit.rating >= 90 && (
-            <div className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-md">
-              ⭐ {produit.rating}
+      <div
+        className="group relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-200 hover:border-[#8B1538]/30 transform hover:-translate-y-2"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* Badge Premium */}
+        {produit.rating && Number(produit.rating) >= 95 && (
+          <div className="absolute top-3 left-3 z-10 bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 animate-pulse">
+            <span className="text-sm">👑</span>
+            <span>Premium</span>
+          </div>
+        )}
+
+        {/* Image Section avec effet parallaxe */}
+        <div className={`relative h-72 bg-gradient-to-br ${config.gradient} flex items-center justify-center overflow-hidden transition-all duration-700`}>
+          {/* Overlay gradient animé */}
+          <div className={`absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/20 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
+
+          {/* Cercles décoratifs animés */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className={`absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl transition-all duration-700 ${isHovered ? 'scale-150 translate-x-8 -translate-y-8' : 'scale-100'}`}></div>
+            <div className={`absolute bottom-0 left-0 w-40 h-40 bg-white/15 rounded-full blur-2xl transition-all duration-700 ${isHovered ? 'scale-150 -translate-x-8 translate-y-8' : 'scale-100'}`}></div>
+          </div>
+
+          {/* Icône bouteille avec animation */}
+          <span className={`relative text-8xl transition-all duration-500 filter drop-shadow-2xl ${isHovered ? 'scale-125 rotate-6' : 'scale-100'}`}>
+            {config.icon}
+          </span>
+
+          {/* Badge Note */}
+          {produit.rating && Number(produit.rating) >= 90 && (
+            <div className={`absolute top-3 right-3 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 ${isHovered ? 'scale-110' : 'scale-100'}`}>
+              <span className="flex items-center gap-1">
+                <span className="text-sm">⭐</span>
+                <span>{produit.rating}</span>
+              </span>
             </div>
           )}
+
+          {/* Bouton Quick View au survol */}
+          <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <div className="bg-white/95 backdrop-blur-md px-6 py-3 rounded-full shadow-xl font-semibold text-[#8B1538] text-sm flex items-center gap-2 transform transition-all duration-300 hover:scale-105">
+              <span>👁️</span>
+              <span>Voir les détails</span>
+            </div>
+          </div>
         </div>
 
-        <div className="p-5 space-y-3">
+        {/* Content Section */}
+        <div className="p-6 space-y-4">
+          {/* Badges */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className={`text-xs font-medium px-2.5 py-1 rounded-md ${couleurBadge}`}>
-              {produit.color === 'red' ? 'Rouge' : produit.color === 'white' ? 'Blanc' : 'Rosé'}
+            <span className={`text-xs font-semibold px-3 py-1.5 rounded-full ${config.badge} transition-all duration-300 hover:scale-105`}>
+              {produit.color === 'red' ? '🔴 Rouge' : produit.color === 'white' ? '⚪ Blanc' : produit.color === 'sparkling' ? '✨ Effervescent' : '🌸 Rosé'}
             </span>
-            <span className={`badge-stock ${stockBadge} text-xs font-medium px-2.5 py-1 rounded-md`}>
-              {stockTexte}
+            <span className={`text-xs font-semibold px-3 py-1.5 rounded-full ${stockConfig.badge} transition-all duration-300 hover:scale-105 flex items-center gap-1`}>
+              <span className="text-[10px]">{stockConfig.icon}</span>
+              {stockConfig.text}
             </span>
           </div>
 
-          <h3 className="font-semibold text-lg line-clamp-2 text-gray-900 group-hover:text-[#8B1538] transition-colors">
+          {/* Titre avec animation */}
+          <h3 className="font-bold text-xl line-clamp-2 text-gray-900 group-hover:text-[#8B1538] transition-all duration-300 leading-tight min-h-[56px]">
             {produit.name || produit.reference}
           </h3>
 
-          <p className="text-sm text-gray-600 font-medium">
-            {produit.producer || 'Producteur inconnu'}
-          </p>
+          {/* Producteur avec icône */}
+          <div className="flex items-center gap-2 text-sm text-gray-600 font-medium">
+            <span className="text-base">🏛️</span>
+            <span className="line-clamp-1">{produit.producer || 'Producteur inconnu'}</span>
+          </div>
 
+          {/* Région et millésime */}
           {produit.region && produit.vintage && (
-            <p className="text-xs text-gray-500 flex items-center gap-1.5">
-              <span>📍</span>
-              {produit.region} • {produit.vintage}
-            </p>
+            <div className="flex items-center gap-3 text-xs text-gray-500 bg-gray-50 px-3 py-2 rounded-xl">
+              <span className="flex items-center gap-1.5 font-medium">
+                <span className="text-sm">📍</span>
+                {produit.region}
+              </span>
+              <span className="text-gray-300">•</span>
+              <span className="flex items-center gap-1.5 font-medium">
+                <span className="text-sm">🗓️</span>
+                {produit.vintage}
+              </span>
+            </div>
           )}
 
+          {/* Prix et bouton CTA */}
           <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-            <div>
-              <div className="text-2xl font-bold text-[#8B1538]">
+            <div className="space-y-1">
+              <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#8B1538] to-[#6B0F2A]">
                 {produit.priceEur ? `${Number(produit.priceEur).toFixed(2)}€` : 'Prix NC'}
               </div>
-              <span className="text-xs text-gray-400">TTC</span>
+              <span className="text-xs text-gray-400 font-medium">TTC • Livraison offerte</span>
             </div>
+
             <button
               onClick={handleAjouterAuPanier}
               disabled={produit.stockQuantity === 0 || ajoutEnCours}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 shadow-sm ${
+              className={`group/btn relative px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 overflow-hidden ${
                 produit.stockQuantity === 0
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   : ajoutEnCours
-                  ? 'bg-emerald-500 text-white scale-95'
-                  : 'bg-[#8B1538] text-white hover:bg-[#6B0F2A] hover:shadow-md active:scale-95'
+                  ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg shadow-emerald-500/50 scale-105'
+                  : 'bg-gradient-to-r from-[#8B1538] to-[#6B0F2A] text-white hover:shadow-xl hover:shadow-[#8B1538]/50 hover:scale-105 active:scale-95'
               }`}
             >
-              {ajoutEnCours ? '✓ Ajouté' : produit.stockQuantity > 0 ? '+ Panier' : 'Épuisé'}
+              {/* Effet shimmer au survol */}
+              {!ajoutEnCours && produit.stockQuantity > 0 && (
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent transform -skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></span>
+              )}
+
+              <span className="relative flex items-center gap-2">
+                {ajoutEnCours ? (
+                  <>
+                    <span className="animate-bounce">✓</span>
+                    <span>Ajouté !</span>
+                  </>
+                ) : produit.stockQuantity > 0 ? (
+                  <>
+                    <span className="text-base">🛒</span>
+                    <span>Ajouter</span>
+                  </>
+                ) : (
+                  <span>Épuisé</span>
+                )}
+              </span>
             </button>
           </div>
         </div>
+
+        {/* Effet de brillance sur toute la carte au survol */}
+        <div className={`absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
       </div>
     </Link>
   );

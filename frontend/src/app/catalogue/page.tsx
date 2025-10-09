@@ -4,21 +4,10 @@ import { useState, useEffect } from 'react';
 import EnTete from '@/composants/mise-en-page/EnTete';
 import PiedDePage from '@/composants/mise-en-page/PiedDePage';
 import CarteProduit from '@/composants/produit/CarteProduit';
+import SkeletonProduit from '@/composants/produit/SkeletonProduit';
+import { Produit } from '@/types';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://api.localhost';
-
-interface Produit {
-  id: string;
-  reference: string;
-  name?: string;
-  color: string | null;
-  region: string | null;
-  vintage: number | null;
-  priceEur: number | string | null;
-  producer: string | null;
-  rating: number | null;
-  stockQuantity: number;
-}
 
 export default function CataloguePage() {
   const [produits, setProduits] = useState<Produit[]>([]);
@@ -45,9 +34,10 @@ export default function CataloguePage() {
 
       const data = await res.json();
       setProduits(data.donnees || []);
-    } catch (err: any) {
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Une erreur est survenue';
       console.error('Erreur:', err);
-      setErreur(err.message);
+      setErreur(message);
     } finally {
       setChargement(false);
     }
@@ -151,9 +141,10 @@ export default function CataloguePage() {
 
           {/* Résultats */}
           {chargement ? (
-            <div className="text-center py-32">
-              <div className="inline-block animate-spin rounded-full h-14 w-14 border-4 border-[#8B1538] border-t-transparent"></div>
-              <p className="mt-5 text-gray-600 font-medium">Chargement...</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {[...Array(8)].map((_, i) => (
+                <SkeletonProduit key={i} />
+              ))}
             </div>
           ) : erreur ? (
             <div className="bg-red-50/80 backdrop-blur-sm border-2 border-red-200 rounded-2xl p-8 text-center">

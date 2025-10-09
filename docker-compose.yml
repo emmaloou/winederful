@@ -62,6 +62,7 @@ services:
         - NEXT_PUBLIC_API_URL=http://api.localhost
     environment:
       - NEXT_PUBLIC_API_URL=http://api:4000
+      - HOSTNAME=0.0.0.0
     depends_on:
       - api
     networks:
@@ -75,7 +76,7 @@ services:
       - "traefik.http.services.app.loadbalancer.server.port=3000"
       - "traefik.docker.network=projetfinal_appnet"
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000" ]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
