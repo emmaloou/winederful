@@ -61,7 +61,9 @@ services:
       args:
         - NEXT_PUBLIC_API_URL=http://api.localhost
     environment:
-      - NEXT_PUBLIC_API_URL=http://api:4000
+      - NEXT_PUBLIC_API_URL=http://api.localhost
+      - API_INTERNAL_URL=http://api:4000
+      - HOSTNAME=0.0.0.0
     depends_on:
       - api
     networks:
@@ -75,7 +77,7 @@ services:
       - "traefik.http.services.app.loadbalancer.server.port=3000"
       - "traefik.docker.network=projetfinal_appnet"
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000" ]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health" ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -116,14 +118,19 @@ services:
     environment:
       - MINIO_ROOT_USER=${MINIO_ROOT_USER}
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_BROWSER_REDIRECT_URL=http://minio.localhost
     volumes:
       - minio_data:/data
     networks:
       - appnet
+    ports:
+      - "9000:9000"  # Expose S3 API pour accès images
     labels:
       - "traefik.enable=true"
+      # Console Admin
       - "traefik.http.routers.minio-console.rule=Host(`minio.localhost`)"
       - "traefik.http.routers.minio-console.entrypoints=web"
+      - "traefik.http.routers.minio-console.service=minio-console"
       - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:9000/minio/health/ready" ]

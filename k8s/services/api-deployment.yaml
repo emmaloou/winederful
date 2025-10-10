@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: gcr.io/PROJECT_ID/wineshop-api:latest  # À remplacer avec votre projet GCP
+        image: ghcr.io/emmaloou/winederful/backend:latest  # Image depuis GitHub Container Registry
         ports:
         - containerPort: 4000
         env:
