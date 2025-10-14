@@ -76,8 +76,20 @@ export default function CarteProduit({ produit }: Props) {
             <div className={`absolute bottom-0 left-0 w-40 h-40 bg-white/15 rounded-full blur-2xl transition-all duration-700 ${isHovered ? 'scale-150 -translate-x-8 translate-y-8' : 'scale-100'}`}></div>
           </div>
 
-          {/* Icône bouteille avec animation */}
-          <span className={`relative text-8xl transition-all duration-500 filter drop-shadow-2xl ${isHovered ? 'scale-125 rotate-6' : 'scale-100'}`}>
+          {/* Image produit réelle ou icône fallback */}
+          {produit.images && produit.images.length > 0 ? (
+            <img
+              src={`http://localhost:9000/product-images/${produit.images[0].objectKey}`}
+              alt={produit.name}
+              onError={(e) => {
+                // Fallback vers l'icône si l'image ne charge pas
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }}
+              className={`relative w-full h-full object-contain p-8 transition-all duration-500 filter drop-shadow-2xl ${isHovered ? 'scale-110 rotate-3' : 'scale-100'}`}
+            />
+          ) : null}
+          <span className={`${produit.images && produit.images.length > 0 ? 'hidden' : ''} relative text-8xl transition-all duration-500 filter drop-shadow-2xl ${isHovered ? 'scale-125 rotate-6' : 'scale-100'}`}>
             {config.icon}
           </span>
 

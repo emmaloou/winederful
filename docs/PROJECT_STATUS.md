@@ -1,50 +1,127 @@
 # 📊 État du Projet E-Commerce Vin - POC
 
-**Date**: 7 Octobre 2025
-**Version**: 0.1.0 (POC)
+**Date de création**: 7 Octobre 2025  
+**Dernière mise à jour**: 14 Octobre 2025  
+**Version**: 0.2.0 (POC en développement)
 
 ---
 
 ## 🎯 Vue d'Ensemble
 
-### Architecture Actuelle
+### Architecture Actuelle (Mise à jour 14 Oct)
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                      Traefik (Port 80)                  │
-│                   Reverse Proxy & LB                    │
-└────────────┬────────────────────────────────────────────┘
-             │
-    ┌────────┴────────┐
-    │                 │
-┌───▼────┐      ┌────▼─────┐
-│  Web   │      │  MinIO   │
-│Next.js │      │ Console  │
-│  :3000 │      │  :9001   │
-└───┬────┘      └──────────┘
-    │
-    ├─────┬──────┬──────────┐
-    │     │      │          │
-┌───▼──┐ ┌▼────┐ ┌▼──────┐ ┌▼─────┐
-│Postgre│ │Redis│ │ MinIO │ │NextAuth│
-│  :5432│ │:6379│ │ :9000 │ │Session │
-└───────┘ └─────┘ └───────┘ └────────┘
+│                  Traefik (Port 80)                      │
+│               Reverse Proxy & Load Balancer            │
+└────────┬─────────────────┬──────────────────────────────┘
+         │                 │
+    ┌────▼────┐      ┌─────▼──────┐
+    │Frontend │      │   MinIO    │
+    │Next.js  │      │  Console   │
+    │ :3000   │      │   :9001    │
+    └────┬────┘      └────────────┘
+         │
+    ┌────▼────┐
+    │   API   │
+    │ Express │  ✅ NOUVEAU
+    │  :4000  │
+    └────┬────┘
+         │
+    ┌────┴──────┬──────────┬──────────┐
+    │           │          │          │
+┌───▼───┐  ┌───▼────┐ ┌───▼────┐ ┌───▼────┐
+│Postgres│ │ Redis  │ │ MinIO  │ │NextAuth│
+│  :5432 │ │ :6379  │ │ :9000  │ │Session │
+└────────┘ └────────┘ └────────┘ └────────┘
 ```
 
 ---
 
-## ✅ Ce Qui Est Fait (Phase 0 + Phase 2)
+## ✅ Ce Qui Est Fait (Mise à jour 14 Octobre)
 
-### 1. Infrastructure Docker (100%)
-- ✅ **docker-compose.yml** configuré avec 5 services
-  - Traefik (reverse proxy)
-  - Web (Next.js 14)
-  - PostgreSQL 16
-  - Redis 7
-  - MinIO (S3-compatible storage)
-- ✅ **Réseaux** : `appnet` pour communication inter-services
-- ✅ **Volumes persistants** : `pgdata`, `redis_data`, `minio_data`
-- ✅ **Healthchecks** sur tous les services
-- ✅ **Build multi-stage** optimisé (Dockerfile)
+### 📈 Progression Globale : **65%** ↑ (+20% depuis le 7 octobre)
+
+```
+Phase 0-2 (Infrastructure)   : ████████████████████ 100% ✅
+Phase 3a (Backend Express)   : ████████████████████ 100% ✅ NOUVEAU
+Phase 3b (Frontend Panier)   : ████████████████████ 100% ✅ NOUVEAU
+Phase 3c (Paiement Stripe)   : ░░░░░░░░░░░░░░░░░░░░   0% ❌
+Phase 3d (KYC/OCR)           : ░░░░░░░░░░░░░░░░░░░░   0% ❌
+```
+
+---
+
+## ✅ Réalisations depuis le 7 Octobre
+
+### 🆕 1. Backend Express Séparé (100% - NOUVEAU)
+**État précédent** : 0% - N'existait pas  
+**État actuel** : ✅ Complètement implémenté
+
+- ✅ Dossier `/backend` avec structure TypeScript
+- ✅ Service Docker `api` configuré (port 4000)
+- ✅ Conteneur **healthy** depuis 4 jours
+- ✅ Routes API compilées :
+  - `GET /health` (healthcheck)
+  - `/api/produits` 
+  - `/api/auth`
+  - `GET /api/images` (servir images MinIO)
+- ✅ Configuration S3/MinIO (`config/s3.ts`)
+- ✅ Middlewares : CORS, Helmet, error handling
+- ✅ Dépendances : Express, Prisma, Redis, JWT, bcrypt, AWS SDK
+
+⚠️ **À finaliser** : Routes dans dossiers `controleurs/`, `services/`, `middlewares/` (actuellement en `temp_*.js`)
+
+---
+
+### 🆕 2. Gestion Panier Frontend (100% - NOUVEAU)
+**État précédent** : 0%  
+**État actuel** : ✅ Entièrement fonctionnel
+
+- ✅ Context API `PanierContext.tsx` :
+  - `ajouterAuPanier()`, `retirerDuPanier()`, `modifierQuantite()`, `viderPanier()`
+  - Calcul automatique total et nombre d'articles
+  - Validation stock (quantité max = stockQuantity)
+- ✅ **Persistance localStorage** (survit au rechargement)
+- ✅ **Page `/panier`** complète :
+  - Liste articles avec images
+  - Boutons +/- quantité
+  - Récapitulatif total
+  - Bouton "Procéder au paiement"
+  - État vide avec CTA
+
+---
+
+### 🆕 3. Pages Frontend Supplémentaires (NOUVEAU)
+**État précédent** : Page d'accueil uniquement  
+**État actuel** : ✅ 4 pages fonctionnelles
+
+1. **`/catalogue`** ✅
+   - Liste complète produits
+   - Filtres par couleur (rouge, blanc, rosé, pétillant)
+   - Statistiques temps réel
+   - Loading skeletons
+
+2. **`/produits/[id]`** ✅
+   - Page détail avec toutes infos produit
+   - Bouton "Ajouter au panier"
+
+3. **`/panier`** ✅ (voir ci-dessus)
+
+---
+
+### 🆕 4. Composants UI (NOUVEAU)
+- ✅ `EnTete.tsx` : Header avec navigation + badge panier
+- ✅ `PiedDePage.tsx` : Footer
+- ✅ `CarteProduit.tsx` : Card produit
+- ✅ `ListeProduits.tsx` : Grille responsive
+- ✅ `SkeletonProduit.tsx` : Loading état
+- ✅ `ModalConnexion.tsx` : Modal login (ébauche)
+
+Qualité : TypeScript strict, Tailwind CSS, responsive
+
+---
+
+### 1. Infrastructure Docker (100% - Stable)
 
 ### 2. Configuration Environnement (100%)
 - ✅ `.env` créé depuis `.env.example`
@@ -91,28 +168,31 @@
 - ✅ **Route `/api/auth/[...nextauth]`** : authentification
 - ⚠️ **Prisma Client** : pas synchronisé avec nouveau schéma
 
-### 6. Frontend (50%)
-- ✅ **Page d'accueil** (`page.tsx`) :
-  - Affichage grille produits
-  - Fetch depuis `/api/products`
-  - Rendu SSR (Server-Side Rendering)
-- ❌ Pas de page détail produit
-- ❌ Pas de panier
-- ❌ Pas de checkout
-- ❌ Pas de formulaire login/register
+### 6. Frontend (80% ↑)
+- ✅ **Page d'accueil** (`/`) : Affichage produits SSR
+- ✅ **Page catalogue** (`/catalogue`) : Liste complète + filtres couleur
+- ✅ **Page détail** (`/produits/[id]`) : Infos produit + bouton panier
+- ✅ **Page panier** (`/panier`) : Gestion complète avec localStorage
+- ✅ **Composants UI** : EnTete, PiedDePage, CarteProduit, etc.
+- ❌ Page checkout (lien présent mais page manquante)
+- ❌ Pages login/register
 
 ### 7. Authentification (50%)
-- ✅ **NextAuth** configuré avec Credentials provider
+- ✅ **NextAuth** configuré backend avec Credentials provider
 - ✅ **Prisma Adapter** pour sessions DB
 - ✅ **Hashing bcrypt** pour passwords
-- ❌ Pas d'UI login/register
+- ✅ **ModalConnexion** (ébauche créée dans composants)
+- ❌ Pages login/register pas finalisées
 - ❌ Pas de protection routes
 
-### 8. Stockage Fichiers (30%)
+### 8. Stockage Fichiers (40% ↑)
 - ✅ **MinIO** service démarré
-- ✅ **Client S3** configuré (`lib/s3.ts`)
+- ✅ **Client S3** configuré (`backend/config/s3.ts`)
+- ✅ **Route API** `GET /api/images?path=xxx` (servir images depuis MinIO)
 - ⚠️ **Bucket** `product-images` pas créé automatiquement
-- ❌ Upload images produits non testé
+- ⚠️ **Service MinIO** : unhealthy (4 jours) - bucket manquant
+- ✅ **Script init** créé (`scripts/init-minio.sh`) - à déployer
+- ❌ Upload images produits non testé (10 images disponibles dans `/wine_pictures`)
 
 ---
 
@@ -255,56 +335,8 @@ export async function POST(req) {
 
 ---
 
-#### 4. Gestion Panier (0%)
-**Pourquoi** : UX e-commerce standard
-
-**Ce qui manque** :
-- [ ] Modèle Prisma `Cart` et `CartItem`
-- [ ] Routes API CRUD `/api/cart`
-- [ ] State management frontend (Context ou Zustand)
-- [ ] UI panier (badge + page dédiée)
-- [ ] Calcul total + TVA
-
-**Comment faire** :
-```bash
-# 1. Ajouter modèles Prisma
-# web/prisma/schema.prisma
-model Cart {
-  id        String     @id @default(uuid())
-  userId    String?
-  items     CartItem[]
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-}
-
-model CartItem {
-  id        String  @id @default(uuid())
-  cart      Cart    @relation(fields: [cartId], references: [id])
-  cartId    String
-  product   Product @relation(fields: [productId], references: [id])
-  productId String
-  quantity  Int     @default(1)
-}
-
-# 2. Créer routes API
-# GET /api/cart - Récupérer panier
-# POST /api/cart/add - Ajouter produit
-# PATCH /api/cart/update - Mettre à jour quantité
-# DELETE /api/cart/remove - Supprimer item
-
-# 3. Frontend : Context Provider
-# web/src/contexts/CartContext.tsx
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-  // Fonctions add/remove/update
-};
-
-# 4. UI Composant
-# web/src/components/CartBadge.tsx
-# web/src/app/cart/page.tsx
-```
-
-**Durée estimée** : 2-3h
+#### 4. Gestion Panier ✅ **FAIT** (voir section "Réalisations")
+~~Panier complet implémenté avec Context API + localStorage~~
 
 ---
 
@@ -508,26 +540,39 @@ await consumer.run({
 
 ---
 
-## 🐛 Bugs Connus
+## 🐛 Bugs Connus (Mise à jour 14 Oct)
 
-### 1. Prisma Client Désynchronisé
-**Symptôme** : API retourne mock data au lieu de DB
-
-**Cause** : Schéma Prisma modifié après build Docker
-
-**Fix** :
+### 🔴 1. MinIO Unhealthy (4 jours - EN COURS DE CORRECTION)
+**Symptôme** : 
 ```bash
-docker-compose down
-docker-compose build web
-docker-compose up -d
+docker-compose ps
+# minio: Up 4 days (unhealthy)
 ```
 
-### 2. MinIO Unhealthy
-**Symptôme** : Healthcheck échoue
+**Cause** : Bucket `product-images` non créé automatiquement
 
-**Cause** : Bucket pas créé, endpoint `/minio/health/ready` vérifie buckets
+**Impact** : Upload images impossible, healthcheck échoue
 
-**Fix** : Voir point 7 ci-dessus
+**Solution implémentée** :
+- ✅ Script `scripts/init-minio.sh` créé
+- ✅ Service `minio-init` ajouté dans docker-compose.yml
+- ⏳ À déployer : `docker-compose up -d`
+
+**Fix manuel temporaire** :
+```bash
+docker-compose exec minio mc alias set local http://localhost:9000 admin change-me-strong
+docker-compose exec minio mc mb local/product-images
+docker-compose exec minio mc anonymous set download local/product-images
+```
+
+### 🟠 2. Backend Routes Non Structurées
+**Symptôme** : Routes dans fichiers `temp_*.js` compilés
+
+**Cause** : Dossiers `controleurs/`, `services/`, `middlewares/` créés mais vides
+
+**Impact** : Code non production-ready, difficulté maintenance
+
+**À faire** : Migrer routes vers structure TypeScript propre
 
 ### 3. Variables Shell dans .env
 **Symptôme** : `$POSTGRES_USER` non expandé
@@ -545,22 +590,42 @@ DATABASE_URL=postgresql://postgres:change-me-strong@...
 
 ---
 
-## 📋 Checklist POC Complet
+## 📋 Checklist POC Complet (Mise à jour 14 Oct)
 
-### Phase 3 : Fonctionnalités Manquantes (4-6h)
-- [ ] **Redis cache** : ✅ Fait
-- [ ] **Stripe** : ❌ 1h
-- [ ] **Panier** : ❌ 2h
-- [ ] **Upload MinIO** : ❌ 30 min
-- [ ] **OCR Tesseract** : ❌ 1h
-- [ ] **KYC Onfido** : ❌ 3h
+### ✅ Phase 0-2 : Infrastructure (100% - FAIT)
+- ✅ Docker Compose (5 services)
+- ✅ PostgreSQL + Prisma
+- ✅ Redis Cache
+- ✅ MinIO S3
+- ✅ Traefik Reverse Proxy
 
-### Phase 4 : Tests & Documentation (1h)
-- [ ] Fix bug Prisma client
-- [ ] Test flux complet (browse → add to cart → checkout → paiement)
-- [ ] README avec instructions démarrage
-- [ ] Documentation API (Postman collection)
-- [ ] Diagramme architecture (draw.io)
+### ✅ Phase 3a : Backend + Frontend Base (100% - FAIT)
+- ✅ Backend Express séparé
+- ✅ Routes API `/produits`, `/auth`, `/images`
+- ✅ Frontend Next.js avec 4 pages
+- ✅ Gestion panier (Context + localStorage)
+- ✅ Composants UI réutilisables
+- ✅ Script init MinIO (bucket auto)
+
+### ❌ Phase 3b : Fonctionnalités E-Commerce (À FAIRE PAR L'ÉQUIPE)
+**Durée estimée** : 10-12h
+
+| Tâche | Durée | Priorité | Assigné à |
+|-------|-------|----------|-----------|
+| Paiement Stripe | 3-4h | 🔴 Critique | - |
+| Page Checkout | 2h | 🔴 Critique | - |
+| Auth UI (login/register) | 2h | 🟠 Important | - |
+| Routes Backend propres | 3h | 🟠 Important | - |
+| KYC Onfido | 4-5h | 🟡 Optionnel | - |
+| OCR Tesseract | 1-2h | 🟡 Optionnel | - |
+
+### ❌ Phase 4 : Tests & Documentation (À FAIRE)
+**Durée estimée** : 2-3h
+
+- [ ] Tests E2E (Playwright)
+- [ ] Documentation API complète
+- [ ] Guide déploiement production
+- [ ] README amélioré
 
 ---
 
@@ -619,40 +684,85 @@ FLUSHALL
 
 ---
 
-## 📊 Estimation Totale pour POC Complet
+## 📊 Estimation Travail Restant (Pour l'Équipe)
 
-| Phase | Tâches | Durée | Priorité |
-|-------|--------|-------|----------|
-| ✅ Phase 0-2 | Infrastructure + Redis | 1h | 🔴 Fait |
-| Phase 3a | Stripe + Panier | 3h | 🔴 Critique |
-| Phase 3b | Upload MinIO + OCR | 1.5h | 🟠 Important |
-| Phase 3c | KYC Onfido | 3h | 🟠 Important |
-| Phase 4 | Tests + Docs | 1h | 🟡 Finitions |
-| **Total restant** | | **8.5h** | |
+### Travail Critique (POC Fonctionnel)
+**Durée** : 7-8h
 
-### Avec Backend Express séparé
-| Phase | Tâches | Durée | Priorité |
-|-------|--------|-------|----------|
-| Phase 5 | Refonte backend Express | 6h | 🟠 Optionnel |
-| **Total avec refonte** | | **14.5h** | |
+| Tâche | Détails | Durée | Membre |
+|-------|---------|-------|--------|
+| **Paiement Stripe** | Setup compte + API routes + Frontend | 3-4h | ? |
+| **Page Checkout** | Formulaire + Stripe Elements | 2h | ? |
+| **Routes Backend** | Migrer `temp_*.js` vers structure propre | 2-3h | ? |
+
+### Travail Important (POC Complet)
+**Durée** : 4-5h
+
+| Tâche | Détails | Durée | Membre |
+|-------|---------|-------|--------|
+| **Auth UI** | Pages login/register + protection routes | 2h | ? |
+| **Upload Images** | Implémenter upload produits dans MinIO | 1h | ? |
+| **Tests Flux** | Tester e-commerce bout en bout | 1h | ? |
+
+### Travail Optionnel (Production)
+**Durée** : 6-8h
+
+- KYC Onfido (4-5h)
+- OCR Tesseract (1-2h)
+- Tests E2E (2h)
+- CI/CD (3h)
+
+**TOTAL CRITIQUE** : **7-8h** (2 personnes = 1 journée)  
+**TOTAL COMPLET** : **11-13h** (2-3 personnes = 2 jours)
 
 ---
 
-## 🎯 Recommandations Finales
+## 🎯 Plan d'Action pour l'Équipe
 
-### Pour POC Rapide (2 jours)
-1. ✅ **Garder architecture actuelle** (Next.js monolithe)
-2. 🔴 **Priorité 1** : Stripe + Panier (e-commerce de base)
-3. 🟠 **Priorité 2** : Upload MinIO (images produits)
-4. 🟡 **Priorité 3** : KYC/OCR (si temps restant)
+### 🔴 PRIORITÉ 1 : POC Fonctionnel (1 journée)
+**Objectif** : Avoir un e-commerce qui fonctionne de bout en bout
 
-### Pour Production
-1. 🔴 Migrer vers backend Express séparé
-2. 🔴 Ajouter Kafka (événements asynchrones)
-3. 🔴 Tests E2E complets
-4. 🔴 CI/CD (GitHub Actions)
-5. 🔴 Monitoring (Prometheus + Grafana)
-6. 🔴 Secrets management (Vault)
+**Personne 1** - Paiement (4h)
+1. Créer compte Stripe test
+2. Installer dépendances (`stripe`, `@stripe/stripe-js`)
+3. Créer route backend `POST /api/checkout`
+4. Créer route webhook `POST /api/webhooks/stripe`
+5. Modèles Prisma `Order` + `OrderItem`
+
+**Personne 2** - Frontend Checkout (3h)
+1. Créer page `frontend/src/app/checkout/page.tsx`
+2. Intégrer Stripe Elements (formulaire carte)
+3. Flow paiement complet
+4. Page confirmation commande
+
+**Documentation Stripe** : https://stripe.com/docs/payments/accept-a-payment
+
+---
+
+### 🟠 PRIORITÉ 2 : Code Qualité (1/2 journée)
+**Objectif** : Rendre le code maintenable
+
+**Personne 1** - Backend (3h)
+1. Créer `backend/src/controleurs/produits.ts`
+2. Créer `backend/src/services/produitsService.ts`
+3. Migrer logique depuis `temp_*.js`
+4. Créer `backend/src/middlewares/auth.ts`
+
+**Personne 2** - Tests (2h)
+1. Tester flux complet : catalogue → panier → checkout
+2. Vérifier images produits
+3. Documenter bugs trouvés
+
+---
+
+### 🟡 OPTIONNEL : Fonctionnalités Avancées
+**Si temps restant ou pour version 2.0**
+
+- KYC Onfido (vérification âge 18+)
+- OCR Tesseract (lecture ID)
+- Tests E2E automatisés
+- CI/CD pipeline
+- Monitoring
 
 ---
 

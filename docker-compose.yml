@@ -138,6 +138,19 @@ services:
       timeout: 5s
       retries: 10
 
+  minio-init:
+    image: minio/mc:RELEASE.2024-08-13T05-33-17Z
+    depends_on:
+      - minio
+    entrypoint: /scripts/init-minio.sh
+    volumes:
+      - ./scripts:/scripts
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER:-admin}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-change-me-strong}
+    networks:
+      - appnet
+
 networks:
   appnet:
 
