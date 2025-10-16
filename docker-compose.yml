@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   traefik:
     image: traefik:v3.1
@@ -13,21 +15,20 @@ services:
       - postgres
       - redis
       - minio
-    networks:
-      - appnet
+    networks: [appnet]
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
-      - "traefik.http.routers.traefik.entrypoints=web"
-      - "traefik.http.services.traefik.loadbalancer.server.port=8080"
-      - "traefik.http.routers.traefik.service=api@internal"
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`traefik.localhost`)
+      - traefik.http.routers.traefik.entrypoints=web
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+      - traefik.http.routers.traefik.service=api@internal
 
   api:
     build:
-        context: .               # <— repo root, now can see frontend/prisma
-        dockerfile: backend/Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     environment:
       - PORT=4000
       - NODE_ENV=production
@@ -39,15 +40,14 @@ services:
     depends_on:
       - postgres
       - redis
-    networks:
-      - appnet
+    networks: [appnet]
     ports:
       - "4000:4000"
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`api.localhost`)"
-      - "traefik.http.routers.api.entrypoints=web"
-      - "traefik.http.services.api.loadbalancer.server.port=4000"
+      - traefik.enable=true
+      - traefik.http.routers.api.rule=Host(`api.localhost`)
+      - traefik.http.routers.api.entrypoints=web
+      - traefik.http.services.api.loadbalancer.server.port=4000
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:4000/health"]
       interval: 30s
@@ -66,18 +66,17 @@ services:
       - HOSTNAME=0.0.0.0
     depends_on:
       - api
-    networks:
-      - appnet
+    networks: [appnet]
     ports:
       - "3000:3000"
     volumes:
       - ./frontend/prisma:/app/prisma
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`app.localhost`)"
-      - "traefik.http.routers.app.entrypoints=web"
-      - "traefik.http.services.app.loadbalancer.server.port=3000"
-      - "traefik.docker.network=projetfinal_appnet"
+      - traefik.enable=true
+      - traefik.http.routers.app.rule=Host(`app.localhost`)
+      - traefik.http.routers.app.entrypoints=web
+      - traefik.http.services.app.loadbalancer.server.port=3000
+      - traefik.docker.network=appnet   # fixed name
     healthcheck:
       test: ["CMD-SHELL", "node -e \"fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
       interval: 10s
@@ -96,10 +95,9 @@ services:
     volumes:
       - ./data/import:/import
       - pgdata:/var/lib/postgresql/data
-    networks:
-      - appnet
+    networks: [appnet]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}" ]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -109,8 +107,7 @@ services:
     command: redis-server --appendonly yes
     volumes:
       - redis_data:/data
-    networks:
-      - appnet
+    networks: [appnet]
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -126,21 +123,18 @@ services:
       - MINIO_BROWSER_REDIRECT_URL=http://minio.localhost
     volumes:
       - minio_data:/data
-
-    networks:
-      - appnet
+    networks: [appnet]
     ports:
-      - "9000:9000"  # Expose S3 API pour accès images
-      - "9001:9001"  # Expose MinIO Console
+      - "9000:9000"
+      - "9001:9001"
     labels:
-      - "traefik.enable=true"
-      # Console Admin
-      - "traefik.http.routers.minio-console.rule=Host(`minio.localhost`)"
-      - "traefik.http.routers.minio-console.entrypoints=web"
-      - "traefik.http.routers.minio-console.service=minio-console"
-      - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
+      - traefik.enable=true
+      - traefik.http.routers.minio-console.rule=Host(`minio.localhost`)
+      - traefik.http.routers.minio-console.entrypoints=web
+      - traefik.http.routers.minio-console.service=minio-console
+      - traefik.http.services.minio-console.loadbalancer.server.port=9001
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:9000/minio/health/ready" ]
+      test: ["CMD", "wget", "-qO-", "http://localhost:9000/minio/health/ready"]
       interval: 10s
       timeout: 5s
       retries: 15
@@ -156,12 +150,8 @@ services:
     environment:
       - MINIO_ROOT_USER=${MINIO_ROOT_USER:-admin}
       - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD:-change-me-strong}
-    networks:
-      - appnet
+    networks: [appnet]
 
-  # ==================== MONGODB ====================
-  # Profile: kafka (ne démarre pas par défaut)
-  # Pour lancer: docker-compose --profile kafka up -d
   mongodb:
     image: mongo:7
     container_name: mongodb
@@ -172,8 +162,7 @@ services:
       MONGO_INITDB_DATABASE: wineshop_events
     volumes:
       - mongo_data:/data/db
-    networks:
-      - appnet
+    networks: [appnet]
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
@@ -192,16 +181,12 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: admin
-    networks:
-      - appnet
+    networks: [appnet]
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.mongo-express.rule=Host(`mongo.localhost`)"
-      - "traefik.http.services.mongo-express.loadbalancer.server.port=8081"
+      - traefik.enable=true
+      - traefik.http.routers.mongo-express.rule=Host(`mongo.localhost`)
+      - traefik.http.services.mongo-express.loadbalancer.server.port=8081
 
-  # ==================== KAFKA STACK ====================
-  # Profile: kafka (ne démarre pas par défaut)
-  # Pour lancer: docker-compose --profile kafka up -d
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     container_name: zookeeper
@@ -209,8 +194,7 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
-    networks:
-      - appnet
+    networks: [appnet]
     healthcheck:
       test: ["CMD", "nc", "-z", "localhost", "2181"]
       interval: 10s
@@ -235,8 +219,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_LOG_RETENTION_HOURS: 168
-    networks:
-      - appnet
+    networks: [appnet]
     healthcheck:
       test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
       interval: 10s
@@ -254,13 +237,40 @@ services:
     depends_on:
       - minio
     ports:
-      - "4100:4100"   # optional; other services can use http://kyc:4100 internally
+      - "4100:4100"
+    networks: [appnet]
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4100/health"]
       interval: 10s
       timeout: 5s
       retries: 10
       start_period: 20s
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource,marcusolsson-csv-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks: [appnet]
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.grafana.rule=Host(`grafana.localhost`)
+    - traefik.http.routers.grafana.entrypoints=web
+    - traefik.http.services.grafana.loadbalancer.server.port=3000
+    - traefik.docker.network=appnet
+
+  csvserver:
+    image: python:3.12-alpine
+    working_dir: /data
+    command: python -m http.server 8000
+    volumes:
+      - ./csv:/data
+    ports:
+      - "8000:8000"
+    networks: [appnet]
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
@@ -274,16 +284,13 @@ services:
       KAFKA_CLUSTERS_0_NAME: wineshop-local
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
       KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
-    networks:
-      - appnet
+    networks: [appnet]
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.kafka-ui.rule=Host(`kafka.localhost`)"
-      - "traefik.http.routers.kafka-ui.entrypoints=web"
-      - "traefik.http.services.kafka-ui.loadbalancer.server.port=8080"
+      - traefik.enable=true
+      - traefik.http.routers.kafka-ui.rule=Host(`kafka.localhost`)
+      - traefik.http.routers.kafka-ui.entrypoints=web
+      - traefik.http.services.kafka-ui.loadbalancer.server.port=8080
 
-  # ==================== KAFKA CONSUMERS ====================
-  # Profile: kafka (ne démarre pas par défaut)
   kafka-consumer-snowflake:
     build:
       context: ./kafka-consumers
@@ -306,8 +313,7 @@ services:
       SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE:-COMPUTE_WH}
       SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE:-WINESHOP}
       SNOWFLAKE_SCHEMA: ${SNOWFLAKE_SCHEMA:-RAW}
-    networks:
-      - appnet
+    networks: [appnet]
     restart: unless-stopped
 
   kafka-consumer-email:
@@ -328,8 +334,7 @@ services:
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASS: ${SMTP_PASS:-}
       FROM_EMAIL: ${FROM_EMAIL:-no-reply@wineshop.local}
-    networks:
-      - appnet
+    networks: [appnet]
     restart: unless-stopped
 
   kafka-consumer-mongodb:
@@ -349,17 +354,15 @@ services:
       MONGO_URI: mongodb://mongodb:27017/
       MONGO_DB: wineshop_events
       MONGO_COLLECTION: kafka_events
-    networks:
-      - appnet
+    networks: [appnet]
     restart: unless-stopped
 
 networks:
-  appnet:
+  appnet: {}
 
 volumes:
-  pgdata:
-  redis_data:
-  minio_data:
-  mongo_data:
-
-
+  pgdata: {}
+  redis_data: {}
+  minio_data: {}
+  mongo_data: {}
+  grafana_data: {}   # <-- added so Grafana starts
