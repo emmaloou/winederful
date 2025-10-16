@@ -1,0 +1,16 @@
+# requirements.txt
+
+# Kafka client
+kafka-python==2.0.2
+
+# Snowflake integration
+# snowflake-sqlalchemy requires SQLAlchemy < 2.0.0; pin a compatible 1.4.x series
+snowflake-sqlalchemy==1.5.1
+sqlalchemy==1.4.49
+pandas==2.1.1 # Nécessaire pour la fonction to_sql
+
+# Configuration management
+python-dotenv==1.0.0
+
+# Optionnel mais recommandé pour le connecteur Snowflake
+pyarrow==14.0.1
