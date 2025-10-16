@@ -243,6 +243,19 @@ services:
       retries: 10
       start_period: 20s
 
+  kyc:
+    build: ./kyc-service
+    container_name: kyc-service
+    env_file: .env
+    depends_on:
+      - minio
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kyc.rule=Host(`kyc.localhost`)"
+      - "traefik.http.services.kyc.loadbalancer.server.port=4100"
+    networks:
+      - appnet
+
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-ui
