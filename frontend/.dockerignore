@@ -1,6 +1,9 @@
+.git
 node_modules
 .next
+.next/cache
 out
-npm-debug.log*
-yarn-error.log*
 .DS_Store
+*.log
+.env
+.env.*

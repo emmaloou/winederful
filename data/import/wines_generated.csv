@@ -1,0 +1,501 @@
+id,reference,color,country,region,appellation,vintage,grapes,alcohol_percent,bottle_size_l,sweetness,tannin,acidity,rating,price_eur,producer,stock_quantity
+1,WN-1995-RHO-0001-IVU,orange,France,Rhone,Cote-Rotie,1995,Tempranillo,14.7,1.5,sweet,5,1,91.8,8.02,Chateau Riou,55
+2,WN-2017-RIO-0002-D4V,white,Spain,Rioja,Rioja DOCa,2017,"Merlot, Albarino",14.5,0.75,off-dry,2,2,99.1,36.98,Chateau Marie,97
+3,WN-2004-RIA-0003-KCI,white,Spain,Rias Baixas,Rias Baixas DO,2004,Cabernet Sauvignon,12.5,1.5,sweet,3,5,83.8,11.61,Bodegas Laurent,197
+4,WN-2020-RIB-0004-QJ7,orange,Spain,Ribera del Duero,Ribera del Duero DO,2020,"Albarino, Sangiovese",12.8,1.5,off-dry,1,5,92.7,55.74,Bodegas Traore,41
+5,WN-1994-KAK-0005-JIU,red,Georgia,Kakheti,Kakheti PDO,1994,Rkatsiteli,13.0,0.375,dry,5,3,84.3,52.43,Marani Paris,36
+6,WN-2003-RIA-0006-CN9,orange,Spain,Rias Baixas,Rias Baixas DO,2003,Tempranillo,13.5,0.375,dry,1,2,92.5,80.25,Estate Moulin,152
+7,WN-1987-TUS-0007-SG6,orange,Italy,Tuscany,Bolgheri,1987,"Cabernet Sauvignon, Riesling, Rkatsiteli",11.6,0.75,dry,4,1,99.1,88.21,Cantina Hubert,248
+8,WN-2003-SIC-0008-93I,white,Italy,Sicily,Etna,2003,Cabernet Sauvignon,15.8,1.5,dry,5,3,89.8,15.63,Winery Joly,224
+9,WN-1984-BOR-0009-L9X,red,France,Bordeaux,Medoc,1984,"Tempranillo, Malbec, Gewurztraminer",15.7,0.375,off-dry,5,5,88.5,25.12,Bodegas Gallet,182
+10,WN-1994-RIO-0010-CBL,orange,Spain,Rioja,Rioja DOCa,1994,Rkatsiteli,11.1,1.5,dry,5,2,80.1,72.24,Maison Henry,58
+11,WN-1993-KAK-0011-Q0Y,orange,Georgia,Kakheti,Kakheti PDO,1993,"Tempranillo, Muscadet, Zinfandel",13.4,0.75,off-dry,2,1,81.9,45.95,Estate Labbé,105
+12,WN-2001-RHO-0012-34D,orange,France,Rhone,Chateauneuf-du-Pape,2001,Semillon,12.0,1.5,off-dry,2,4,83.7,48.95,Chateau Traore,113
+13,WN-1990-BOR-0013-P89,orange,France,Bordeaux,Pomerol,1990,"Gewurztraminer, Malbec",12.1,0.75,dry,2,4,80.0,42.09,Marani Morvan,73
+14,WN-1998-RIO-0014-8CG,orange,Spain,Rioja,Rioja DOCa,1998,Grenache,13.9,1.5,dry,3,1,81.0,50.29,Domaine Fernandez,14
+15,WN-1987-ALS-0015-ZIO,orange,France,Alsace,Alsace AOC,1987,"Semillon, Muscadet, Grenache",14.1,0.75,sweet,5,5,90.5,93.8,Bodegas Maury,171
+16,WN-1984-VEN-0016-CIK,red,Italy,Veneto,Valpolicella,1984,Chenin Blanc,14.1,1.5,dry,1,5,84.3,30.19,Winery Briand,225
+17,WN-2015-TUS-0017-Y4S,red,Italy,Tuscany,Bolgheri,2015,"Pinot Gris, Tempranillo",12.3,0.375,sweet,5,2,85.4,62.46,Winery David,52
+18,WN-1997-BOR-0018-AC5,white,France,Bordeaux,Medoc,1997,Merlot,12.7,0.375,sweet,3,2,94.8,57.41,Estate Martinez,143
+19,WN-2007-JUR-0019-WF7,white,France,Jura,Arbois,2007,Grenache,12.5,0.375,off-dry,2,2,93.3,38.6,Estate Morin,249
+20,WN-1991-KAK-0020-K2I,white,Georgia,Kakheti,Kakheti PDO,1991,"Rkatsiteli, Nebbiolo, Semillon",12.3,1.5,dry,4,1,97.2,26.13,Marani Carpentier,89
+21,WN-1997-KAK-0021-U9B,orange,Georgia,Kakheti,Kakheti PDO,1997,Riesling,12.8,1.5,off-dry,5,3,98.8,15.96,Cantina Rey,45
+22,WN-2007-RIB-0022-P87,orange,Spain,Ribera del Duero,Ribera del Duero DO,2007,"Sauvignon Blanc, Pinot Gris, Syrah",15.5,0.375,off-dry,1,4,80.0,92.93,Bodegas Bodin,93
+23,WN-1999-TUS-0023-UO4,red,Italy,Tuscany,Bolgheri,1999,"Pinot Noir, Nebbiolo, Rkatsiteli",13.0,0.75,sweet,2,2,88.4,94.33,Domaine Marion,157
+24,WN-2017-SIC-0024-DSW,red,Italy,Sicily,Nero d'Avola IGT,2017,"Malbec, Rkatsiteli, Chenin Blanc",13.2,1.5,dry,5,4,95.9,96.18,Domaine Michel,168
+25,WN-1994-ALS-0025-ZRI,orange,France,Alsace,Alsace AOC,1994,Tempranillo,11.1,0.375,off-dry,5,1,89.1,89.18,Bodegas Guilbert,183
+26,WN-1994-BOR-0026-1P3,orange,France,Bordeaux,Medoc,1994,Sauvignon Blanc,13.3,1.5,dry,1,4,82.7,49.14,Winery Philippe,243
+27,WN-1990-RIA-0027-KJL,orange,Spain,Rias Baixas,Rias Baixas DO,1990,"Gewurztraminer, Chenin Blanc, Riesling",14.8,1.5,off-dry,5,4,92.5,31.09,Chateau Auger,182
+28,WN-1994-LOI-0028-6VZ,orange,France,Loire,Muscadet,1994,"Tempranillo, Chardonnay",11.3,0.75,off-dry,5,4,88.3,24.65,Estate Delahaye,99
+29,WN-2002-RIB-0029-NY2,orange,Spain,Ribera del Duero,Ribera del Duero DO,2002,"Syrah, Nebbiolo",13.7,1.5,sweet,5,2,89.8,30.93,Marani Boutin,7
+30,WN-2019-KAK-0030-LQM,red,Georgia,Kakheti,Kakheti PDO,2019,"Merlot, Syrah, Muscadet",13.8,0.375,dry,4,2,97.3,22.26,Cantina Morvan,97
+31,WN-1985-VEN-0031-AFE,orange,Italy,Veneto,Valpolicella,1985,"Merlot, Cabernet Sauvignon",11.3,0.75,dry,1,1,95.1,95.21,Bodegas Humbert,214
+32,WN-2009-BUR-0032-LY8,red,France,Burgundy,Maconnais,2009,"Riesling, Sangiovese, Albarino",14.0,1.5,sweet,1,2,99.3,15.27,Maison Vasseur,237
+33,WN-1986-KAK-0033-43D,red,Georgia,Kakheti,Kakheti PDO,1986,"Pinot Noir, Zinfandel, Pinot Gris",15.0,1.5,dry,3,5,88.6,40.2,Winery Pons,3
+34,WN-2007-RIA-0034-43D,red,Spain,Rias Baixas,Rias Baixas DO,2007,Sauvignon Blanc,15.8,0.75,sweet,5,4,89.3,83.44,Cantina Pruvost,82
+35,WN-2001-KAK-0035-A8D,orange,Georgia,Kakheti,Kakheti PDO,2001,Gewurztraminer,15.3,0.375,off-dry,2,3,96.0,37.33,Cantina Lopes,142
+36,WN-2024-RIB-0036-TM9,orange,Spain,Ribera del Duero,Ribera del Duero DO,2024,"Malbec, Gewurztraminer",13.2,0.375,dry,3,2,88.1,28.11,Winery Robert,121
+37,WN-2009-PIE-0037-HR0,orange,Italy,Piedmont,Barolo,2009,"Pinot Noir, Riesling",12.2,1.5,dry,3,1,94.9,95.33,Domaine Thierry,49
+38,WN-1998-TUS-0038-7W1,white,Italy,Tuscany,Brunello di Montalcino,1998,Sangiovese,11.9,0.375,sweet,5,2,85.5,97.56,Cantina Leroux,178
+39,WN-2010-BUR-0039-WBF,orange,France,Burgundy,Cote de Beaune,2010,"Chenin Blanc, Rkatsiteli",11.9,0.375,off-dry,4,1,96.4,43.07,Chateau Rocher,147
+40,WN-1987-TUS-0040-WV0,white,Italy,Tuscany,Brunello di Montalcino,1987,"Nebbiolo, Zinfandel, Semillon",14.9,0.75,off-dry,4,3,97.2,99.05,Cantina Briand,145
+41,WN-1990-KAK-0041-KK4,white,Georgia,Kakheti,Kakheti PDO,1990,Albarino,13.8,0.375,dry,4,4,93.8,49.64,Maison Leblanc,59
+42,WN-2007-KAK-0042-EYZ,red,Georgia,Kakheti,Kakheti PDO,2007,Cabernet Sauvignon,12.1,0.375,off-dry,2,1,81.2,80.3,Cantina Lopes,112
+43,WN-2018-RIB-0043-YJB,white,Spain,Ribera del Duero,Ribera del Duero DO,2018,Nebbiolo,14.7,1.5,off-dry,1,1,84.6,69.06,Maison Meyer,195
+44,WN-1997-RIA-0044-FOR,orange,Spain,Rias Baixas,Rias Baixas DO,1997,Muscadet,13.2,0.75,dry,4,3,88.2,35.5,Chateau Fabre,219
+45,WN-2009-RIA-0045-GN1,orange,Spain,Rias Baixas,Rias Baixas DO,2009,Rkatsiteli,12.3,0.375,off-dry,5,1,93.2,56.55,Estate Ledoux,13
+46,WN-1997-RIO-0046-AOI,white,Spain,Rioja,Rioja DOCa,1997,"Tempranillo, Pinot Noir, Chenin Blanc",15.4,0.75,dry,1,5,96.0,72.43,Cantina Marques,141
+47,WN-2011-RIO-0047-C14,red,Spain,Rioja,Rioja DOCa,2011,"Pinot Noir, Sauvignon Blanc, Riesling",13.1,0.75,off-dry,2,4,91.0,41.44,Domaine Henry,221
+48,WN-1999-TUS-0048-GZU,white,Italy,Tuscany,Chianti Classico,1999,"Muscadet, Gewurztraminer, Tempranillo",13.2,0.75,off-dry,3,5,95.3,40.83,Winery Morin,222
+49,WN-2010-RIO-0049-SQ0,red,Spain,Rioja,Rioja DOCa,2010,"Syrah, Malbec, Tempranillo",13.5,0.375,dry,5,5,86.6,14.53,Marani Gillet,25
+50,WN-1996-KAK-0050-TWI,orange,Georgia,Kakheti,Kakheti PDO,1996,"Zinfandel, Syrah",14.2,0.75,sweet,5,4,99.1,64.55,Marani Pereira,223
+51,WN-2007-SIC-0051-MPI,red,Italy,Sicily,Etna,2007,Malbec,14.5,0.375,off-dry,2,3,98.1,9.37,Maison Pelletier,75
+52,WN-1985-KAK-0052-26Y,white,Georgia,Kakheti,Kakheti PDO,1985,"Syrah, Zinfandel, Semillon",13.5,1.5,dry,2,4,92.8,48.66,Maison Barre,230
+53,WN-2017-LAN-0053-MKZ,white,France,Languedoc,Minervois,2017,"Malbec, Nebbiolo",14.5,0.75,off-dry,2,4,97.1,15.13,Estate Texier,146
+54,WN-2016-RIB-0054-11Y,white,Spain,Ribera del Duero,Ribera del Duero DO,2016,"Grenache, Zinfandel, Gewurztraminer",15.2,0.75,dry,5,3,84.4,23.06,Cantina Aubry,173
+55,WN-2008-RHO-0055-T8T,red,France,Rhone,Cote-Rotie,2008,Muscadet,12.8,0.375,dry,3,3,94.9,21.69,Domaine Bertrand,201
+56,WN-1998-KAK-0056-TQY,orange,Georgia,Kakheti,Kakheti PDO,1998,"Rkatsiteli, Pinot Gris, Chenin Blanc",15.8,0.375,dry,4,5,87.3,80.11,Maison Chauveau,67
+57,WN-2003-VEN-0057-ZXE,white,Italy,Veneto,Soave,2003,Semillon,13.4,1.5,sweet,3,5,84.4,11.01,Marani Jacques,232
+58,WN-1987-PRO-0058-0FO,white,France,Provence,Cotes de Provence,1987,Semillon,15.4,0.375,off-dry,4,3,93.4,75.6,Estate Regnier,150
+59,WN-1997-RIA-0059-OGE,red,Spain,Rias Baixas,Rias Baixas DO,1997,Sangiovese,12.1,0.75,dry,3,1,99.6,39.9,Winery Denis,15
+60,WN-1983-ALS-0060-12V,red,France,Alsace,Alsace AOC,1983,"Semillon, Tempranillo",14.9,0.375,dry,5,2,91.7,82.24,Bodegas Hoareau,84
+61,WN-1991-KAK-0061-PEC,red,Georgia,Kakheti,Kakheti PDO,1991,Merlot,11.7,0.75,dry,5,3,80.3,30.21,Domaine Chevalier,189
+62,WN-2012-TUS-0062-OYR,red,Italy,Tuscany,Chianti Classico,2012,Zinfandel,11.2,1.5,sweet,3,4,92.9,7.96,Marani Courtois,216
+63,WN-2018-BOR-0063-SP2,white,France,Bordeaux,Graves,2018,Viognier,11.6,1.5,sweet,5,5,94.2,41.19,Cantina Cousin,116
+64,WN-1994-KAK-0064-7C3,white,Georgia,Kakheti,Kakheti PDO,1994,"Rkatsiteli, Chenin Blanc",13.0,1.5,dry,3,4,86.3,29.21,Domaine Techer,175
+65,WN-1988-RIO-0065-6BK,red,Spain,Rioja,Rioja DOCa,1988,"Grenache, Muscadet, Cabernet Sauvignon",13.8,1.5,dry,4,3,97.5,94.41,Estate Maurice,222
+66,WN-2012-TUS-0066-PU1,orange,Italy,Tuscany,Bolgheri,2012,Tempranillo,14.3,0.375,dry,3,5,87.4,77.45,Bodegas Étienne,206
+67,WN-2024-BUR-0067-FWB,orange,France,Burgundy,Cote de Nuits,2024,"Merlot, Albarino",12.4,0.75,off-dry,3,1,83.6,18.61,Estate Verdier,17
+68,WN-2009-KAK-0068-CPP,orange,Georgia,Kakheti,Kakheti PDO,2009,"Albarino, Sangiovese",12.6,0.75,sweet,5,1,97.7,19.78,Maison Olivier,172
+69,WN-1993-RIB-0069-9BH,white,Spain,Ribera del Duero,Ribera del Duero DO,1993,"Pinot Gris, Sangiovese, Nebbiolo",11.6,1.5,sweet,5,4,90.5,34.3,Bodegas Fischer,101
+70,WN-2000-KAK-0070-O0P,red,Georgia,Kakheti,Kakheti PDO,2000,Merlot,13.5,0.75,dry,2,4,90.7,26.86,Winery Muller,18
+71,WN-2016-JUR-0071-PDP,red,France,Jura,Arbois,2016,"Malbec, Nebbiolo",12.4,0.75,dry,3,2,96.0,63.72,Winery Lambert,22
+72,WN-2001-CHA-0072-033,white,France,Champagne,Champagne AOC,2001,Rkatsiteli,14.9,0.375,sweet,1,5,90.2,91.06,Winery Peltier,89
+73,WN-1992-LOI-0073-7UW,orange,France,Loire,Sancerre,1992,Zinfandel,11.8,1.5,dry,2,4,89.3,58.55,Marani Dumas,174
+74,WN-2008-PIE-0074-BNK,orange,Italy,Piedmont,Langhe,2008,Gewurztraminer,13.2,0.75,off-dry,5,1,87.0,12.05,Marani Leleu,115
+75,WN-2012-BUR-0075-FCD,red,France,Burgundy,Cote de Nuits,2012,"Chenin Blanc, Muscadet",13.8,1.5,dry,4,5,93.0,35.55,Marani Charpentier,128
+76,WN-1991-BEA-0076-OMV,orange,France,Beaujolais,Beaujolais-Villages,1991,Semillon,14.5,0.75,sweet,5,5,83.2,40.42,Cantina Chevalier,99
+77,WN-1986-TUS-0077-8ZO,orange,Italy,Tuscany,Chianti Classico,1986,"Syrah, Pinot Noir, Riesling",14.6,1.5,sweet,2,3,81.6,68.04,Winery Rey,79
+78,WN-2021-PRO-0078-8RI,white,France,Provence,Cotes de Provence,2021,"Tempranillo, Sauvignon Blanc",11.5,1.5,off-dry,5,3,80.4,34.34,Bodegas Roussel,87
+79,WN-1986-KAK-0079-POY,white,Georgia,Kakheti,Kakheti PDO,1986,"Cabernet Sauvignon, Sauvignon Blanc, Grenache",14.3,1.5,dry,5,4,83.1,22.18,Domaine Gillet,184
+80,WN-2008-RIA-0080-NS8,white,Spain,Rias Baixas,Rias Baixas DO,2008,Cabernet Sauvignon,12.2,0.75,dry,3,5,99.7,48.86,Cantina Lopes,199
+81,WN-2021-KAK-0081-S3D,white,Georgia,Kakheti,Kakheti PDO,2021,"Sangiovese, Cabernet Sauvignon",15.7,1.5,sweet,1,3,81.7,20.23,Marani De Sousa,231
+82,WN-2006-RIB-0082-ZMF,white,Spain,Ribera del Duero,Ribera del Duero DO,2006,Syrah,13.5,0.375,off-dry,1,3,84.5,35.28,Chateau Bousquet,214
+83,WN-1988-VEN-0083-1IE,white,Italy,Veneto,Soave,1988,"Gewurztraminer, Chenin Blanc, Merlot",15.5,0.375,off-dry,2,2,91.0,74.09,Estate Marchal,28
+84,WN-1984-RIA-0084-WIO,orange,Spain,Rias Baixas,Rias Baixas DO,1984,Gewurztraminer,14.0,0.375,sweet,5,5,84.8,18.64,Estate Goncalves,0
+85,WN-1984-BEA-0085-2M0,orange,France,Beaujolais,Moulin-a-Vent,1984,"Cabernet Sauvignon, Sauvignon Blanc, Zinfandel",13.8,0.75,off-dry,1,4,99.6,29.1,Maison Lemaître,91
+86,WN-2001-BUR-0086-EZ7,white,France,Burgundy,Cote de Nuits,2001,Grenache,12.8,0.75,sweet,2,4,99.6,50.46,Domaine Monnier,207
+87,WN-1992-SIC-0087-M25,red,Italy,Sicily,Etna,1992,Rkatsiteli,15.7,1.5,off-dry,5,4,85.1,76.56,Bodegas Lacroix,73
+88,WN-2007-TUS-0088-PP9,white,Italy,Tuscany,Chianti Classico,2007,"Chenin Blanc, Syrah",12.7,0.375,off-dry,4,3,98.5,54.33,Chateau Leconte,186
+89,WN-1985-PIE-0089-9J9,white,Italy,Piedmont,Langhe,1985,"Pinot Noir, Malbec",13.2,1.5,off-dry,2,4,87.0,9.02,Winery Da Costa,157
+90,WN-2012-CHA-0090-NUV,orange,France,Champagne,Champagne AOC,2012,"Albarino, Merlot, Tempranillo",15.2,1.5,off-dry,1,2,81.3,78.96,Winery Boutin,92
+91,WN-2008-RIB-0091-S6E,red,Spain,Ribera del Duero,Ribera del Duero DO,2008,Muscadet,11.7,0.75,off-dry,3,3,85.0,15.78,Domaine Normand,127
+92,WN-2024-RIO-0092-MCT,red,Spain,Rioja,Rioja DOCa,2024,"Chardonnay, Pinot Gris",11.7,0.375,off-dry,2,4,99.9,82.0,Winery Jourdan,170
+93,WN-2012-KAK-0093-9E5,white,Georgia,Kakheti,Kakheti PDO,2012,Pinot Gris,15.9,0.375,dry,4,1,87.2,59.37,Marani Guérin,205
+94,WN-2010-VEN-0094-3TV,white,Italy,Veneto,Soave,2010,"Nebbiolo, Malbec, Muscadet",11.4,0.75,sweet,1,4,89.3,54.15,Domaine Raynaud,224
+95,WN-1987-RIA-0095-WTE,red,Spain,Rias Baixas,Rias Baixas DO,1987,"Tempranillo, Pinot Noir, Albarino",11.8,1.5,dry,3,5,97.9,85.36,Cantina Bousquet,50
+96,WN-1990-BEA-0096-81J,white,France,Beaujolais,Beaujolais-Villages,1990,"Muscadet, Tempranillo, Albarino",14.3,1.5,sweet,3,5,80.8,87.06,Chateau Picard,11
+97,WN-2011-RIA-0097-RHV,red,Spain,Rias Baixas,Rias Baixas DO,2011,"Cabernet Sauvignon, Pinot Noir, Zinfandel",13.4,1.5,off-dry,3,4,81.5,10.69,Marani Joubert,106
+98,WN-1988-PIE-0098-85P,white,Italy,Piedmont,Barbaresco,1988,"Sauvignon Blanc, Cabernet Sauvignon",11.5,0.375,off-dry,1,3,89.0,18.38,Maison Chauveau,74
+99,WN-1990-PIE-0099-VBK,orange,Italy,Piedmont,Langhe,1990,"Sauvignon Blanc, Chenin Blanc",13.5,0.75,off-dry,1,1,98.9,53.02,Bodegas Moulin,55
+100,WN-1986-RIB-0100-KNQ,orange,Spain,Ribera del Duero,Ribera del Duero DO,1986,"Tempranillo, Riesling",14.6,0.75,off-dry,1,4,81.0,58.37,Winery Goncalves,141
+101,WN-1986-TUS-0101-ELR,red,Italy,Tuscany,Brunello di Montalcino,1986,"Sangiovese, Rkatsiteli",13.8,0.75,dry,2,5,90.2,52.51,Maison Pinto,9
+102,WN-2019-KAK-0102-URA,red,Georgia,Kakheti,Kakheti PDO,2019,"Albarino, Syrah",16.0,1.5,off-dry,5,3,90.1,53.42,Marani Gillet,181
+103,WN-2024-CHA-0103-WW4,white,France,Champagne,Champagne AOC,2024,"Merlot, Zinfandel, Gewurztraminer",12.3,1.5,sweet,5,2,94.4,60.43,Domaine Dupuy,134
+104,WN-1992-KAK-0104-40Z,orange,Georgia,Kakheti,Kakheti PDO,1992,Chenin Blanc,12.6,0.375,off-dry,2,4,90.0,63.09,Marani Riou,223
+105,WN-2013-KAK-0105-R8K,red,Georgia,Kakheti,Kakheti PDO,2013,"Rkatsiteli, Albarino",13.3,1.5,off-dry,5,3,93.5,87.43,Cantina Lagarde,156
+106,WN-2025-KAK-0106-938,white,Georgia,Kakheti,Kakheti PDO,2025,Gewurztraminer,12.6,0.75,sweet,3,3,82.4,69.28,Estate Pascal,229
+107,WN-2025-TUS-0107-D0I,white,Italy,Tuscany,Chianti Classico,2025,Sangiovese,15.6,1.5,off-dry,4,2,84.0,56.16,Cantina Vasseur,35
+108,WN-1986-KAK-0108-X1K,red,Georgia,Kakheti,Kakheti PDO,1986,"Rkatsiteli, Gewurztraminer",11.5,0.375,dry,5,2,88.1,93.83,Marani Pottier,122
+109,WN-1994-BOR-0109-BKV,red,France,Bordeaux,Pauillac,1994,"Grenache, Albarino, Nebbiolo",15.4,0.375,dry,4,4,83.7,76.16,Cantina Germain,224
+110,WN-2014-VEN-0110-02U,white,Italy,Veneto,Soave,2014,"Gewurztraminer, Tempranillo, Sauvignon Blanc",13.3,0.375,dry,3,2,94.6,66.59,Domaine Lecoq,3
+111,WN-2012-KAK-0111-QJL,orange,Georgia,Kakheti,Kakheti PDO,2012,"Viognier, Syrah",14.3,0.375,dry,4,3,98.7,5.65,Estate Diallo,60
+112,WN-2024-PRO-0112-E6K,orange,France,Provence,Cotes de Provence,2024,Grenache,14.3,0.75,off-dry,2,4,93.7,92.7,Cantina Lefèvre,176
+113,WN-2010-KAK-0113-I15,white,Georgia,Kakheti,Kakheti PDO,2010,Chenin Blanc,14.7,1.5,off-dry,4,5,98.3,76.95,Bodegas Rolland,195
+114,WN-1984-RIA-0114-YZR,orange,Spain,Rias Baixas,Rias Baixas DO,1984,"Pinot Gris, Grenache, Cabernet Sauvignon",15.5,0.375,sweet,5,2,83.3,86.18,Marani David,29
+115,WN-1988-RIO-0115-CPZ,orange,Spain,Rioja,Rioja DOCa,1988,"Nebbiolo, Chenin Blanc, Muscadet",11.3,0.75,sweet,3,1,87.9,82.56,Bodegas Gomes,148
+116,WN-1982-BOR-0116-C85,white,France,Bordeaux,Medoc,1982,"Nebbiolo, Albarino",14.8,1.5,sweet,4,3,99.9,41.34,Estate Maréchal,96
+117,WN-2014-TUS-0117-NIQ,white,Italy,Tuscany,Brunello di Montalcino,2014,"Sauvignon Blanc, Tempranillo",14.6,0.375,dry,1,3,89.3,73.31,Estate Royer,136
+118,WN-1982-SIC-0118-0OI,white,Italy,Sicily,Etna,1982,"Nebbiolo, Zinfandel, Merlot",12.2,0.375,dry,5,1,88.9,68.84,Maison François,62
+119,WN-1994-LOI-0119-KC8,orange,France,Loire,Sancerre,1994,"Muscadet, Rkatsiteli, Malbec",14.0,1.5,off-dry,2,3,97.5,98.64,Bodegas Lecomte,105
+120,WN-1983-KAK-0120-4KZ,red,Georgia,Kakheti,Kakheti PDO,1983,"Malbec, Syrah",14.9,0.75,sweet,4,4,83.0,40.76,Marani Duhamel,61
+121,WN-2006-BEA-0121-JYV,white,France,Beaujolais,Moulin-a-Vent,2006,"Sauvignon Blanc, Tempranillo, Syrah",12.2,0.375,off-dry,1,4,96.9,13.78,Bodegas Wagner,13
+122,WN-1993-KAK-0122-6T1,red,Georgia,Kakheti,Kakheti PDO,1993,"Pinot Noir, Merlot",12.1,0.375,sweet,1,4,98.3,71.08,Bodegas Gomes,101
+123,WN-1999-RIA-0123-UHF,red,Spain,Rias Baixas,Rias Baixas DO,1999,"Sangiovese, Sauvignon Blanc",15.4,0.75,dry,4,3,98.3,40.22,Estate Lecomte,11
+124,WN-1992-RIB-0124-G2G,orange,Spain,Ribera del Duero,Ribera del Duero DO,1992,"Semillon, Syrah",13.8,0.375,off-dry,5,3,85.1,83.05,Marani Bègue,117
+125,WN-2013-RIO-0125-FHQ,white,Spain,Rioja,Rioja DOCa,2013,Viognier,15.7,1.5,dry,1,4,82.7,64.92,Chateau Didier,181
+126,WN-1981-RIA-0126-7G7,orange,Spain,Rias Baixas,Rias Baixas DO,1981,Cabernet Sauvignon,13.8,0.375,dry,5,3,90.7,32.24,Estate Delaunay,206
+127,WN-2019-KAK-0127-Y4X,orange,Georgia,Kakheti,Kakheti PDO,2019,"Riesling, Sangiovese, Malbec",15.0,0.375,off-dry,4,4,91.3,99.07,Bodegas Weiss,76
+128,WN-2004-BOR-0128-996,white,France,Bordeaux,Medoc,2004,"Cabernet Sauvignon, Gewurztraminer",11.3,0.375,sweet,2,1,90.0,46.22,Winery Albert,144
+129,WN-1997-KAK-0129-HF3,red,Georgia,Kakheti,Kakheti PDO,1997,Viognier,14.4,0.75,sweet,5,1,83.6,85.79,Maison Meunier,246
+130,WN-2016-PRO-0130-0MD,white,France,Provence,Coteaux d'Aix,2016,Muscadet,15.2,0.75,sweet,5,3,87.7,75.28,Chateau Aubry,128
+131,WN-2000-JUR-0131-VN1,red,France,Jura,Arbois,2000,Malbec,12.4,0.75,off-dry,2,3,91.1,40.67,Domaine Joly,174
+132,WN-1997-KAK-0132-MJE,white,Georgia,Kakheti,Kakheti PDO,1997,Syrah,14.6,1.5,dry,4,3,87.2,13.69,Cantina Hoarau,113
+133,WN-1986-RIB-0133-20U,white,Spain,Ribera del Duero,Ribera del Duero DO,1986,Viognier,12.8,0.375,sweet,5,3,97.3,6.17,Estate Vallet,99
+134,WN-1988-KAK-0134-JIW,orange,Georgia,Kakheti,Kakheti PDO,1988,"Pinot Noir, Riesling",13.5,0.375,dry,4,3,88.4,51.0,Chateau Guilbert,92
+135,WN-1988-KAK-0135-L8H,red,Georgia,Kakheti,Kakheti PDO,1988,"Merlot, Syrah",12.7,1.5,off-dry,3,4,86.7,82.47,Domaine Tanguy,76
+136,WN-1998-KAK-0136-9G1,white,Georgia,Kakheti,Kakheti PDO,1998,"Malbec, Gewurztraminer, Muscadet",14.9,0.75,off-dry,3,4,87.3,93.55,Bodegas Charles,151
+137,WN-2008-RIA-0137-NQV,orange,Spain,Rias Baixas,Rias Baixas DO,2008,"Viognier, Nebbiolo",14.4,0.375,sweet,3,2,85.1,19.64,Estate Letellier,202
+138,WN-2014-RIA-0138-XB9,orange,Spain,Rias Baixas,Rias Baixas DO,2014,Sangiovese,14.5,1.5,sweet,1,1,95.4,67.47,Winery Mary,42
+139,WN-1986-RIB-0139-O1V,orange,Spain,Ribera del Duero,Ribera del Duero DO,1986,Pinot Gris,12.3,1.5,sweet,5,5,91.6,59.65,Marani Gilbert,95
+140,WN-2010-KAK-0140-RRP,orange,Georgia,Kakheti,Kakheti PDO,2010,Pinot Noir,13.1,0.375,dry,2,3,86.2,48.26,Bodegas Guillon,133
+141,WN-1999-RIB-0141-FU8,white,Spain,Ribera del Duero,Ribera del Duero DO,1999,Pinot Gris,11.1,0.75,sweet,1,2,98.6,75.35,Domaine Alexandre,141
+142,WN-1991-RIA-0142-13C,white,Spain,Rias Baixas,Rias Baixas DO,1991,"Nebbiolo, Syrah, Merlot",14.7,0.375,off-dry,5,4,87.8,71.95,Bodegas Étienne,71
+143,WN-1992-KAK-0143-MQG,orange,Georgia,Kakheti,Kakheti PDO,1992,"Pinot Gris, Riesling",14.4,0.75,sweet,3,5,87.8,42.29,Chateau Vasseur,89
+144,WN-1988-TUS-0144-GWY,orange,Italy,Tuscany,Bolgheri,1988,"Pinot Gris, Semillon",12.5,0.375,off-dry,2,5,87.8,61.66,Estate Dos Santos,108
+145,WN-1998-KAK-0145-NUX,red,Georgia,Kakheti,Kakheti PDO,1998,Albarino,12.6,0.75,sweet,1,3,99.0,51.04,Bodegas Grégoire,208
+146,WN-2011-RIB-0146-01T,white,Spain,Ribera del Duero,Ribera del Duero DO,2011,Viognier,13.8,0.375,off-dry,1,3,84.5,32.42,Marani Teixeira,144
+147,WN-2014-PRO-0147-5D5,white,France,Provence,Cotes de Provence,2014,Chenin Blanc,13.7,0.75,dry,2,3,97.5,8.06,Cantina Robin,89
+148,WN-2025-KAK-0148-9KU,orange,Georgia,Kakheti,Kakheti PDO,2025,"Malbec, Nebbiolo, Albarino",14.1,0.375,dry,1,5,87.0,31.7,Domaine Faivre,82
+149,WN-1983-LOI-0149-FWW,red,France,Loire,Chinon,1983,"Malbec, Tempranillo",14.5,0.375,dry,2,3,96.6,77.34,Estate Rousseau,125
+150,WN-2005-RIO-0150-CTH,red,Spain,Rioja,Rioja DOCa,2005,"Riesling, Sangiovese, Chenin Blanc",15.8,0.75,sweet,1,1,94.6,48.55,Winery Masson,217
+151,WN-2000-KAK-0151-E4P,white,Georgia,Kakheti,Kakheti PDO,2000,"Rkatsiteli, Cabernet Sauvignon",13.9,1.5,off-dry,3,1,80.9,64.49,Marani Brunet,4
+152,WN-2021-RIO-0152-W01,red,Spain,Rioja,Rioja DOCa,2021,"Albarino, Riesling",11.5,0.75,off-dry,1,3,93.3,66.65,Maison Techer,101
+153,WN-1993-BOR-0153-PEC,red,France,Bordeaux,Saint-Emilion,1993,"Viognier, Tempranillo",14.0,1.5,sweet,4,1,80.2,37.64,Chateau Leroux,220
+154,WN-2000-BOR-0154-MH0,red,France,Bordeaux,Saint-Emilion,2000,"Pinot Noir, Tempranillo",12.9,0.375,sweet,2,1,90.6,5.81,Domaine Bazin,112
+155,WN-1986-RIO-0155-TVV,orange,Spain,Rioja,Rioja DOCa,1986,Pinot Gris,13.9,0.75,off-dry,4,3,95.8,28.54,Chateau Briand,63
+156,WN-2013-PRO-0156-5AM,red,France,Provence,Coteaux d'Aix,2013,"Sauvignon Blanc, Chardonnay, Syrah",12.5,0.375,dry,4,4,82.3,52.46,Chateau Godard,135
+157,WN-2003-KAK-0157-KZ1,red,Georgia,Kakheti,Kakheti PDO,2003,"Albarino, Gewurztraminer, Viognier",11.1,0.375,dry,3,2,80.8,10.74,Estate Andre,129
+158,WN-1997-RIO-0158-Z04,white,Spain,Rioja,Rioja DOCa,1997,Pinot Noir,11.4,0.375,dry,5,3,87.8,65.26,Chateau Collin,79
+159,WN-1987-KAK-0159-RMS,orange,Georgia,Kakheti,Kakheti PDO,1987,"Zinfandel, Malbec",11.3,1.5,sweet,2,1,80.3,18.04,Maison Weber,41
+160,WN-1988-SIC-0160-QMR,orange,Italy,Sicily,Nero d'Avola IGT,1988,"Riesling, Pinot Gris, Merlot",12.7,0.75,off-dry,5,1,85.3,97.63,Chateau Godard,127
+161,WN-1996-KAK-0161-QNF,white,Georgia,Kakheti,Kakheti PDO,1996,Muscadet,14.4,0.375,dry,5,1,80.9,86.98,Bodegas Bigot,11
+162,WN-1995-RIO-0162-SBO,red,Spain,Rioja,Rioja DOCa,1995,"Rkatsiteli, Riesling",15.1,1.5,off-dry,1,5,93.5,10.0,Bodegas Evrard,205
+163,WN-1985-PIE-0163-10T,white,Italy,Piedmont,Barbaresco,1985,"Chenin Blanc, Merlot, Sangiovese",12.0,1.5,off-dry,5,2,89.3,61.21,Marani Deschamps,197
+164,WN-1981-KAK-0164-H9P,white,Georgia,Kakheti,Kakheti PDO,1981,Cabernet Sauvignon,12.7,1.5,dry,3,1,95.2,40.75,Cantina Lenoir,26
+165,WN-1982-KAK-0165-VCX,white,Georgia,Kakheti,Kakheti PDO,1982,Sauvignon Blanc,13.1,0.75,off-dry,1,5,81.9,17.68,Estate Dubois,19
+166,WN-2000-KAK-0166-FQO,orange,Georgia,Kakheti,Kakheti PDO,2000,"Rkatsiteli, Malbec",13.3,0.375,dry,2,2,95.6,60.55,Domaine Bazin,27
+167,WN-1999-SIC-0167-Z8O,white,Italy,Sicily,Nero d'Avola IGT,1999,"Riesling, Pinot Gris",11.5,1.5,off-dry,5,1,84.3,86.37,Domaine Mace,23
+168,WN-1981-PIE-0168-39E,red,Italy,Piedmont,Langhe,1981,"Chenin Blanc, Cabernet Sauvignon",14.7,0.375,dry,4,1,96.1,18.28,Maison Noël,15
+169,WN-2017-TUS-0169-BQG,orange,Italy,Tuscany,Bolgheri,2017,"Viognier, Merlot",16.0,0.375,sweet,4,2,81.8,85.49,Winery Normand,31
+170,WN-2011-RIA-0170-WWX,red,Spain,Rias Baixas,Rias Baixas DO,2011,Syrah,14.4,0.375,off-dry,2,2,85.5,47.37,Domaine Regnier,8
+171,WN-1983-RIA-0171-2MT,red,Spain,Rias Baixas,Rias Baixas DO,1983,Riesling,12.9,0.75,dry,5,2,92.6,81.21,Maison Hamel,97
+172,WN-1997-PIE-0172-VIF,white,Italy,Piedmont,Barbaresco,1997,Merlot,12.6,0.375,dry,3,1,96.2,49.81,Winery Da Costa,196
+173,WN-1994-KAK-0173-843,red,Georgia,Kakheti,Kakheti PDO,1994,"Syrah, Sangiovese, Albarino",11.9,1.5,off-dry,3,5,80.6,71.55,Domaine Lecoq,144
+174,WN-1982-SIC-0174-EZ7,red,Italy,Sicily,Nero d'Avola IGT,1982,Grenache,12.2,0.375,dry,5,4,80.0,92.2,Bodegas Clerc,206
+175,WN-2017-RHO-0175-F82,red,France,Rhone,Hermitage,2017,"Tempranillo, Pinot Gris, Sauvignon Blanc",15.3,0.375,off-dry,4,5,82.0,33.67,Domaine Leblanc,249
+176,WN-1994-SIC-0176-98B,orange,Italy,Sicily,Nero d'Avola IGT,1994,"Muscadet, Albarino, Syrah",12.5,1.5,off-dry,2,2,94.6,95.13,Estate Marie,217
+177,WN-2011-SIC-0177-AHY,red,Italy,Sicily,Etna,2011,Rkatsiteli,14.7,0.375,off-dry,3,2,92.7,96.49,Winery Cousin,114
+178,WN-1980-TUS-0178-32U,orange,Italy,Tuscany,Bolgheri,1980,Syrah,13.2,0.75,dry,4,4,97.6,38.37,Estate Gay,25
+179,WN-1984-KAK-0179-79M,orange,Georgia,Kakheti,Kakheti PDO,1984,Pinot Noir,11.1,0.75,dry,1,3,83.4,40.67,Chateau Barbier,140
+180,WN-2007-RIA-0180-KIB,orange,Spain,Rias Baixas,Rias Baixas DO,2007,"Albarino, Zinfandel, Nebbiolo",11.8,0.375,off-dry,2,2,88.2,57.64,Cantina De Sousa,169
+181,WN-2003-RIO-0181-KC4,red,Spain,Rioja,Rioja DOCa,2003,Nebbiolo,11.4,1.5,sweet,5,4,84.0,7.44,Domaine Bernard,163
+182,WN-2022-RIB-0182-IJC,orange,Spain,Ribera del Duero,Ribera del Duero DO,2022,"Viognier, Cabernet Sauvignon",12.9,0.75,off-dry,3,2,88.9,30.01,Marani Mace,67
+183,WN-2014-BOR-0183-KO4,white,France,Bordeaux,Graves,2014,"Muscadet, Semillon",13.8,0.75,sweet,4,5,93.7,93.95,Bodegas Fouquet,121
+184,WN-1991-KAK-0184-VL0,white,Georgia,Kakheti,Kakheti PDO,1991,Chardonnay,15.0,0.375,dry,4,1,99.8,46.36,Domaine Charles,213
+185,WN-2015-CHA-0185-FV1,white,France,Champagne,Champagne AOC,2015,"Riesling, Sauvignon Blanc",13.3,0.375,sweet,5,5,90.5,44.86,Estate Charrier,38
+186,WN-1998-BUR-0186-VYB,red,France,Burgundy,Maconnais,1998,"Sangiovese, Nebbiolo, Riesling",12.9,0.75,sweet,5,4,80.7,31.16,Domaine Ledoux,158
+187,WN-1997-KAK-0187-K01,red,Georgia,Kakheti,Kakheti PDO,1997,"Merlot, Rkatsiteli",15.1,0.75,off-dry,3,4,97.2,70.06,Bodegas Colin,34
+188,WN-2021-VEN-0188-LSE,orange,Italy,Veneto,Soave,2021,Chardonnay,13.2,0.75,sweet,4,5,97.3,83.0,Domaine Guillou,16
+189,WN-1992-LOI-0189-7YI,red,France,Loire,Muscadet,1992,Semillon,11.2,0.375,off-dry,2,3,87.4,49.1,Estate Gautier,162
+190,WN-2017-RIO-0190-HIH,orange,Spain,Rioja,Rioja DOCa,2017,"Sangiovese, Malbec, Albarino",15.2,0.75,sweet,1,3,80.5,9.72,Bodegas Toussaint,219
+191,WN-2023-RIA-0191-8XP,red,Spain,Rias Baixas,Rias Baixas DO,2023,Gewurztraminer,15.6,1.5,dry,5,1,84.5,62.79,Cantina Léger,182
+192,WN-1993-VEN-0192-XVK,white,Italy,Veneto,Valpolicella,1993,"Pinot Noir, Sauvignon Blanc",15.1,0.75,sweet,1,1,90.2,67.92,Winery Riou,143
+193,WN-1997-RIO-0193-43O,red,Spain,Rioja,Rioja DOCa,1997,"Rkatsiteli, Riesling, Zinfandel",14.3,1.5,off-dry,2,2,90.3,27.83,Maison Guillou,206
+194,WN-1998-KAK-0194-7MK,white,Georgia,Kakheti,Kakheti PDO,1998,"Nebbiolo, Syrah",12.9,0.375,sweet,5,2,86.9,72.77,Marani Raynaud,232
+195,WN-2010-KAK-0195-2LJ,red,Georgia,Kakheti,Kakheti PDO,2010,Riesling,14.6,1.5,dry,3,1,84.4,26.22,Cantina Philippe,107
+196,WN-1983-RIO-0196-9M9,red,Spain,Rioja,Rioja DOCa,1983,"Muscadet, Malbec, Viognier",13.4,0.375,sweet,1,4,90.6,44.25,Domaine Brunet,35
+197,WN-1985-KAK-0197-22E,red,Georgia,Kakheti,Kakheti PDO,1985,"Rkatsiteli, Albarino",12.6,0.375,dry,4,3,84.2,78.49,Domaine Besson,125
+198,WN-2010-RIB-0198-A0I,red,Spain,Ribera del Duero,Ribera del Duero DO,2010,"Merlot, Grenache",13.7,1.5,off-dry,1,3,95.1,55.45,Maison Ledoux,173
+199,WN-2004-SIC-0199-59M,red,Italy,Sicily,Etna,2004,"Muscadet, Pinot Noir, Albarino",11.3,0.375,off-dry,3,4,94.6,61.66,Winery Renard,111
+200,WN-2005-SIC-0200-5JT,white,Italy,Sicily,Etna,2005,Semillon,12.1,0.375,dry,1,5,90.1,16.7,Maison Gimenez,96
+201,WN-1983-BOR-0201-PDS,orange,France,Bordeaux,Saint-Emilion,1983,"Pinot Gris, Nebbiolo, Chenin Blanc",12.9,1.5,off-dry,4,2,84.1,70.15,Maison Merle,77
+202,WN-2012-KAK-0202-ZKB,red,Georgia,Kakheti,Kakheti PDO,2012,"Zinfandel, Pinot Gris, Pinot Noir",11.6,0.375,off-dry,2,5,84.0,29.98,Bodegas Laporte,91
+203,WN-1995-KAK-0203-06X,red,Georgia,Kakheti,Kakheti PDO,1995,Merlot,14.4,0.375,sweet,4,2,99.0,79.05,Chateau Martin,185
+204,WN-1983-PIE-0204-4XG,red,Italy,Piedmont,Barbaresco,1983,Albarino,15.4,0.75,off-dry,3,4,94.8,14.02,Maison Joseph,2
+205,WN-1985-RIA-0205-5GE,orange,Spain,Rias Baixas,Rias Baixas DO,1985,"Rkatsiteli, Albarino",11.6,0.75,off-dry,3,4,93.8,50.43,Estate Breton,166
+206,WN-2006-LOI-0206-7EO,white,France,Loire,Vouvray,2006,"Gewurztraminer, Muscadet, Chenin Blanc",11.9,0.75,off-dry,5,1,97.3,88.6,Domaine Camus,123
+207,WN-1980-PRO-0207-0RX,orange,France,Provence,Cotes de Provence,1980,"Sauvignon Blanc, Muscadet, Zinfandel",12.1,1.5,off-dry,5,5,93.8,63.73,Estate Moreau,169
+208,WN-1980-RIO-0208-IXO,white,Spain,Rioja,Rioja DOCa,1980,"Albarino, Sauvignon Blanc, Gewurztraminer",15.3,0.375,dry,4,3,84.8,97.16,Maison Marie,129
+209,WN-2016-LAN-0209-DVW,red,France,Languedoc,Minervois,2016,"Viognier, Gewurztraminer",13.2,0.375,off-dry,1,1,88.1,8.4,Maison Étienne,211
+210,WN-2003-KAK-0210-DXA,red,Georgia,Kakheti,Kakheti PDO,2003,Semillon,15.2,0.75,sweet,5,5,89.5,67.43,Marani Le Gall,29
+211,WN-1986-PIE-0211-4H3,white,Italy,Piedmont,Barolo,1986,Albarino,13.5,1.5,sweet,4,1,85.1,23.61,Chateau Dupuis,238
+212,WN-1982-TUS-0212-V72,white,Italy,Tuscany,Chianti Classico,1982,"Muscadet, Pinot Gris, Chenin Blanc",13.3,1.5,sweet,2,4,80.1,74.94,Estate Boyer,214
+213,WN-2004-KAK-0213-2EV,orange,Georgia,Kakheti,Kakheti PDO,2004,"Zinfandel, Malbec, Rkatsiteli",13.5,0.75,off-dry,5,2,85.5,96.54,Cantina Guillot,115
+214,WN-2015-PIE-0214-TWZ,red,Italy,Piedmont,Barolo,2015,"Chardonnay, Malbec, Zinfandel",14.1,0.75,sweet,3,2,99.6,66.76,Domaine Duhamel,128
+215,WN-2023-RIA-0215-1FK,red,Spain,Rias Baixas,Rias Baixas DO,2023,"Cabernet Sauvignon, Pinot Noir, Nebbiolo",15.0,1.5,dry,1,4,82.9,68.67,Bodegas Chevalier,68
+216,WN-1993-KAK-0216-22K,orange,Georgia,Kakheti,Kakheti PDO,1993,"Grenache, Sangiovese, Chenin Blanc",11.5,1.5,sweet,5,2,94.8,58.32,Bodegas Clément,130
+217,WN-2006-CHA-0217-V0H,orange,France,Champagne,Champagne AOC,2006,"Rkatsiteli, Cabernet Sauvignon, Grenache",11.1,0.75,dry,5,4,96.6,91.59,Winery Foucher,193
+218,WN-1991-KAK-0218-4AQ,white,Georgia,Kakheti,Kakheti PDO,1991,"Viognier, Albarino, Zinfandel",14.7,0.375,off-dry,1,4,85.6,30.1,Domaine Vallée,149
+219,WN-2018-LOI-0219-HGC,orange,France,Loire,Sancerre,2018,Malbec,14.1,1.5,off-dry,4,5,91.0,11.92,Winery Muller,134
+220,WN-1985-KAK-0220-39A,orange,Georgia,Kakheti,Kakheti PDO,1985,"Semillon, Chardonnay",14.3,0.75,off-dry,3,2,99.0,63.74,Marani Samson,143
+221,WN-2021-VEN-0221-S1S,orange,Italy,Veneto,Prosecco,2021,"Zinfandel, Semillon, Grenache",14.4,0.75,off-dry,1,4,85.1,73.78,Maison Rossi,233
+222,WN-1998-RIB-0222-Y4H,orange,Spain,Ribera del Duero,Ribera del Duero DO,1998,"Chardonnay, Rkatsiteli, Sauvignon Blanc",11.4,0.375,dry,5,5,80.1,11.22,Bodegas Gosselin,221
+223,WN-2023-RIA-0223-36O,red,Spain,Rias Baixas,Rias Baixas DO,2023,Merlot,13.3,0.75,dry,1,1,81.1,80.45,Chateau Marchand,147
+224,WN-1981-RIB-0224-SKY,orange,Spain,Ribera del Duero,Ribera del Duero DO,1981,"Pinot Gris, Cabernet Sauvignon",11.0,1.5,sweet,1,5,80.9,85.58,Winery Rodriguez,237
+225,WN-2004-PRO-0225-585,orange,France,Provence,Cotes de Provence,2004,"Merlot, Gewurztraminer",11.8,0.375,dry,4,5,85.9,65.23,Cantina Delmas,173
+226,WN-2015-TUS-0226-00H,orange,Italy,Tuscany,Bolgheri,2015,Pinot Gris,11.2,1.5,sweet,4,5,91.0,13.09,Bodegas Ollivier,191
+227,WN-1994-KAK-0227-D0R,red,Georgia,Kakheti,Kakheti PDO,1994,"Riesling, Chardonnay, Pinot Gris",11.9,1.5,dry,5,4,92.9,11.95,Chateau Dias,64
+228,WN-1986-SIC-0228-U38,white,Italy,Sicily,Etna,1986,"Zinfandel, Viognier",15.5,0.75,off-dry,4,3,92.3,34.04,Domaine Gaillard,144
+229,WN-1994-JUR-0229-TGV,red,France,Jura,Arbois,1994,"Malbec, Nebbiolo, Riesling",15.2,0.375,sweet,3,4,89.3,39.08,Cantina Aubry,124
+230,WN-2020-KAK-0230-BJ6,orange,Georgia,Kakheti,Kakheti PDO,2020,Viognier,15.5,1.5,sweet,1,5,91.6,78.07,Bodegas Evrard,232
+231,WN-2003-RIA-0231-I89,orange,Spain,Rias Baixas,Rias Baixas DO,2003,"Semillon, Muscadet",14.7,0.75,dry,4,5,90.2,42.69,Maison Seguin,169
+232,WN-1990-KAK-0232-JIY,orange,Georgia,Kakheti,Kakheti PDO,1990,Muscadet,15.7,1.5,dry,4,3,80.8,77.34,Bodegas Briand,16
+233,WN-2009-VEN-0233-XNX,white,Italy,Veneto,Valpolicella,2009,Grenache,15.9,0.75,dry,5,3,96.7,30.02,Domaine Lecomte,96
+234,WN-2013-VEN-0234-SKF,white,Italy,Veneto,Prosecco,2013,"Sangiovese, Malbec",13.4,0.75,sweet,1,5,97.6,46.79,Bodegas Gimenez,19
+235,WN-1994-TUS-0235-BUF,orange,Italy,Tuscany,Bolgheri,1994,"Rkatsiteli, Pinot Gris",13.4,0.75,off-dry,2,5,83.2,84.17,Maison Faivre,62
+236,WN-1983-BUR-0236-DQ9,red,France,Burgundy,Maconnais,1983,Riesling,15.6,1.5,off-dry,5,5,92.8,88.46,Cantina Chauveau,242
+237,WN-2018-KAK-0237-VIN,white,Georgia,Kakheti,Kakheti PDO,2018,Muscadet,15.1,0.375,sweet,5,3,83.4,70.13,Marani Blot,152
+238,WN-1989-ALS-0238-V36,orange,France,Alsace,Alsace AOC,1989,"Pinot Gris, Albarino, Gewurztraminer",15.5,1.5,dry,5,5,95.0,13.85,Domaine Bourgeois,230
+239,WN-2003-RIA-0239-ERI,white,Spain,Rias Baixas,Rias Baixas DO,2003,Sauvignon Blanc,13.1,0.75,off-dry,3,5,96.1,91.25,Chateau Delannoy,108
+240,WN-1992-VEN-0240-NFX,red,Italy,Veneto,Valpolicella,1992,Merlot,13.9,0.375,sweet,1,4,93.1,70.34,Winery Langlois,104
+241,WN-2003-VEN-0241-MZ0,orange,Italy,Veneto,Soave,2003,"Riesling, Syrah, Chardonnay",13.1,1.5,off-dry,2,3,91.2,50.96,Cantina Alexandre,147
+242,WN-2024-ALS-0242-8AD,white,France,Alsace,Alsace AOC,2024,Pinot Gris,12.1,0.75,off-dry,5,5,93.9,72.15,Domaine Leconte,99
+243,WN-1985-RIA-0243-8C1,white,Spain,Rias Baixas,Rias Baixas DO,1985,Riesling,12.1,0.375,sweet,1,4,98.6,43.06,Cantina Delahaye,182
+244,WN-1992-RIB-0244-X9D,red,Spain,Ribera del Duero,Ribera del Duero DO,1992,"Sauvignon Blanc, Pinot Noir, Chardonnay",11.2,1.5,sweet,5,2,92.3,69.03,Winery Besson,61
+245,WN-2005-RIB-0245-8JV,white,Spain,Ribera del Duero,Ribera del Duero DO,2005,"Chardonnay, Sauvignon Blanc, Merlot",14.7,0.375,dry,5,3,94.5,58.12,Winery Navarro,88
+246,WN-1996-RIB-0246-T2J,red,Spain,Ribera del Duero,Ribera del Duero DO,1996,Nebbiolo,13.5,1.5,dry,5,3,86.8,16.12,Cantina Blondel,224
+247,WN-1995-RIA-0247-Z2O,red,Spain,Rias Baixas,Rias Baixas DO,1995,"Chenin Blanc, Malbec",15.5,0.375,off-dry,1,3,81.4,65.2,Bodegas Sauvage,173
+248,WN-1998-PRO-0248-8Y6,red,France,Provence,Coteaux d'Aix,1998,Syrah,14.4,0.75,dry,5,2,89.5,38.59,Cantina Mathieu,46
+249,WN-1996-KAK-0249-8RA,orange,Georgia,Kakheti,Kakheti PDO,1996,Semillon,12.0,0.375,sweet,3,2,95.6,16.39,Chateau Hoarau,173
+250,WN-2019-LAN-0250-SP7,white,France,Languedoc,Minervois,2019,"Gewurztraminer, Muscadet",15.3,0.75,dry,5,3,88.0,76.27,Domaine Jean,13
+251,WN-1991-VEN-0251-5GJ,red,Italy,Veneto,Soave,1991,"Pinot Gris, Sauvignon Blanc",13.3,1.5,dry,1,2,87.6,14.57,Winery Andre,156
+252,WN-2003-RIA-0252-EUI,white,Spain,Rias Baixas,Rias Baixas DO,2003,Gewurztraminer,13.1,0.75,sweet,3,3,97.1,31.56,Domaine Maillot,146
+253,WN-2004-SIC-0253-RJ4,white,Italy,Sicily,Nero d'Avola IGT,2004,Tempranillo,15.0,1.5,dry,4,1,83.5,52.46,Winery Lefebvre,201
+254,WN-1983-RIO-0254-AE5,orange,Spain,Rioja,Rioja DOCa,1983,Riesling,13.4,1.5,dry,4,3,85.2,39.23,Cantina Pruvost,88
+255,WN-2002-KAK-0255-G3M,orange,Georgia,Kakheti,Kakheti PDO,2002,"Sauvignon Blanc, Gewurztraminer",14.9,0.75,dry,4,5,85.7,65.01,Domaine Lenoir,222
+256,WN-1990-RIO-0256-5NV,red,Spain,Rioja,Rioja DOCa,1990,"Semillon, Rkatsiteli",12.6,0.75,sweet,3,5,92.9,30.77,Marani Rolland,199
+257,WN-1981-RIO-0257-5TA,red,Spain,Rioja,Rioja DOCa,1981,Semillon,14.3,1.5,sweet,1,2,83.3,14.79,Chateau Pruvost,239
+258,WN-2019-BOR-0258-SGB,red,France,Bordeaux,Graves,2019,Viognier,14.3,0.75,off-dry,2,2,94.8,47.1,Domaine Vasseur,33
+259,WN-2014-VEN-0259-XT6,red,Italy,Veneto,Valpolicella,2014,"Cabernet Sauvignon, Chenin Blanc",11.7,1.5,sweet,2,5,92.0,64.95,Estate Robert,134
+260,WN-1999-KAK-0260-78R,white,Georgia,Kakheti,Kakheti PDO,1999,"Nebbiolo, Riesling",11.8,0.375,dry,5,2,86.9,49.57,Maison Guérin,176
+261,WN-1980-RIB-0261-JPI,orange,Spain,Ribera del Duero,Ribera del Duero DO,1980,"Sangiovese, Chardonnay, Nebbiolo",15.4,0.75,off-dry,2,2,94.3,66.37,Estate Neveu,56
+262,WN-2014-PIE-0262-WGA,white,Italy,Piedmont,Barolo,2014,"Nebbiolo, Chardonnay",15.3,0.375,dry,3,1,92.7,63.68,Cantina Lefort,179
+263,WN-1998-LOI-0263-29Q,white,France,Loire,Vouvray,1998,"Tempranillo, Chenin Blanc",14.6,0.375,dry,2,1,89.9,37.48,Cantina Lopez,201
+264,WN-1983-TUS-0264-1P0,white,Italy,Tuscany,Brunello di Montalcino,1983,"Syrah, Viognier",13.7,0.375,dry,3,4,96.6,16.59,Bodegas Rolland,98
+265,WN-2013-KAK-0265-RKM,white,Georgia,Kakheti,Kakheti PDO,2013,"Chardonnay, Gewurztraminer, Syrah",14.4,0.75,off-dry,2,1,94.9,57.21,Chateau Mercier,64
+266,WN-2020-KAK-0266-2RV,red,Georgia,Kakheti,Kakheti PDO,2020,"Rkatsiteli, Merlot",11.8,0.75,sweet,1,4,95.8,5.85,Maison David,148
+267,WN-2011-ALS-0267-RLU,orange,France,Alsace,Alsace AOC,2011,Zinfandel,12.7,1.5,dry,1,3,92.9,71.63,Chateau Rémy,32
+268,WN-1992-VEN-0268-UTL,red,Italy,Veneto,Soave,1992,Syrah,12.8,0.375,off-dry,1,4,94.1,58.11,Marani Guérin,48
+269,WN-2013-SIC-0269-GA4,orange,Italy,Sicily,Etna,2013,Chenin Blanc,12.5,0.75,sweet,3,4,80.0,65.61,Estate Buisson,187
+270,WN-2022-KAK-0270-SC4,white,Georgia,Kakheti,Kakheti PDO,2022,"Syrah, Chardonnay, Sauvignon Blanc",14.4,1.5,dry,5,3,86.5,65.89,Chateau Gomez,24
+271,WN-1986-KAK-0271-HZA,white,Georgia,Kakheti,Kakheti PDO,1986,"Chardonnay, Pinot Gris",11.2,1.5,off-dry,4,5,92.5,61.08,Maison Lopes,93
+272,WN-2020-RIO-0272-K88,white,Spain,Rioja,Rioja DOCa,2020,Sangiovese,13.8,0.75,off-dry,1,5,85.3,8.86,Chateau Laroche,213
+273,WN-1992-ALS-0273-WMQ,orange,France,Alsace,Alsace AOC,1992,Sauvignon Blanc,14.3,1.5,sweet,2,5,95.0,44.44,Chateau Vallée,196
+274,WN-1991-RIO-0274-N1P,orange,Spain,Rioja,Rioja DOCa,1991,"Syrah, Sauvignon Blanc, Rkatsiteli",14.3,1.5,sweet,4,3,98.0,57.26,Winery Benoit,216
+275,WN-2004-SIC-0275-KH4,white,Italy,Sicily,Etna,2004,"Riesling, Sangiovese, Chenin Blanc",13.2,0.75,dry,1,3,91.9,54.17,Cantina Gimenez,1
+276,WN-1982-SIC-0276-700,red,Italy,Sicily,Etna,1982,"Sangiovese, Tempranillo",11.7,0.75,sweet,2,2,85.1,33.53,Estate Payet,145
+277,WN-2018-KAK-0277-XVA,orange,Georgia,Kakheti,Kakheti PDO,2018,"Pinot Noir, Grenache, Muscadet",12.9,0.375,off-dry,3,4,88.3,87.44,Bodegas Ramos,191
+278,WN-2013-RIO-0278-QVS,white,Spain,Rioja,Rioja DOCa,2013,Rkatsiteli,13.7,0.375,off-dry,5,2,83.1,69.0,Estate Masse,248
+279,WN-1989-RIB-0279-Z1R,white,Spain,Ribera del Duero,Ribera del Duero DO,1989,Rkatsiteli,11.4,1.5,sweet,1,5,88.0,13.08,Estate Verdier,198
+280,WN-2015-RIB-0280-GMX,red,Spain,Ribera del Duero,Ribera del Duero DO,2015,"Sauvignon Blanc, Semillon, Zinfandel",11.4,0.75,off-dry,5,1,82.3,44.29,Winery Reynaud,89
+281,WN-2019-KAK-0281-B87,red,Georgia,Kakheti,Kakheti PDO,2019,Chenin Blanc,11.2,0.375,dry,3,2,95.2,86.01,Chateau Berger,189
+282,WN-1999-JUR-0282-0FZ,white,France,Jura,Arbois,1999,"Gewurztraminer, Merlot",12.7,1.5,sweet,2,2,90.9,76.28,Marani Reynaud,159
+283,WN-1996-RIA-0283-XX6,red,Spain,Rias Baixas,Rias Baixas DO,1996,Grenache,12.4,1.5,sweet,3,1,89.3,94.79,Chateau Cordier,99
+284,WN-2021-RHO-0284-SQ7,white,France,Rhone,Cote-Rotie,2021,"Semillon, Syrah",13.5,1.5,dry,3,4,97.3,55.5,Domaine Aubert,50
+285,WN-2001-ALS-0285-CJN,white,France,Alsace,Alsace AOC,2001,"Syrah, Albarino",11.1,1.5,off-dry,3,3,84.7,97.93,Cantina Gauthier,207
+286,WN-2001-SIC-0286-LVQ,white,Italy,Sicily,Etna,2001,"Tempranillo, Viognier",14.6,1.5,sweet,5,2,88.3,59.43,Estate Pereira,248
+287,WN-1988-KAK-0287-L50,red,Georgia,Kakheti,Kakheti PDO,1988,"Sauvignon Blanc, Tempranillo",13.2,0.375,sweet,5,2,86.3,57.95,Chateau Delmas,47
+288,WN-2008-RIB-0288-UII,orange,Spain,Ribera del Duero,Ribera del Duero DO,2008,"Malbec, Riesling, Tempranillo",14.9,0.375,dry,2,1,95.2,63.14,Cantina Perret,155
+289,WN-2024-JUR-0289-GB1,white,France,Jura,Arbois,2024,"Tempranillo, Sauvignon Blanc",15.2,0.75,sweet,3,2,97.0,51.69,Domaine Monnier,41
+290,WN-2022-VEN-0290-1V3,orange,Italy,Veneto,Prosecco,2022,Chardonnay,11.3,0.75,sweet,4,3,97.3,89.32,Estate Briand,103
+291,WN-2016-VEN-0291-N18,white,Italy,Veneto,Soave,2016,"Cabernet Sauvignon, Sauvignon Blanc, Grenache",13.6,0.75,off-dry,1,2,90.4,42.58,Maison Bouchet,142
+292,WN-1999-VEN-0292-SGV,orange,Italy,Veneto,Valpolicella,1999,"Chenin Blanc, Albarino",13.1,1.5,dry,5,2,89.3,66.38,Chateau Bigot,184
+293,WN-2000-KAK-0293-0DZ,orange,Georgia,Kakheti,Kakheti PDO,2000,"Merlot, Albarino",13.3,1.5,dry,4,1,85.0,70.71,Domaine Chauveau,183
+294,WN-2025-TUS-0294-5GZ,red,Italy,Tuscany,Bolgheri,2025,"Sauvignon Blanc, Zinfandel",15.7,0.75,sweet,4,1,95.4,91.66,Domaine Vincent,41
+295,WN-2008-PIE-0295-R3V,red,Italy,Piedmont,Barolo,2008,"Malbec, Albarino",11.6,0.375,dry,1,5,95.3,6.16,Marani Maillet,218
+296,WN-2009-KAK-0296-GBM,white,Georgia,Kakheti,Kakheti PDO,2009,"Chenin Blanc, Viognier",14.0,0.375,dry,5,3,92.4,57.97,Bodegas Guibert,12
+297,WN-1999-BUR-0297-QU7,white,France,Burgundy,Cote de Nuits,1999,"Viognier, Grenache",11.5,0.375,dry,3,5,93.2,71.49,Domaine Imbert,247
+298,WN-2004-PIE-0298-OHH,white,Italy,Piedmont,Barbaresco,2004,Nebbiolo,15.2,0.375,off-dry,4,2,82.4,86.64,Winery Perrin,134
+299,WN-2020-BUR-0299-USW,red,France,Burgundy,Cote de Nuits,2020,"Viognier, Gewurztraminer, Pinot Noir",13.1,0.75,off-dry,5,5,99.9,38.62,Domaine Bonnet,157
+300,WN-1992-KAK-0300-UWA,white,Georgia,Kakheti,Kakheti PDO,1992,Pinot Gris,11.1,1.5,dry,2,5,100.0,44.33,Winery Antoine,89
+301,WN-1999-PIE-0301-GLM,orange,Italy,Piedmont,Langhe,1999,"Sauvignon Blanc, Cabernet Sauvignon",12.6,0.375,dry,3,3,87.9,59.05,Maison Petitjean,213
+302,WN-2021-RIB-0302-SUY,orange,Spain,Ribera del Duero,Ribera del Duero DO,2021,Gewurztraminer,11.8,0.75,sweet,3,4,95.7,44.33,Maison Maillot,213
+303,WN-2002-ALS-0303-V51,orange,France,Alsace,Alsace AOC,2002,Tempranillo,12.4,0.375,off-dry,4,5,96.8,59.24,Estate Nicolas,47
+304,WN-2006-TUS-0304-BHD,orange,Italy,Tuscany,Chianti Classico,2006,Gewurztraminer,15.4,0.75,off-dry,3,2,90.5,21.63,Winery Menard,200
+305,WN-1989-LAN-0305-0QZ,orange,France,Languedoc,Faugeres,1989,Rkatsiteli,15.6,1.5,sweet,3,3,82.9,87.82,Domaine Olivier,52
+306,WN-1982-RHO-0306-HKT,red,France,Rhone,Cote-Rotie,1982,"Zinfandel, Viognier, Rkatsiteli",13.3,0.375,dry,5,3,80.4,77.06,Bodegas Aubert,82
+307,WN-1990-PRO-0307-72U,white,France,Provence,Coteaux d'Aix,1990,"Pinot Gris, Merlot",15.8,1.5,sweet,1,2,90.9,57.19,Cantina Regnier,36
+308,WN-2014-PRO-0308-VV4,orange,France,Provence,Cotes de Provence,2014,"Grenache, Tempranillo",11.1,1.5,dry,1,4,81.1,45.51,Domaine Pons,180
+309,WN-1999-RIA-0309-QYZ,red,Spain,Rias Baixas,Rias Baixas DO,1999,"Chardonnay, Cabernet Sauvignon",11.4,0.75,sweet,2,1,96.3,92.37,Marani Joly,24
+310,WN-1989-RIO-0310-R4K,red,Spain,Rioja,Rioja DOCa,1989,"Riesling, Sangiovese, Syrah",11.9,1.5,off-dry,3,4,89.8,11.21,Chateau Briand,89
+311,WN-2025-KAK-0311-FRC,white,Georgia,Kakheti,Kakheti PDO,2025,Rkatsiteli,13.8,0.375,off-dry,5,4,88.0,44.28,Bodegas Vidal,140
+312,WN-2014-RIB-0312-QLO,orange,Spain,Ribera del Duero,Ribera del Duero DO,2014,"Semillon, Albarino, Viognier",14.7,1.5,sweet,4,1,91.8,48.98,Chateau Lopes,210
+313,WN-2000-BUR-0313-WQH,red,France,Burgundy,Cote de Beaune,2000,"Malbec, Grenache",11.5,0.375,sweet,1,2,93.2,48.03,Cantina Pinto,99
+314,WN-2025-PIE-0314-Z3M,red,Italy,Piedmont,Barbaresco,2025,"Viognier, Muscadet",11.0,1.5,off-dry,2,3,81.2,90.6,Maison Menard,0
+315,WN-2024-ALS-0315-74F,orange,France,Alsace,Alsace AOC,2024,"Syrah, Rkatsiteli, Malbec",13.0,0.75,sweet,2,2,89.5,22.88,Estate Sanchez,215
+316,WN-1984-KAK-0316-GST,red,Georgia,Kakheti,Kakheti PDO,1984,"Merlot, Tempranillo, Gewurztraminer",14.3,0.375,dry,2,4,97.2,89.89,Estate Pichon,159
+317,WN-1991-RIB-0317-9UZ,white,Spain,Ribera del Duero,Ribera del Duero DO,1991,"Zinfandel, Merlot",13.9,1.5,dry,5,3,88.2,56.89,Winery Dias,8
+318,WN-1989-RIA-0318-W2L,white,Spain,Rias Baixas,Rias Baixas DO,1989,"Sauvignon Blanc, Riesling, Chenin Blanc",13.6,1.5,sweet,1,2,89.4,75.46,Chateau Perrin,175
+319,WN-2009-TUS-0319-2JW,orange,Italy,Tuscany,Chianti Classico,2009,"Gewurztraminer, Muscadet, Rkatsiteli",13.1,0.75,off-dry,2,1,93.9,61.78,Cantina Girard,186
+320,WN-2019-KAK-0320-J0V,orange,Georgia,Kakheti,Kakheti PDO,2019,Pinot Noir,13.4,0.375,sweet,1,3,85.0,63.5,Cantina Gilles,219
+321,WN-1991-KAK-0321-R91,white,Georgia,Kakheti,Kakheti PDO,1991,"Semillon, Gewurztraminer",11.9,1.5,dry,3,1,99.3,61.58,Domaine Gimenez,214
+322,WN-1993-RIA-0322-YOJ,orange,Spain,Rias Baixas,Rias Baixas DO,1993,"Sangiovese, Grenache, Riesling",14.8,0.375,dry,2,4,88.0,33.63,Bodegas Garcia,97
+323,WN-2008-RIO-0323-J2J,orange,Spain,Rioja,Rioja DOCa,2008,"Rkatsiteli, Sauvignon Blanc",14.4,0.375,dry,5,3,99.1,46.02,Cantina Morin,85
+324,WN-2023-RIB-0324-DDQ,white,Spain,Ribera del Duero,Ribera del Duero DO,2023,"Chardonnay, Sauvignon Blanc, Rkatsiteli",14.4,0.375,off-dry,5,1,93.5,84.01,Maison Chrétien,105
+325,WN-1982-PIE-0325-4EX,orange,Italy,Piedmont,Langhe,1982,Zinfandel,11.5,1.5,sweet,2,5,92.8,72.27,Chateau Gomez,22
+326,WN-1996-KAK-0326-N9J,red,Georgia,Kakheti,Kakheti PDO,1996,"Chenin Blanc, Viognier",14.2,0.75,off-dry,3,3,83.2,12.03,Maison Brun,97
+327,WN-2011-KAK-0327-PJB,white,Georgia,Kakheti,Kakheti PDO,2011,Zinfandel,13.0,1.5,off-dry,1,2,90.8,45.97,Chateau Cordier,233
+328,WN-2011-VEN-0328-AZ1,red,Italy,Veneto,Prosecco,2011,Malbec,14.2,0.375,sweet,4,3,83.0,36.33,Estate Vallée,147
+329,WN-2014-RIB-0329-KB9,orange,Spain,Ribera del Duero,Ribera del Duero DO,2014,Merlot,12.9,1.5,off-dry,1,5,90.7,99.2,Winery Leduc,174
+330,WN-1985-JUR-0330-DW0,white,France,Jura,Arbois,1985,"Pinot Noir, Chardonnay",11.9,0.375,off-dry,2,3,93.9,90.16,Winery Benoit,124
+331,WN-2017-ALS-0331-9BC,orange,France,Alsace,Alsace AOC,2017,Gewurztraminer,12.9,1.5,sweet,3,4,90.7,84.25,Marani Maréchal,247
+332,WN-1993-CHA-0332-6WI,orange,France,Champagne,Champagne AOC,1993,"Sauvignon Blanc, Chenin Blanc, Cabernet Sauvignon",11.7,1.5,dry,1,1,94.7,51.44,Maison Lopez,120
+333,WN-2020-KAK-0333-R2H,white,Georgia,Kakheti,Kakheti PDO,2020,Pinot Noir,15.1,0.375,off-dry,5,2,96.7,11.08,Chateau Gaillard,29
+334,WN-2000-RIB-0334-1GN,white,Spain,Ribera del Duero,Ribera del Duero DO,2000,Muscadet,13.7,0.75,dry,1,5,83.5,11.01,Cantina Gillet,36
+335,WN-1988-RIO-0335-X5O,red,Spain,Rioja,Rioja DOCa,1988,Malbec,14.1,0.375,dry,4,1,80.1,22.04,Chateau Bernard,180
+336,WN-2020-KAK-0336-3KP,orange,Georgia,Kakheti,Kakheti PDO,2020,"Sauvignon Blanc, Chenin Blanc",13.1,0.375,sweet,1,5,83.6,52.49,Chateau Perrier,160
+337,WN-2013-KAK-0337-G2Y,red,Georgia,Kakheti,Kakheti PDO,2013,Zinfandel,12.8,1.5,sweet,2,4,95.4,67.64,Cantina Aubry,13
+338,WN-2022-RIO-0338-DBT,white,Spain,Rioja,Rioja DOCa,2022,Grenache,14.2,0.75,dry,4,3,86.7,81.49,Marani De Sousa,11
+339,WN-1987-LAN-0339-2LD,orange,France,Languedoc,Faugeres,1987,Semillon,14.6,1.5,sweet,3,4,84.0,69.3,Winery Renault,58
+340,WN-1994-RIO-0340-EZW,red,Spain,Rioja,Rioja DOCa,1994,Gewurztraminer,13.9,0.375,off-dry,2,2,98.6,48.22,Estate Briand,95
+341,WN-1982-KAK-0341-F28,white,Georgia,Kakheti,Kakheti PDO,1982,"Muscadet, Grenache, Riesling",11.7,0.75,off-dry,4,2,95.2,25.89,Cantina Grenier,154
+342,WN-2013-KAK-0342-U6V,white,Georgia,Kakheti,Kakheti PDO,2013,"Chardonnay, Muscadet",13.4,0.75,off-dry,1,4,94.7,28.43,Winery Foucher,111
+343,WN-1982-CHA-0343-08E,red,France,Champagne,Champagne AOC,1982,"Sauvignon Blanc, Grenache",13.1,0.75,off-dry,1,4,89.9,12.89,Maison Berthelot,177
+344,WN-2010-KAK-0344-2NQ,orange,Georgia,Kakheti,Kakheti PDO,2010,"Pinot Noir, Albarino, Chenin Blanc",15.3,1.5,sweet,1,4,89.3,18.17,Estate Peltier,47
+345,WN-2024-BOR-0345-50B,orange,France,Bordeaux,Medoc,2024,"Sauvignon Blanc, Grenache",12.5,0.75,sweet,5,5,91.5,24.68,Chateau Wagner,158
+346,WN-2004-TUS-0346-IER,orange,Italy,Tuscany,Brunello di Montalcino,2004,"Chenin Blanc, Zinfandel",11.2,0.75,dry,5,1,91.2,78.49,Domaine Coulon,85
+347,WN-2002-KAK-0347-ZYT,red,Georgia,Kakheti,Kakheti PDO,2002,"Sauvignon Blanc, Nebbiolo",12.4,0.375,off-dry,3,4,89.7,55.03,Chateau Meyer,120
+348,WN-2023-RIA-0348-FH8,white,Spain,Rias Baixas,Rias Baixas DO,2023,"Viognier, Chardonnay, Chenin Blanc",11.4,0.75,dry,3,1,82.2,31.21,Domaine Aubert,127
+349,WN-2014-VEN-0349-8XO,red,Italy,Veneto,Soave,2014,Gewurztraminer,12.7,0.75,sweet,1,3,83.8,7.09,Bodegas Collet,213
+350,WN-2022-VEN-0350-K4F,red,Italy,Veneto,Soave,2022,"Sauvignon Blanc, Cabernet Sauvignon, Chenin Blanc",13.3,1.5,dry,3,2,95.8,26.54,Winery Carpentier,248
+351,WN-2025-RIO-0351-EJG,orange,Spain,Rioja,Rioja DOCa,2025,"Pinot Noir, Albarino, Zinfandel",15.2,1.5,sweet,2,2,84.8,8.91,Winery Boyer,147
+352,WN-1989-JUR-0352-QLA,orange,France,Jura,Arbois,1989,"Chenin Blanc, Cabernet Sauvignon",15.9,1.5,off-dry,1,1,88.1,52.44,Domaine Delorme,242
+353,WN-1998-PIE-0353-O4Q,white,Italy,Piedmont,Barbaresco,1998,"Tempranillo, Muscadet, Chenin Blanc",12.7,0.375,sweet,4,1,82.8,57.34,Cantina Guyon,6
+354,WN-2021-TUS-0354-SHL,orange,Italy,Tuscany,Bolgheri,2021,Muscadet,13.6,0.75,dry,1,1,90.8,47.32,Chateau Allard,249
+355,WN-1989-JUR-0355-0P9,red,France,Jura,Arbois,1989,"Nebbiolo, Sangiovese, Syrah",12.9,0.75,off-dry,3,3,99.6,88.06,Chateau Bonnet,55
+356,WN-2006-SIC-0356-7VN,white,Italy,Sicily,Nero d'Avola IGT,2006,Muscadet,14.0,0.375,dry,3,4,99.8,54.9,Winery Letellier,16
+357,WN-2006-RIA-0357-3KV,red,Spain,Rias Baixas,Rias Baixas DO,2006,Cabernet Sauvignon,13.3,1.5,dry,2,2,96.6,32.5,Marani Bouvier,10
+358,WN-1980-RIO-0358-RYI,white,Spain,Rioja,Rioja DOCa,1980,Riesling,12.5,1.5,sweet,4,1,93.1,89.81,Estate Boyer,45
+359,WN-2018-VEN-0359-JUF,red,Italy,Veneto,Prosecco,2018,"Sangiovese, Muscadet, Gewurztraminer",13.8,0.75,sweet,4,1,87.5,74.63,Maison Girard,216
+360,WN-1983-KAK-0360-W1V,white,Georgia,Kakheti,Kakheti PDO,1983,"Sangiovese, Nebbiolo",14.2,0.75,dry,3,3,90.6,93.95,Bodegas Mary,196
+361,WN-1999-PIE-0361-M6D,white,Italy,Piedmont,Barolo,1999,"Sangiovese, Pinot Gris",13.7,0.75,dry,1,2,90.4,40.44,Marani Martel,105
+362,WN-2006-KAK-0362-9S8,white,Georgia,Kakheti,Kakheti PDO,2006,"Viognier, Pinot Gris",15.1,0.375,off-dry,3,3,93.8,18.21,Marani Gaudin,227
+363,WN-1987-TUS-0363-Y2C,red,Italy,Tuscany,Bolgheri,1987,Tempranillo,15.3,0.375,sweet,2,3,82.5,17.37,Chateau Laporte,108
+364,WN-1986-RIO-0364-EVV,white,Spain,Rioja,Rioja DOCa,1986,Sauvignon Blanc,14.0,0.75,dry,3,1,81.3,68.42,Chateau Barbier,200
+365,WN-1985-KAK-0365-31T,orange,Georgia,Kakheti,Kakheti PDO,1985,Riesling,15.7,0.75,off-dry,2,5,95.6,63.23,Chateau Boyer,25
+366,WN-2014-KAK-0366-49P,orange,Georgia,Kakheti,Kakheti PDO,2014,Pinot Gris,15.6,1.5,sweet,4,3,94.0,22.59,Chateau Grégoire,46
+367,WN-2000-KAK-0367-EKV,red,Georgia,Kakheti,Kakheti PDO,2000,Chenin Blanc,11.6,0.375,off-dry,3,3,91.1,8.86,Winery Faure,126
+368,WN-1998-RIO-0368-PXD,white,Spain,Rioja,Rioja DOCa,1998,"Chardonnay, Viognier",15.5,0.75,sweet,3,2,80.3,69.05,Chateau Lemoine,101
+369,WN-1990-RIB-0369-11V,orange,Spain,Ribera del Duero,Ribera del Duero DO,1990,Sangiovese,15.9,0.75,dry,5,4,82.5,84.62,Marani Muller,71
+370,WN-2022-RIB-0370-DBC,orange,Spain,Ribera del Duero,Ribera del Duero DO,2022,"Syrah, Gewurztraminer, Sauvignon Blanc",12.4,0.75,dry,1,3,89.8,26.93,Domaine Valentin,7
+371,WN-2018-LOI-0371-ST3,orange,France,Loire,Chinon,2018,"Rkatsiteli, Tempranillo, Pinot Noir",14.1,0.375,dry,5,4,95.9,24.18,Marani Mercier,125
+372,WN-1987-RHO-0372-ZRE,orange,France,Rhone,Chateauneuf-du-Pape,1987,"Chenin Blanc, Rkatsiteli",15.3,0.75,off-dry,1,1,83.5,67.64,Cantina Parent,226
+373,WN-2016-RIB-0373-Y1K,white,Spain,Ribera del Duero,Ribera del Duero DO,2016,"Gewurztraminer, Cabernet Sauvignon, Zinfandel",13.9,0.75,sweet,2,5,81.1,30.02,Estate Huet,157
+374,WN-1988-BUR-0374-CII,red,France,Burgundy,Maconnais,1988,"Sangiovese, Muscadet",11.1,1.5,off-dry,4,1,88.6,99.23,Estate Antoine,89
+375,WN-1987-BOR-0375-QAL,orange,France,Bordeaux,Graves,1987,"Albarino, Merlot",13.7,0.375,off-dry,4,5,90.3,45.01,Maison Mathieu,178
+376,WN-2011-RIB-0376-R42,orange,Spain,Ribera del Duero,Ribera del Duero DO,2011,Chardonnay,12.7,1.5,sweet,3,2,92.3,39.52,Estate Colas,51
+377,WN-1983-KAK-0377-2RH,white,Georgia,Kakheti,Kakheti PDO,1983,"Muscadet, Syrah",15.0,1.5,sweet,1,5,81.9,37.0,Chateau Hoarau,145
+378,WN-2022-PIE-0378-RX3,red,Italy,Piedmont,Barbaresco,2022,"Rkatsiteli, Chardonnay, Nebbiolo",13.0,1.5,sweet,4,5,83.6,6.77,Domaine Delorme,147
+379,WN-2020-VEN-0379-L3C,white,Italy,Veneto,Soave,2020,Sauvignon Blanc,12.0,0.75,dry,2,2,94.9,77.73,Estate Valentin,105
+380,WN-2021-RIB-0380-R9P,white,Spain,Ribera del Duero,Ribera del Duero DO,2021,Riesling,14.4,0.375,off-dry,2,1,83.0,7.63,Cantina Fournier,118
+381,WN-1988-KAK-0381-A4D,orange,Georgia,Kakheti,Kakheti PDO,1988,Riesling,14.9,0.75,sweet,5,2,92.9,9.01,Marani Legendre,200
+382,WN-2003-TUS-0382-5IE,red,Italy,Tuscany,Chianti Classico,2003,"Viognier, Syrah, Tempranillo",12.2,1.5,sweet,5,1,90.4,83.75,Cantina Faure,127
+383,WN-1995-VEN-0383-N8L,red,Italy,Veneto,Soave,1995,"Chardonnay, Tempranillo",11.5,0.375,off-dry,4,4,85.1,61.0,Marani Humbert,136
+384,WN-1997-RIA-0384-7YJ,red,Spain,Rias Baixas,Rias Baixas DO,1997,Sangiovese,13.4,0.75,off-dry,1,5,80.7,75.25,Maison Descamps,176
+385,WN-1987-PIE-0385-4FP,red,Italy,Piedmont,Barolo,1987,"Semillon, Chenin Blanc, Syrah",11.0,0.75,off-dry,3,1,98.7,76.88,Cantina Guillon,53
+386,WN-1985-RIO-0386-P0T,red,Spain,Rioja,Rioja DOCa,1985,"Gewurztraminer, Nebbiolo",15.6,0.75,sweet,4,1,96.5,71.36,Chateau Moreno,90
+387,WN-1983-RIA-0387-FS8,orange,Spain,Rias Baixas,Rias Baixas DO,1983,"Malbec, Albarino, Chenin Blanc",15.0,0.375,dry,4,2,92.6,34.8,Chateau Barbe,28
+388,WN-2008-KAK-0388-N4U,white,Georgia,Kakheti,Kakheti PDO,2008,"Tempranillo, Riesling",11.9,1.5,off-dry,3,2,81.7,39.92,Estate Gomes,224
+389,WN-2019-BEA-0389-8GU,white,France,Beaujolais,Beaujolais-Villages,2019,"Semillon, Viognier, Chenin Blanc",12.0,1.5,dry,1,4,92.4,62.04,Domaine Bertin,22
+390,WN-1987-RIB-0390-KYP,red,Spain,Ribera del Duero,Ribera del Duero DO,1987,Chardonnay,12.0,0.75,off-dry,4,4,82.6,86.35,Bodegas Martins,210
+391,WN-1996-KAK-0391-YYZ,orange,Georgia,Kakheti,Kakheti PDO,1996,Zinfandel,13.3,0.375,off-dry,5,4,81.7,49.54,Winery Laroche,249
+392,WN-1984-RIA-0392-JWK,red,Spain,Rias Baixas,Rias Baixas DO,1984,Cabernet Sauvignon,11.3,0.75,dry,4,3,99.9,94.24,Maison Auger,1
+393,WN-2017-SIC-0393-JL9,red,Italy,Sicily,Etna,2017,Riesling,11.8,0.75,off-dry,4,2,81.8,72.47,Estate Bouvier,36
+394,WN-1998-PIE-0394-GBG,red,Italy,Piedmont,Barbaresco,1998,"Zinfandel, Riesling",13.6,0.75,dry,3,4,95.3,19.37,Marani Dupuis,13
+395,WN-2007-SIC-0395-MHK,white,Italy,Sicily,Nero d'Avola IGT,2007,Gewurztraminer,11.2,0.75,sweet,5,4,89.2,15.69,Domaine Aubry,31
+396,WN-2013-SIC-0396-N7D,red,Italy,Sicily,Etna,2013,"Albarino, Nebbiolo, Viognier",12.2,0.75,sweet,1,3,80.5,69.72,Chateau Delaunay,100
+397,WN-2009-KAK-0397-52K,white,Georgia,Kakheti,Kakheti PDO,2009,"Gewurztraminer, Chenin Blanc, Riesling",14.0,0.375,off-dry,1,5,99.0,35.87,Domaine Payet,54
+398,WN-2004-BEA-0398-X8F,red,France,Beaujolais,Beaujolais-Villages,2004,Syrah,12.3,0.375,off-dry,1,1,97.0,20.48,Estate Leconte,72
+399,WN-2023-RIB-0399-13W,red,Spain,Ribera del Duero,Ribera del Duero DO,2023,"Tempranillo, Sangiovese, Pinot Gris",15.2,1.5,dry,4,4,97.7,50.26,Estate Imbert,23
+400,WN-2012-RIO-0400-P6R,white,Spain,Rioja,Rioja DOCa,2012,"Chenin Blanc, Semillon",14.2,1.5,dry,4,5,92.6,54.84,Cantina Ribeiro,119
+401,WN-2013-KAK-0401-Z3M,orange,Georgia,Kakheti,Kakheti PDO,2013,"Pinot Noir, Muscadet",11.2,0.375,dry,5,1,90.2,44.24,Marani Albert,169
+402,WN-1987-BEA-0402-3M7,white,France,Beaujolais,Fleurie,1987,"Chenin Blanc, Albarino, Zinfandel",15.2,0.375,dry,4,3,86.3,73.79,Marani Gomes,159
+403,WN-2018-KAK-0403-X00,red,Georgia,Kakheti,Kakheti PDO,2018,"Pinot Gris, Nebbiolo",13.7,0.375,off-dry,1,1,83.4,50.33,Estate Hamel,222
+404,WN-1985-VEN-0404-44T,white,Italy,Veneto,Valpolicella,1985,Tempranillo,11.1,0.375,dry,2,1,84.2,66.62,Bodegas Legrand,111
+405,WN-2010-VEN-0405-K3O,red,Italy,Veneto,Prosecco,2010,"Merlot, Pinot Gris",11.8,0.375,sweet,4,4,89.4,86.68,Bodegas Petit,51
+406,WN-2006-BOR-0406-ZTP,red,France,Bordeaux,Medoc,2006,"Muscadet, Zinfandel",14.7,0.75,dry,4,4,89.7,61.15,Marani Albert,59
+407,WN-2010-PRO-0407-MIH,orange,France,Provence,Cotes de Provence,2010,Gewurztraminer,14.1,1.5,off-dry,4,4,80.4,32.36,Bodegas Loiseau,120
+408,WN-1998-VEN-0408-GFR,red,Italy,Veneto,Prosecco,1998,"Syrah, Nebbiolo, Sangiovese",15.0,0.375,sweet,2,3,93.8,13.19,Marani Thibault,33
+409,WN-1993-RIB-0409-CPW,white,Spain,Ribera del Duero,Ribera del Duero DO,1993,"Grenache, Merlot, Sangiovese",15.4,0.75,sweet,2,2,96.6,89.97,Maison Roussel,206
+410,WN-2001-KAK-0410-Q4D,white,Georgia,Kakheti,Kakheti PDO,2001,"Grenache, Cabernet Sauvignon",12.3,0.375,sweet,5,5,93.4,72.11,Marani Legrand,204
+411,WN-2012-BEA-0411-5FN,white,France,Beaujolais,Fleurie,2012,Albarino,14.1,0.375,off-dry,2,3,94.2,77.39,Marani Tanguy,187
+412,WN-2006-ALS-0412-WI1,orange,France,Alsace,Alsace AOC,2006,Semillon,15.2,0.75,off-dry,3,5,83.4,30.27,Estate Benoit,92
+413,WN-2007-RIO-0413-MO1,red,Spain,Rioja,Rioja DOCa,2007,"Nebbiolo, Chenin Blanc",15.8,1.5,sweet,3,1,88.9,78.16,Chateau Guillou,21
+414,WN-2022-CHA-0414-06A,red,France,Champagne,Champagne AOC,2022,"Tempranillo, Muscadet, Grenache",15.9,1.5,sweet,5,3,88.4,89.15,Cantina Aubry,184
+415,WN-2021-KAK-0415-HKB,red,Georgia,Kakheti,Kakheti PDO,2021,Cabernet Sauvignon,14.1,1.5,sweet,4,3,97.8,79.25,Estate Payet,198
+416,WN-2013-RIA-0416-3KP,orange,Spain,Rias Baixas,Rias Baixas DO,2013,"Pinot Noir, Chardonnay, Viognier",13.6,0.75,sweet,3,2,80.5,89.58,Cantina Lévêque,61
+417,WN-1996-RHO-0417-29U,orange,France,Rhone,Cote-Rotie,1996,"Sauvignon Blanc, Sangiovese, Pinot Gris",11.2,1.5,dry,4,3,91.4,5.5,Winery Muller,60
+418,WN-1998-KAK-0418-DZ3,white,Georgia,Kakheti,Kakheti PDO,1998,"Muscadet, Tempranillo, Syrah",13.6,0.375,dry,3,5,91.6,83.17,Winery Moulin,116
+419,WN-1988-RHO-0419-RPP,red,France,Rhone,Chateauneuf-du-Pape,1988,"Chardonnay, Chenin Blanc",11.4,1.5,sweet,4,5,91.2,78.99,Cantina Lemaître,149
+420,WN-2012-RIO-0420-07N,white,Spain,Rioja,Rioja DOCa,2012,Gewurztraminer,14.6,0.375,sweet,5,5,82.4,25.2,Marani Jacquet,8
+421,WN-2003-RIO-0421-2P7,red,Spain,Rioja,Rioja DOCa,2003,"Pinot Noir, Grenache, Sauvignon Blanc",11.8,0.75,off-dry,3,3,85.9,7.66,Domaine Barbier,36
+422,WN-2011-SIC-0422-N44,white,Italy,Sicily,Etna,2011,Pinot Gris,13.7,0.375,dry,4,4,91.5,58.75,Winery Navarro,200
+423,WN-2022-KAK-0423-BYP,red,Georgia,Kakheti,Kakheti PDO,2022,"Tempranillo, Rkatsiteli",11.4,1.5,sweet,5,4,87.7,90.52,Winery Devaux,138
+424,WN-2016-LOI-0424-R6E,orange,France,Loire,Vouvray,2016,"Pinot Noir, Cabernet Sauvignon, Pinot Gris",14.2,0.375,dry,5,5,91.5,10.02,Bodegas Fischer,192
+425,WN-1993-KAK-0425-PO4,red,Georgia,Kakheti,Kakheti PDO,1993,Muscadet,13.2,1.5,sweet,3,4,91.8,51.69,Maison Hernandez,87
+426,WN-1987-RIB-0426-WLA,white,Spain,Ribera del Duero,Ribera del Duero DO,1987,Cabernet Sauvignon,11.8,0.375,dry,3,1,83.1,95.46,Domaine Raymond,15
+427,WN-2000-VEN-0427-SS8,red,Italy,Veneto,Prosecco,2000,Nebbiolo,15.5,0.75,off-dry,1,1,84.1,76.45,Bodegas Guibert,126
+428,WN-2015-JUR-0428-1XE,orange,France,Jura,Arbois,2015,"Viognier, Gewurztraminer",11.1,1.5,dry,1,3,91.1,60.69,Chateau Evrard,63
+429,WN-2020-RIB-0429-38W,orange,Spain,Ribera del Duero,Ribera del Duero DO,2020,"Chardonnay, Tempranillo, Sangiovese",13.7,0.375,dry,5,4,99.2,57.74,Maison Petit,0
+430,WN-2010-KAK-0430-TCD,orange,Georgia,Kakheti,Kakheti PDO,2010,"Zinfandel, Riesling",15.2,0.75,off-dry,2,5,96.8,31.72,Domaine Martineau,189
+431,WN-2007-LOI-0431-XLH,orange,France,Loire,Sancerre,2007,Zinfandel,13.5,0.75,sweet,3,3,99.6,72.24,Cantina Lenoir,62
+432,WN-1988-TUS-0432-OC5,orange,Italy,Tuscany,Bolgheri,1988,"Merlot, Zinfandel, Gewurztraminer",11.0,0.375,sweet,2,4,91.1,71.17,Marani Ribeiro,195
+433,WN-2022-BEA-0433-Q7Q,white,France,Beaujolais,Fleurie,2022,"Pinot Gris, Sangiovese",15.9,0.75,sweet,3,4,83.5,77.96,Maison Dupré,31
+434,WN-1992-PRO-0434-ZVA,orange,France,Provence,Cotes de Provence,1992,Zinfandel,14.1,1.5,dry,2,4,99.3,8.5,Marani Duval,231
+435,WN-2016-RIO-0435-JUI,orange,Spain,Rioja,Rioja DOCa,2016,"Gewurztraminer, Albarino, Cabernet Sauvignon",12.0,1.5,sweet,5,5,83.5,60.88,Chateau Lucas,32
+436,WN-2024-SIC-0436-ESR,orange,Italy,Sicily,Etna,2024,"Cabernet Sauvignon, Zinfandel, Riesling",14.4,0.75,dry,4,1,97.1,35.68,Estate Aubry,70
+437,WN-1997-ALS-0437-Y87,white,France,Alsace,Alsace AOC,1997,"Cabernet Sauvignon, Chenin Blanc",12.6,0.75,dry,3,1,97.6,81.73,Bodegas Ferreira,250
+438,WN-1984-KAK-0438-BM2,white,Georgia,Kakheti,Kakheti PDO,1984,"Malbec, Pinot Gris, Merlot",13.4,0.375,sweet,3,3,84.9,49.99,Winery Gautier,213
+439,WN-2017-RIO-0439-KWC,orange,Spain,Rioja,Rioja DOCa,2017,Viognier,15.9,0.375,off-dry,3,1,95.7,10.89,Marani Bernier,14
+440,WN-1998-BEA-0440-WDX,orange,France,Beaujolais,Fleurie,1998,"Syrah, Pinot Gris",14.1,0.75,dry,5,5,80.2,41.47,Estate Lenoir,225
+441,WN-2001-LAN-0441-P0Q,white,France,Languedoc,Faugeres,2001,"Chardonnay, Pinot Gris, Zinfandel",11.1,1.5,dry,5,2,98.1,16.97,Cantina Meyer,90
+442,WN-1988-KAK-0442-LMN,white,Georgia,Kakheti,Kakheti PDO,1988,"Muscadet, Nebbiolo",13.6,1.5,off-dry,3,5,97.7,78.67,Domaine Maillard,120
+443,WN-2012-KAK-0443-Y4U,red,Georgia,Kakheti,Kakheti PDO,2012,"Grenache, Nebbiolo, Sangiovese",12.0,0.375,sweet,2,1,86.8,68.45,Marani Carre,153
+444,WN-1990-VEN-0444-HR1,red,Italy,Veneto,Valpolicella,1990,Chenin Blanc,15.4,0.375,off-dry,2,1,92.8,70.86,Marani Texier,159
+445,WN-1991-RIO-0445-9HK,white,Spain,Rioja,Rioja DOCa,1991,Sangiovese,11.0,0.75,dry,5,1,82.8,46.84,Winery Lacroix,11
+446,WN-2015-SIC-0446-7KI,red,Italy,Sicily,Nero d'Avola IGT,2015,Albarino,12.0,0.375,off-dry,1,1,96.6,18.04,Chateau Wagner,86
+447,WN-1987-KAK-0447-BWG,orange,Georgia,Kakheti,Kakheti PDO,1987,Tempranillo,15.0,0.375,sweet,4,3,86.4,45.81,Bodegas Le Goff,235
+448,WN-1995-SIC-0448-XCS,orange,Italy,Sicily,Nero d'Avola IGT,1995,Malbec,15.0,0.375,sweet,5,4,84.2,12.73,Marani Martins,202
+449,WN-2009-VEN-0449-HH5,red,Italy,Veneto,Soave,2009,Rkatsiteli,14.6,1.5,sweet,4,4,89.5,60.21,Maison Torres,53
+450,WN-2004-KAK-0450-SMQ,red,Georgia,Kakheti,Kakheti PDO,2004,"Albarino, Sangiovese, Riesling",13.8,0.375,dry,3,4,90.4,26.87,Maison Couturier,119
+451,WN-2000-RIB-0451-JIE,red,Spain,Ribera del Duero,Ribera del Duero DO,2000,"Syrah, Merlot",11.9,0.375,off-dry,1,3,98.0,32.98,Chateau Aubry,201
+452,WN-2001-BEA-0452-1KM,red,France,Beaujolais,Fleurie,2001,Rkatsiteli,12.3,1.5,sweet,3,2,94.1,99.81,Cantina Bodin,2
+453,WN-2010-RIA-0453-3MD,white,Spain,Rias Baixas,Rias Baixas DO,2010,"Sauvignon Blanc, Tempranillo, Syrah",12.1,1.5,sweet,2,4,84.7,60.77,Marani Camus,184
+454,WN-1993-RIA-0454-IP1,orange,Spain,Rias Baixas,Rias Baixas DO,1993,"Chenin Blanc, Cabernet Sauvignon",11.2,0.375,sweet,2,3,98.9,5.92,Winery Deschamps,86
+455,WN-1981-PIE-0455-8CN,red,Italy,Piedmont,Barolo,1981,"Grenache, Tempranillo, Zinfandel",15.9,0.75,sweet,5,5,91.5,42.13,Estate Roux,52
+456,WN-2020-JUR-0456-8KI,orange,France,Jura,Arbois,2020,"Viognier, Albarino",11.5,1.5,dry,1,5,89.8,22.74,Chateau Morin,233
+457,WN-2003-LAN-0457-85E,white,France,Languedoc,Corbieres,2003,"Merlot, Albarino, Rkatsiteli",15.3,0.75,off-dry,2,1,82.6,44.75,Chateau Couturier,99
+458,WN-2022-VEN-0458-9Q3,orange,Italy,Veneto,Soave,2022,"Albarino, Zinfandel",13.9,0.75,sweet,2,5,94.3,48.6,Bodegas Briand,1
+459,WN-2009-KAK-0459-W3G,white,Georgia,Kakheti,Kakheti PDO,2009,"Muscadet, Grenache",14.7,0.75,sweet,4,3,94.0,72.61,Cantina Baron,100
+460,WN-2004-KAK-0460-066,red,Georgia,Kakheti,Kakheti PDO,2004,"Albarino, Muscadet, Pinot Gris",13.0,0.375,dry,2,3,97.7,56.09,Chateau Bertrand,178
+461,WN-1986-JUR-0461-MOG,white,France,Jura,Arbois,1986,"Rkatsiteli, Nebbiolo, Chenin Blanc",11.8,0.375,sweet,1,4,80.5,65.69,Marani Bernard,97
+462,WN-2025-PRO-0462-QKF,white,France,Provence,Coteaux d'Aix,2025,Rkatsiteli,14.4,0.75,off-dry,4,1,81.7,67.42,Marani Le Roux,35
+463,WN-1987-LOI-0463-YHZ,orange,France,Loire,Sancerre,1987,"Syrah, Albarino, Viognier",14.4,0.375,sweet,3,2,88.8,21.9,Maison Pires,228
+464,WN-2008-CHA-0464-BA3,orange,France,Champagne,Champagne AOC,2008,Zinfandel,11.0,0.75,dry,2,3,98.2,24.0,Maison Dumont,107
+465,WN-2022-ALS-0465-T7E,white,France,Alsace,Alsace AOC,2022,Albarino,11.2,1.5,dry,3,3,91.2,23.01,Bodegas Diaz,239
+466,WN-1991-JUR-0466-WB5,red,France,Jura,Arbois,1991,Syrah,14.3,0.375,off-dry,2,4,84.4,67.51,Cantina Charles,166
+467,WN-2025-VEN-0467-4RM,orange,Italy,Veneto,Prosecco,2025,"Muscadet, Albarino, Riesling",15.8,1.5,off-dry,4,2,86.6,65.36,Winery Renard,250
+468,WN-2012-RIB-0468-NKF,white,Spain,Ribera del Duero,Ribera del Duero DO,2012,"Merlot, Semillon, Malbec",14.1,0.375,off-dry,2,4,95.1,63.88,Maison Traore,35
+469,WN-2001-ALS-0469-IT6,orange,France,Alsace,Alsace AOC,2001,Riesling,12.6,0.375,sweet,4,3,95.0,26.76,Winery Pichon,87
+470,WN-2013-KAK-0470-DV3,white,Georgia,Kakheti,Kakheti PDO,2013,"Albarino, Chenin Blanc",14.1,0.375,off-dry,1,2,81.0,99.24,Bodegas Courtois,32
+471,WN-2009-KAK-0471-5R8,red,Georgia,Kakheti,Kakheti PDO,2009,"Albarino, Chardonnay",12.2,0.375,sweet,2,3,85.7,47.59,Bodegas Munoz,69
+472,WN-2010-RIB-0472-6KT,orange,Spain,Ribera del Duero,Ribera del Duero DO,2010,"Nebbiolo, Sauvignon Blanc",14.0,0.75,dry,4,1,95.2,45.6,Chateau Launay,194
+473,WN-2009-KAK-0473-GAS,orange,Georgia,Kakheti,Kakheti PDO,2009,"Chenin Blanc, Pinot Noir",12.9,1.5,off-dry,1,3,82.7,49.58,Domaine Guilbert,234
+474,WN-2006-VEN-0474-7F1,red,Italy,Veneto,Valpolicella,2006,"Sangiovese, Syrah",13.4,1.5,sweet,1,4,97.7,99.28,Chateau Petit,98
+475,WN-2024-VEN-0475-XFV,orange,Italy,Veneto,Soave,2024,"Grenache, Syrah",15.6,1.5,dry,2,4,80.7,82.25,Maison Marie,178
+476,WN-2018-KAK-0476-65F,red,Georgia,Kakheti,Kakheti PDO,2018,"Albarino, Merlot, Pinot Gris",14.9,1.5,sweet,4,4,94.1,97.54,Chateau Sanchez,132
+477,WN-2014-PIE-0477-07O,red,Italy,Piedmont,Barolo,2014,"Syrah, Muscadet, Pinot Noir",14.7,1.5,dry,1,5,95.5,37.72,Domaine Blot,68
+478,WN-1980-LOI-0478-ZHG,white,France,Loire,Chinon,1980,Viognier,14.9,0.75,sweet,4,3,94.7,21.21,Winery Gérard,47
+479,WN-1991-RIA-0479-KNJ,red,Spain,Rias Baixas,Rias Baixas DO,1991,Grenache,14.7,0.375,off-dry,4,4,92.5,64.32,Domaine Morvan,20
+480,WN-2010-BUR-0480-V91,red,France,Burgundy,Maconnais,2010,"Pinot Gris, Merlot",11.3,0.375,sweet,5,1,81.9,54.62,Maison Da Silva,96
+481,WN-2001-RIB-0481-DQZ,orange,Spain,Ribera del Duero,Ribera del Duero DO,2001,"Rkatsiteli, Malbec",15.1,0.75,sweet,4,4,92.2,97.65,Winery Lemaître,206
+482,WN-2013-KAK-0482-W58,orange,Georgia,Kakheti,Kakheti PDO,2013,"Semillon, Sangiovese",13.3,1.5,sweet,4,5,88.3,22.85,Winery Guillon,4
+483,WN-2018-VEN-0483-FSU,orange,Italy,Veneto,Prosecco,2018,"Syrah, Zinfandel",15.0,0.75,off-dry,4,1,94.7,32.92,Bodegas Courtois,182
+484,WN-1985-LOI-0484-PZF,red,France,Loire,Chinon,1985,"Cabernet Sauvignon, Chenin Blanc",11.8,0.75,dry,4,5,84.8,25.11,Chateau Caron,27
+485,WN-1996-RIB-0485-U7C,red,Spain,Ribera del Duero,Ribera del Duero DO,1996,"Gewurztraminer, Pinot Gris, Tempranillo",15.6,1.5,sweet,4,1,95.9,36.62,Bodegas Perret,238
+486,WN-2021-RIA-0486-7UE,red,Spain,Rias Baixas,Rias Baixas DO,2021,"Cabernet Sauvignon, Nebbiolo, Semillon",12.1,0.375,off-dry,1,1,81.8,75.36,Bodegas Rodriguez,190
+487,WN-1999-RIA-0487-XVD,white,Spain,Rias Baixas,Rias Baixas DO,1999,Muscadet,13.7,0.75,off-dry,3,3,96.0,93.72,Domaine Dupont,133
+488,WN-1998-RIB-0488-LSY,red,Spain,Ribera del Duero,Ribera del Duero DO,1998,Gewurztraminer,14.4,0.375,sweet,3,2,94.9,85.67,Maison Le Gall,153
+489,WN-2011-RIA-0489-RO9,orange,Spain,Rias Baixas,Rias Baixas DO,2011,"Syrah, Grenache",15.9,0.75,dry,2,2,94.0,9.99,Domaine Marchal,219
+490,WN-2001-KAK-0490-E1U,white,Georgia,Kakheti,Kakheti PDO,2001,"Gewurztraminer, Sangiovese",14.8,0.75,dry,5,3,85.6,92.69,Estate Fournier,24
+491,WN-1990-VEN-0491-24N,red,Italy,Veneto,Soave,1990,"Tempranillo, Chenin Blanc, Gewurztraminer",12.5,0.375,dry,2,2,94.7,5.87,Chateau Pelletier,173
+492,WN-2002-KAK-0492-BIR,orange,Georgia,Kakheti,Kakheti PDO,2002,"Albarino, Grenache",11.6,1.5,sweet,3,5,88.7,19.11,Estate Lacroix,62
+493,WN-2009-KAK-0493-V9R,orange,Georgia,Kakheti,Kakheti PDO,2009,"Syrah, Riesling, Chenin Blanc",12.8,0.375,dry,1,1,89.8,68.54,Bodegas Normand,5
+494,WN-2004-BUR-0494-3AU,orange,France,Burgundy,Maconnais,2004,"Malbec, Nebbiolo",12.5,0.375,dry,3,1,94.3,86.91,Domaine Menard,103
+495,WN-1993-RIO-0495-U4B,white,Spain,Rioja,Rioja DOCa,1993,"Pinot Gris, Albarino, Zinfandel",11.0,0.75,off-dry,1,1,82.6,24.59,Domaine Martineau,22
+496,WN-1990-PIE-0496-69V,orange,Italy,Piedmont,Barolo,1990,"Merlot, Semillon",12.5,1.5,off-dry,5,4,82.8,51.59,Winery Henry,133
+497,WN-1995-KAK-0497-WCJ,red,Georgia,Kakheti,Kakheti PDO,1995,Chardonnay,11.7,0.375,dry,5,5,84.3,39.11,Domaine Monnier,186
+498,WN-1985-KAK-0498-3L2,red,Georgia,Kakheti,Kakheti PDO,1985,"Nebbiolo, Tempranillo",13.7,0.375,sweet,3,2,94.3,58.55,Domaine Valette,107
+499,WN-1984-BUR-0499-J5I,white,France,Burgundy,Maconnais,1984,"Pinot Gris, Cabernet Sauvignon",11.5,1.5,off-dry,1,3,92.8,39.47,Winery Vaillant,199
+500,WN-2004-CHA-0500-JDB,red,France,Champagne,Champagne AOC,2004,Pinot Gris,11.9,1.5,off-dry,5,4,81.9,38.15,Cantina Cordier,141

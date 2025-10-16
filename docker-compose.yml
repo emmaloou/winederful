@@ -26,8 +26,8 @@ services:
 
   api:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+        context: .               # <— repo root, now can see frontend/prisma
+        dockerfile: backend/Dockerfile
     environment:
       - PORT=4000
       - NODE_ENV=production
@@ -70,6 +70,8 @@ services:
       - appnet
     ports:
       - "3000:3000"
+    volumes:
+      - ./frontend/prisma:/app/prisma
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.app.rule=Host(`app.localhost`)"
@@ -86,10 +88,13 @@ services:
   postgres:
     image: postgres:16-alpine
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=winederful
+    ports:
+      - "5432:5432"
     volumes:
+      - ./data/import:/import
       - pgdata:/var/lib/postgresql/data
     networks:
       - appnet
@@ -121,6 +126,7 @@ services:
       - MINIO_BROWSER_REDIRECT_URL=http://minio.localhost
     volumes:
       - minio_data:/data
+
     networks:
       - appnet
     ports:
