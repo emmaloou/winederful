@@ -39,7 +39,6 @@ services:
     depends_on:
       - postgres
       - redis
-      - kafka
     networks:
       - appnet
     ports:
@@ -154,9 +153,12 @@ services:
       - appnet
 
   # ==================== MONGODB ====================
+  # Profile: kafka (ne démarre pas par défaut)
+  # Pour lancer: docker-compose --profile kafka up -d
   mongodb:
     image: mongo:7
     container_name: mongodb
+    profiles: ["kafka"]
     ports:
       - "27017:27017"
     environment:
@@ -174,6 +176,7 @@ services:
   mongo-express:
     image: mongo-express:latest
     container_name: mongo-express
+    profiles: ["kafka"]
     depends_on:
       - mongodb
     ports:
@@ -190,9 +193,12 @@ services:
       - "traefik.http.services.mongo-express.loadbalancer.server.port=8081"
 
   # ==================== KAFKA STACK ====================
+  # Profile: kafka (ne démarre pas par défaut)
+  # Pour lancer: docker-compose --profile kafka up -d
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
     container_name: zookeeper
+    profiles: ["kafka"]
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -207,6 +213,7 @@ services:
   kafka:
     image: confluentinc/cp-kafka:7.5.0
     container_name: kafka
+    profiles: ["kafka"]
     depends_on:
       - zookeeper
     ports:
@@ -233,6 +240,7 @@ services:
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: kafka-ui
+    profiles: ["kafka"]
     depends_on:
       - kafka
     ports:
@@ -250,11 +258,13 @@ services:
       - "traefik.http.services.kafka-ui.loadbalancer.server.port=8080"
 
   # ==================== KAFKA CONSUMERS ====================
+  # Profile: kafka (ne démarre pas par défaut)
   kafka-consumer-snowflake:
     build:
       context: ./kafka-consumers
       dockerfile: Dockerfile
     container_name: kafka-consumer-snowflake
+    profiles: ["kafka"]
     command: ["python", "-u", "consumer_snowflake.py"]
     depends_on:
       - kafka
@@ -280,6 +290,7 @@ services:
       context: ./kafka-consumers
       dockerfile: Dockerfile
     container_name: kafka-consumer-email
+    profiles: ["kafka"]
     command: ["python", "-u", "consumer_email.py"]
     depends_on:
       - kafka
@@ -301,6 +312,7 @@ services:
       context: ./kafka-consumers
       dockerfile: Dockerfile
     container_name: kafka-consumer-mongodb
+    profiles: ["kafka"]
     command: ["python", "-u", "consumer_mongodb.py"]
     depends_on:
       - kafka
