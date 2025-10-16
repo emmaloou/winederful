@@ -35,6 +35,7 @@ services:
       - REDIS_URL=${REDIS_URL}
       - JWT_SECRET=${JWT_SECRET}
       - FRONTEND_URL=http://frontend:3000
+      - KAFKA_BROKER=kafka:9092
     depends_on:
       - postgres
       - redis
@@ -151,6 +152,182 @@ services:
     networks:
       - appnet
 
+  # ==================== MONGODB ====================
+  # Profile: kafka (ne démarre pas par défaut)
+  # Pour lancer: docker-compose --profile kafka up -d
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    profiles: ["kafka"]
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: wineshop_events
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - appnet
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    profiles: ["kafka"]
+    depends_on:
+      - mongodb
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    networks:
+      - appnet
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mongo-express.rule=Host(`mongo.localhost`)"
+      - "traefik.http.services.mongo-express.loadbalancer.server.port=8081"
+
+  # ==================== KAFKA STACK ====================
+  # Profile: kafka (ne démarre pas par défaut)
+  # Pour lancer: docker-compose --profile kafka up -d
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    profiles: ["kafka"]
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - appnet
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "2181"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    profiles: ["kafka"]
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_LOG_RETENTION_HOURS: 168
+    networks:
+      - appnet
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    profiles: ["kafka"]
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: wineshop-local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    networks:
+      - appnet
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kafka-ui.rule=Host(`kafka.localhost`)"
+      - "traefik.http.routers.kafka-ui.entrypoints=web"
+      - "traefik.http.services.kafka-ui.loadbalancer.server.port=8080"
+
+  # ==================== KAFKA CONSUMERS ====================
+  # Profile: kafka (ne démarre pas par défaut)
+  kafka-consumer-snowflake:
+    build:
+      context: ./kafka-consumers
+      dockerfile: Dockerfile
+    container_name: kafka-consumer-snowflake
+    profiles: ["kafka"]
+    command: ["python", "-u", "consumer_snowflake.py"]
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_BROKER: kafka:9092
+      KAFKA_TOPIC: wine-orders
+      KAFKA_GROUP_ID: wine-snowflake-consumer
+      BATCH_SIZE: 50
+      BATCH_TIMEOUT_SECS: 10
+      SNOWFLAKE_USER: ${SNOWFLAKE_USER:-}
+      SNOWFLAKE_PASSWORD: ${SNOWFLAKE_PASSWORD:-}
+      SNOWFLAKE_ACCOUNT: ${SNOWFLAKE_ACCOUNT:-}
+      SNOWFLAKE_ROLE: ${SNOWFLAKE_ROLE:-SYSADMIN}
+      SNOWFLAKE_WAREHOUSE: ${SNOWFLAKE_WAREHOUSE:-COMPUTE_WH}
+      SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE:-WINESHOP}
+      SNOWFLAKE_SCHEMA: ${SNOWFLAKE_SCHEMA:-RAW}
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  kafka-consumer-email:
+    build:
+      context: ./kafka-consumers
+      dockerfile: Dockerfile
+    container_name: kafka-consumer-email
+    profiles: ["kafka"]
+    command: ["python", "-u", "consumer_email.py"]
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_BROKER: kafka:9092
+      KAFKA_TOPIC: payment-events
+      KAFKA_GROUP_ID: wine-email-service
+      SMTP_HOST: ${SMTP_HOST:-localhost}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      FROM_EMAIL: ${FROM_EMAIL:-no-reply@wineshop.local}
+    networks:
+      - appnet
+    restart: unless-stopped
+
+  kafka-consumer-mongodb:
+    build:
+      context: ./kafka-consumers
+      dockerfile: Dockerfile
+    container_name: kafka-consumer-mongodb
+    profiles: ["kafka"]
+    command: ["python", "-u", "consumer_mongodb.py"]
+    depends_on:
+      - kafka
+      - mongodb
+    environment:
+      KAFKA_BROKER: kafka:9092
+      KAFKA_TOPICS: wine-orders,payment-events,order-status,inventory-updates
+      KAFKA_GROUP_ID: wine-mongodb-logger
+      MONGO_URI: mongodb://mongodb:27017/
+      MONGO_DB: wineshop_events
+      MONGO_COLLECTION: kafka_events
+    networks:
+      - appnet
+    restart: unless-stopped
+
 networks:
   appnet:
 
@@ -158,5 +335,6 @@ volumes:
   pgdata:
   redis_data:
   minio_data:
+  mongo_data:
 
 
