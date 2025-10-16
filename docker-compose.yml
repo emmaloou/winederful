@@ -59,11 +59,10 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-      args:
-        - NEXT_PUBLIC_API_URL=http://api.localhost
     environment:
-      - NEXT_PUBLIC_API_URL=http://api.localhost
+      - NEXT_PUBLIC_API_URL=http://api.localhost:4000
       - API_INTERNAL_URL=http://api:4000
+      - KYC_URL=http://kyc:4100/kyc
       - HOSTNAME=0.0.0.0
     depends_on:
       - api
@@ -80,11 +79,11 @@ services:
       - "traefik.http.services.app.loadbalancer.server.port=3000"
       - "traefik.docker.network=projetfinal_appnet"
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health" ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 60s
+      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 
   postgres:
     image: postgres:16-alpine
@@ -122,8 +121,8 @@ services:
     image: minio/minio:RELEASE.2024-08-17T01-24-54Z
     command: server /data --console-address ":9001"
     environment:
-      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
-      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin123
       - MINIO_BROWSER_REDIRECT_URL=http://minio.localhost
     volumes:
       - minio_data:/data
@@ -132,6 +131,7 @@ services:
       - appnet
     ports:
       - "9000:9000"  # Expose S3 API pour accès images
+      - "9001:9001"  # Expose MinIO Console
     labels:
       - "traefik.enable=true"
       # Console Admin
@@ -143,7 +143,8 @@ services:
       test: ["CMD", "wget", "-qO-", "http://localhost:9000/minio/health/ready" ]
       interval: 10s
       timeout: 5s
-      retries: 10
+      retries: 15
+      start_period: 60s
 
   minio-init:
     image: minio/mc:RELEASE.2024-08-13T05-33-17Z
@@ -244,17 +245,22 @@ services:
       start_period: 20s
 
   kyc:
-    build: ./kyc-service
-    container_name: kyc-service
-    env_file: .env
+    build:
+      context: ./kyc-service
+      dockerfile: Dockerfile
+    image: winederful-kyc
+    environment:
+      PORT: 4100
     depends_on:
       - minio
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.kyc.rule=Host(`kyc.localhost`)"
-      - "traefik.http.services.kyc.loadbalancer.server.port=4100"
-    networks:
-      - appnet
+    ports:
+      - "4100:4100"   # optional; other services can use http://kyc:4100 internally
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4100/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   kafka-ui:
     image: provectuslabs/kafka-ui:latest

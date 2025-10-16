@@ -1,91 +1,48 @@
+// frontend/src/app/compte/kyc/page.tsx
 "use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function KycPage() {
-  const [file, setFile] = useState<File | null>(null);
-  const [sending, setSending] = useState(false);
   const [result, setResult] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
 
-  const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0] || null;
-    setResult(null);
-    setError(null);
-    if (!f) return;
-    // basic client-side checks
-    const maxMB = 10;
-    if (f.size > maxMB * 1024 * 1024) {
-      setError(`File too large (>${maxMB}MB).`);
-      return;
-    }
-    if (!["image/jpeg", "image/png", "image/webp"].includes(f.type)) {
-      setError("Only JPG/PNG/WEBP allowed.");
-      return;
-    }
-    setFile(f);
-  };
-
-  const onSubmit = async (e: React.FormEvent) => {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!file) return;
-    setSending(true);
+    setErr(null);
     setResult(null);
-    setError(null);
+    setLoading(true);
     try {
-      const fd = new FormData();
-      fd.append("id_image", file);
-      // TODO: replace with real user id from session when ready
-      fd.append("userId", "DEMO-USER-123");
+      const form = new FormData(e.currentTarget);
+      const res = await fetch("/api/kyc", { method: "POST", body: form });
 
-      const res = await fetch("/api/kyc/verify", { method: "POST", body: fd });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "KYC failed");
-      setResult(json);
-    } catch (err: any) {
-      setError(err?.message || "KYC failed");
+      const text = await res.text();
+      let data: any;
+      try { data = JSON.parse(text); }
+      catch { throw new Error(`Non-JSON from API (${res.status}): ${text.slice(0,120)}…`); }
+
+      if (!res.ok || data?.error) {
+        throw new Error(data?.error || `KYC failed (${res.status})`);
+      }
+      setResult(data);
+    } catch (e: any) {
+      setErr(e?.message || "Upload failed");
     } finally {
-      setSending(false);
+      setLoading(false);
     }
-  };
+  }
 
   return (
-    <main className="max-w-xl mx-auto p-6 space-y-6">
-      <h1 className="text-2xl font-semibold">Vérification d’âge (KYC)</h1>
-
-      <form onSubmit={onSubmit} className="space-y-4">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={onSelect}
-          className="block w-full border rounded p-2"
-        />
-        <button
-          type="submit"
-          disabled={!file || sending}
-          className="px-4 py-2 rounded bg-black text-white disabled:opacity-50"
-        >
-          {sending ? "Analyse..." : "Envoyer"}
+    <div className="max-w-xl mx-auto p-6 space-y-4">
+      <h1 className="text-2xl font-semibold">KYC — Age Verification</h1>
+      <form onSubmit={onSubmit} className="space-y-3">
+        <input type="file" name="id_image" accept="image/*" required />
+        <button type="submit" disabled={loading} className="px-4 py-2 rounded bg-black text-white disabled:opacity-50">
+          {loading ? "Verifying…" : "Verify age"}
         </button>
       </form>
-
-      {error && (
-        <div className="p-3 rounded bg-red-50 text-red-700 border border-red-200">
-          {error}
-        </div>
-      )}
-
-      {result && (
-        <div className="p-3 rounded bg-green-50 text-green-800 border border-green-200 space-y-1">
-          <div><b>Vérifié :</b> {String(result.verified)}</div>
-          <div><b>Date de naissance détectée :</b> {result.dob ?? "—"}</div>
-          <div><b>Artefact (MinIO) :</b> {result.artifact}</div>
-        </div>
-      )}
-
-      <p className="text-sm text-gray-500">
-        Astuce: utilisez une image contenant une date comme <code>01/01/2000</code>.
-      </p>
-    </main>
+      {err && <p className="text-red-600 text-sm">Error: {err}</p>}
+      {result && <pre className="text-xs bg-gray-100 p-3 rounded overflow-auto">{JSON.stringify(result, null, 2)}</pre>}
+    </div>
   );
 }
