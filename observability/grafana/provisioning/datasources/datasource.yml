@@ -1,13 +1,15 @@
 ﻿apiVersion: 1
-datasources:
-  - name: PostgreSQL
-    type: postgres
+
+datasourcees: 
+- name: Infinity
+    type: yesoreyeram-infinity-datasource
     access: proxy
-    url: postgres:5432
     isDefault: true
-    user: ${POSTGRES_USER}
-    secureJsonData:
-      password: ${POSTGRES_PASSWORD}
-    jsonData:
-      database: ${POSTGRES_DB}
-      sslmode: "disable"
+    jsonData: {}
+
+# Optional: a second CSV-specific datasource (you can skip if using Infinity only)
+- name: CSV (marcusolsson)
+  type: marcusolsson-csv-datasource
+  access: proxy
+  jsonData:
+    storage: url

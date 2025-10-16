@@ -249,12 +249,17 @@ services:
   grafana:
     image: grafana/grafana:latest
     ports:
-    	- "3001:3000"        # host 3001 → container 3000
+      - "3002:3000"   # use 3002 temporarily to avoid any clash
     environment:
-    	- GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource,marcusolsson-csv-datasource
-    volumes:
-    	- grafana_data:/var/lib/grafana
-    networks: [appnet]
+      - "GF_SECURITY_ADMIN_USER=admin"
+      - "GF_SECURITY_ADMIN_PASSWORD=admin"
+      - "GF_INSTALL_PLUGINS=yesoreyeram-infinity-datasource,marcusolsson-csv-datasource"
+    networks:
+      - appnet
+    # volumes:
+    #   - ./observability/grafana/provisioning:/etc/grafana/provisioning
+    #   - ./observability/grafana/dashboards:/var/lib/grafana/dashboards
+    #   - grafana_data:/var/lib/grafana
     labels:
     - traefik.enable=true
     - traefik.http.routers.grafana.rule=Host(`grafana.localhost`)
