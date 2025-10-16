@@ -1,297 +1,296 @@
-# 🍷 WineShop - E-commerce de vins
+# 🍷 WineShop – Data-Driven Wine E-Commerce Platform  
 
-POC d'une plateforme e-commerce de vins d'exception avec architecture microservices.
+An ETL-powered microservice architecture enabling an intelligent wine marketplace with:  
+- ✅ Automated **KYC (Know Your Customer)** age verification via OCR  
+- 📦 **Real-time inventory** tracking  
+- 📊 **Live data analytics** and dashboards powered by Grafana  
 
-## 🚀 Démarrage Rapide (Docker)
+---
 
-### Prérequis
-- Docker Desktop installé
-- Git
+## 🚀 Quick Start (Docker)
 
-### Installation en 3 commandes
+### Prerequisites
+- Docker Desktop installed  
+- Git  
+
+### Installation in 3 commands
 
 ```bash
-# 1. Cloner le projet
+# 1. Clone the repository
 git clone https://github.com/emmaloou/winederful.git
 cd winederful
 
-# 2. Créer le fichier .env
+# 2. Create the .env file
 cp .env.example .env
 
-# 3. Lancer tout le stack
-docker-compose up -d
+# 3. Launch the entire stack
+docker compose up -d
 ```
 
-**C'est tout !** 🎉 Attendre 30 secondes que tout démarre.
+**That’s it!** 🎉  
+Wait about 30 seconds for all services to initialize.
 
-### Accès aux services
+---
+
+### Access the Services
 
 | Service | URL | Description |
-|---------|-----|-------------|
-| **Frontend** | [http://localhost:3000](http://localhost:3000) | Interface utilisateur Next.js |
-| **Backend API** | [http://localhost:4000](http://localhost:4000) | API Express + Prisma |
-| **Traefik** | [http://traefik.localhost](http://traefik.localhost) | Reverse proxy dashboard |
-| **MinIO Console** | [http://minio.localhost](http://minio.localhost) | Stockage S3 |
+|----------|-----|-------------|
+| **Frontend** | [http://localhost:3000](http://localhost:3000) | Next.js user interface |
+| **Backend API** | [http://localhost:4000](http://localhost:4000) | Express + Prisma API |
+| **KYC Service** | [http://localhost:4100/kyc](http://localhost:4100/kyc) | OCR-based ID & age verification |
+| **Grafana** | [http://localhost:3002](http://localhost:3002) | Analytics dashboards |
+| **MinIO Console** | [http://minio.localhost](http://minio.localhost) | S3-compatible storage |
+| **Traefik Dashboard** | [http://traefik.localhost](http://traefik.localhost) | Reverse proxy UI |
+| **CSV Server** | [http://localhost:8000](http://localhost:8000) | Serves CSV data for Grafana |
 
-### Via Traefik (recommandé)
-- Frontend: [http://app.localhost](http://app.localhost)
-- API: [http://api.localhost/api/produits](http://api.localhost/api/produits)
+---
+
+### Through Traefik (recommended)
+- Frontend → [http://app.localhost](http://app.localhost)  
+- API → [http://api.localhost/api/produits](http://api.localhost/api/produits)  
+- Grafana → [http://grafana.localhost](http://grafana.localhost)  
+- MinIO → [http://minio.localhost](http://minio.localhost)
 
 ---
 
 ## 📦 Architecture
 
-### Stack Technique
+### Technical Stack
 
 **Frontend**
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- React Context (Auth)
+- Next.js 14 (App Router)  
+- TypeScript  
+- Tailwind CSS  
+- React Context for JWT authentication  
 
 **Backend**
-- Express.js
-- Prisma ORM
-- PostgreSQL 16
-- Redis (cache)
-- JWT authentication
+- Express.js  
+- Prisma ORM  
+- PostgreSQL 16  
+- Redis (cache)  
+- Kafka (async event streaming)  
+- Airflow (workflow orchestration)  
+- Stripe (payments)  
 
 **Infrastructure**
-- Docker Compose (6 conteneurs)
-- Traefik (reverse proxy)
-- MinIO (S3-compatible storage)
+- Docker Compose (multi-container setup)  
+- Traefik (reverse proxy)  
+- MinIO (S3-compatible storage)  
+- Grafana + CSV Server (observability)  
+- PostgreSQL (ACID transactions)  
+- Redis (sessions & rate limiting)  
 
-### Conteneurs Docker
+---
+
+### Docker Containers
 
 ```
-projetfinal-frontend-1    → Next.js 14 (port 3000)
-projetfinal-api-1         → Express API (port 4000)
-projetfinal-postgres-1    → PostgreSQL 16
-projetfinal-redis-1       → Redis 7 (cache)
-projetfinal-minio-1       → MinIO (stockage images)
-projetfinal-traefik-1     → Reverse proxy
+winederful-frontend-1    → Next.js 14 (port 3000)
+winederful-api-1         → Express API (port 4000)
+winederful-postgres-1    → PostgreSQL 16
+winederful-redis-1       → Redis 7
+winederful-minio-1       → MinIO storage
+winederful-kyc-1         → OCR / KYC service (port 4100)
+winederful-grafana-1     → Grafana dashboards (port 3002)
+winederful-csvserver-1   → Data server for Grafana (port 8000)
+winederful-traefik-1     → Reverse proxy
 ```
 
 ---
 
-## 🛠️ Développement
+## 🔐 KYC Microservice (Know Your Customer)
 
-### Structure du projet
+### Purpose  
+Ensure all users are of legal drinking age before completing purchases.  
+
+### How it works  
+- Users upload a **photo of their ID** during registration.  
+- The **KYC container (Python)** runs **Tesseract OCR** to extract the birth date.  
+- If the age ≥ 18 years → the SQL field `is_verified` is set to `true`.  
+- The verification result appears in the user profile on the frontend.  
+
+### Stack  
+- Python 3.12  
+- Flask / FastAPI  
+- Tesseract OCR  
+- MinIO (temporary file storage)  
+
+### Launch
+```bash
+docker compose up -d kyc
+```
+➡️ Access: [http://localhost:4100/kyc](http://localhost:4100/kyc)
+
+---
+
+## 📊 Grafana Observability
+
+### Purpose  
+Visualize business data (sales, stock, customers) in real time.  
+
+### How it works  
+- Grafana connects to the **CSV Server**, a lightweight Python container serving static files.  
+- The datasets (`orders.csv`, `stocks.csv`, `wines_generated.csv`) are accessible via:  
+  ```
+  http://csvserver:8000/
+  ```
+- These are loaded with the **Infinity Plugin** and rendered into dynamic dashboards.
+
+### Installed Plugins  
+- `marcusolsson-csv-datasource`  
+- `yesoreyeram-infinity-datasource`
+
+### Launch Grafana
+```bash
+docker compose up -d grafana csvserver
+```
+
+### Access
+- URL → [http://localhost:3002](http://localhost:3002)  
+- Login → `admin`  
+- Password → `admin`
+
+---
+
+## 📈 Dashboards
+
+| Dashboard | Description | JSON File | Preview |
+|------------|--------------|------------|----------|
+| **Revenue by Date** | Aggregates total daily revenue (from `orders.csv`) | `/observability/grafana/dashboards/revenue_by_date.json` | ![Revenue by Date](docs/images/revenue_by_date.png) |
+| **Top Wines by Revenue** | Ranks best-selling wines by total revenue | `/observability/grafana/dashboards/top_wines.json` | ![Top Wines by Revenue](docs/images/top_wines.png) |
+| **Stock Levels** *(coming soon)* | Displays current inventory per wine | – | – |
+
+---
+
+## 🧩 Project Structure
 
 ```
 winederful/
-├── backend/                 # API Express
-│   ├── src/
-│   │   ├── controleurs/    # Logique métier
-│   │   ├── chemins/        # Routes
-│   │   ├── middlewares/    # Auth, validation, erreurs
-│   │   ├── config/         # DB, Redis
-│   │   └── index.ts        # Entry point
-│   ├── prisma/
-│   │   └── schema.prisma   # Schéma DB
-│   └── Dockerfile
-│
-├── frontend/               # Next.js App
-│   ├── src/
-│   │   ├── app/           # Pages (App Router)
-│   │   ├── composants/    # Components React
-│   │   └── contexts/      # Auth Context
-│   └── Dockerfile
-│
-├── docker-compose.yml     # Orchestration
-└── .env                   # Variables d'environnement
-```
-
-### Commandes utiles
-
-```bash
-# Voir les logs
-docker-compose logs -f frontend
-docker-compose logs -f api
-
-# Redémarrer un service
-docker-compose restart frontend
-
-# Reconstruire après changement code
-docker-compose build frontend
-docker-compose up -d frontend
-
-# Stopper tout
-docker-compose down
-
-# Stopper + supprimer volumes (⚠️ perte données)
-docker-compose down -v
-```
-
-### Accéder à la base de données
-
-```bash
-# Shell PostgreSQL
-docker exec -it projetfinal-postgres-1 psql -U postgres -d appdb
-
-# Voir les produits
-SELECT * FROM "Product";
-
-# Voir les utilisateurs
-SELECT * FROM "User";
-```
-
-### Importer le catalogue de vins (CSV)
-
-```bash
-# 1. Copier le CSV dans le conteneur
-docker cp merge_catalog_wine.csv projetfinal-api-1:/app/
-
-# 2. Exécuter le script d'import
-docker exec projetfinal-api-1 npx tsx /app/scripts/importerVins.ts /app/merge_catalog_wine.csv
+├── backend/                     # Express API
+├── frontend/                    # Next.js frontend
+├── kyc-service/                 # OCR & age verification
+├── observability/
+│   └── grafana/
+│       ├── dashboards/          # Exported dashboard JSONs
+│       └── provisioning/        # Auto-import config
+├── csv/                         # CSV data for Grafana
+├── docker-compose.yml           # Full stack orchestration
+└── docs/images/                 # Screenshots for README
 ```
 
 ---
 
-## 🧪 Tester l'API
+## 🧠 Useful Commands
 
-### Inscription
 ```bash
-curl -X POST http://localhost:4000/api/auth/inscription \
-  -H "Content-Type: application/json" \
-  -d '{"email":"test@wine.fr","password":"motdepasse123","name":"Test User"}'
-```
+# View logs
+docker compose logs -f grafana
+docker compose logs -f kyc
 
-### Connexion
-```bash
-curl -X POST http://localhost:4000/api/auth/connexion \
-  -H "Content-Type: application/json" \
-  -d '{"email":"test@wine.fr","password":"motdepasse123"}'
-```
+# Restart a specific service
+docker compose restart grafana
 
-### Récupérer les produits
-```bash
-curl http://localhost:4000/api/produits
-```
+# Rebuild after changes
+docker compose build grafana
+docker compose up -d grafana
 
-### Route protégée (profil)
-```bash
-TOKEN="votre_token_jwt_ici"
-curl http://localhost:4000/api/auth/profil \
-  -H "Authorization: Bearer $TOKEN"
+# Stop everything
+docker compose down
 ```
 
 ---
 
-## 🔐 Sécurité
+## 📚 Key Features
 
-**En production, CHANGER OBLIGATOIREMENT:**
-- `POSTGRES_PASSWORD`
-- `JWT_SECRET`
-- `NEXTAUTH_SECRET`
-- `MINIO_ROOT_PASSWORD`
+### ✅ Completed
+- Full JWT authentication (frontend + backend)
+- Interactive product catalog (filters by color)
+- PostgreSQL + Prisma ORM
+- Redis cache for products
+- **KYC OCR Service** (age verification)
+- **Grafana monitoring with CSV data**
+- Traefik reverse proxy setup
+- Environment variable configuration
 
----
-
-## 📚 Fonctionnalités
-
-### ✅ TERMINÉ - Frontend/UI (Rayane)
-
-**Interface utilisateur complète :**
-- [x] Page d'accueil avec hero section et aperçu produits
-- [x] Page `/catalogue` avec affichage grille produits
-- [x] Filtres par couleur fonctionnels (Rouge, Blanc, Rosé, Effervescent)
-- [x] Compteurs dynamiques par catégorie
-- [x] Modal authentification (connexion/inscription)
-- [x] Toggle visibilité mot de passe (icône œil)
-- [x] Header dynamique avec avatar utilisateur connecté
-- [x] Menu dropdown profil/déconnexion
-- [x] Design responsive Tailwind CSS
-- [x] Navigation fluide entre pages
-
-**Authentification JWT :**
-- [x] Context React global (AuthProvider)
-- [x] Inscription utilisateur
-- [x] Connexion avec JWT
-- [x] Persistance token (localStorage)
-- [x] Route protégée profil
-- [x] Déconnexion
-- [x] Validation formulaires (min 8 caractères password)
-
-**API Backend :**
-- [x] Routes `/api/auth` (inscription, connexion, profil)
-- [x] Routes `/api/produits` (liste, filtres)
-- [x] Middleware authentification JWT
-- [x] Gestion erreurs centralisée
-- [x] Validation Zod
-- [x] Cache Redis (TTL 5 min sur produits)
-- [x] CORS configuré pour frontend
-
-**Infrastructure Docker :**
-- [x] Docker Compose 6 conteneurs opérationnels
-- [x] PostgreSQL 16 + Prisma ORM
-- [x] Redis 7 (cache)
-- [x] MinIO (S3-compatible storage)
-- [x] Traefik (reverse proxy)
-- [x] Healthchecks sur tous les services
-- [x] Variables d'environnement `.env.example`
+### 🚧 In Progress
+- Kafka – Order & event streaming
+- Stripe – Secure payments with 3D Secure
+- Prometheus – API metrics & Grafana alerting
+- Stock dashboard automation
+- OCR for wine label recognition (AI vision)
 
 ---
 
-### 🚧 À FAIRE - Pour les collègues
+## 🧮 Versioning Grafana Dashboards in Git
 
-#### **Collègue Database (URGENT - Priorité 1)**
-- [ ] **Importer le CSV de 500+ vins** dans PostgreSQL
-  - Créer script `scripts/importerVins.ts` avec Prisma
-  - Parser colonnes : name, priceEur, color, year, region, etc.
-  - Nettoyer les données (prix en string → number, couleurs normalisées)
-  - Bulk insert via `prisma.product.createMany()`
-  - Vérifier que les filtres frontend fonctionnent avec vraies données
+To keep dashboards reproducible and version-controlled:
 
-#### **Collègue DevOps (Important - Priorité 2)**
-- [ ] **Kafka** - Event streaming pour commandes et notifications
-  - Ajouter `kafka` et `zookeeper` dans `docker-compose.yml`
-  - Topics : `order.created`, `order.paid`, `user.registered`
-  - Producteurs dans l'API backend
-  - Consommateurs pour notifications/analytics
+### 1️⃣ Export your dashboard
+- In Grafana → **Share → Export → View JSON**
+- Click **Download JSON**
 
-- [ ] **Stripe** - Paiements sécurisés
-  - Route `/api/paiement/create-payment-intent`
-  - Webhooks Stripe pour événements paiement
-  - Intégration frontend avec Stripe Elements
-  - Gestion 3D Secure
+### 2️⃣ Save it in your repo
+Place it in:
+```
+observability/grafana/dashboards/
+```
 
-- [ ] **Prometheus + Grafana** - Monitoring
-  - Métriques API (latence, erreurs, throughput)
-  - Dashboards Grafana pour supervision
-  - Alertes sur erreurs critiques
-  - Monitoring Redis, PostgreSQL, Kafka
+Example:
+```
+observability/grafana/dashboards/top_wines.json
+```
 
-#### **Collègue Upload Images (Nice-to-have - Priorité 3)**
-- [ ] **MinIO S3** - Upload images produits
-  - Route `/api/upload` avec multer
-  - SDK AWS S3 vers MinIO
-  - Bucket `product-images` avec politiques publiques
-  - Affichage images dans `CarteProduit.tsx`
+### 3️⃣ Commit the changes
+```bash
+git add observability/grafana/dashboards/top_wines.json
+git commit -m "Add Top Wines by Revenue dashboard"
+git push origin feat/nolwenn-kyc-grafana
+```
 
-- [ ] **Tesseract OCR** (Optionnel)
-  - Scan automatique étiquettes bouteilles
-  - Extraction nom/année/région depuis photo
-  - Microservice dédié `ocr-service`
-
-- [ ] **Onfido KYC** (Optionnel)
-  - Vérification âge pour vente alcool
-  - Upload pièce d'identité
-  - Validation automatique avant achat
+Your dashboard is now versioned and can be auto-imported when Grafana starts 🎯
 
 ---
 
-## 👥 Répartition Équipe
+## 👥 Team
 
-| Personne | Responsabilité | Statut | Fichiers clés |
-|----------|----------------|--------|---------------|
-| **Rayane (Frontend)** | Interface + Auth + Docker setup | ✅ **TERMINÉ** | `frontend/`, `docker-compose.yml`, `README.md` |
-| **Collègue DB** | Import CSV 500+ vins | ⏳ **À FAIRE** | `backend/scripts/importerVins.ts`, `prisma/schema.prisma` |
-| **Collègue DevOps** | Kafka + Stripe + Monitoring | ⏳ **À FAIRE** | `docker-compose.yml`, `backend/src/chemins/paiement.ts` |
-| **Collègue Upload** | Images MinIO + OCR | ⏳ **À FAIRE** | `backend/src/chemins/upload.ts` |
+| Member | Role | Status |
+|---------|------|--------|
+| **Nolwenn Montillot** 
+| **Rayane Kryslak** 
+| **Emma Lou Villaret** 
+| **Matthieu Dollfus** 
+| **Mory Meite** 
 
 ---
 
-## 📝 License
+## 🧾 License  
+MIT © 2025 — *Albert School – MSc Data for Business Project*
 
-MIT
+---
+
+## 🧮 Versioning Grafana Dashboards in Git
+
+To keep dashboards reproducible and version-controlled:
+
+### 1️⃣ Export your dashboard
+- In Grafana → **Share → Export → View JSON**
+- Click **Download JSON**
+
+### 2️⃣ Save it in your repo
+Place it in:
+```
+observability/grafana/dashboards/
+```
+
+Example:
+```
+observability/grafana/dashboards/top_wines.json
+```
+
+### 3️⃣ Commit the changes
+```bash
+git add observability/grafana/dashboards/top_wines.json
+git commit -m "Add Top Wines by Revenue dashboard"
+git push origin feat/nolwenn-kyc-grafana
+```
